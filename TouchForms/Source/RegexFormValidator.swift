@@ -1,5 +1,5 @@
 //
-//  RegexValidator.swift
+//  RegexFormValidator.swift
 //  TouchForms
 //
 //  Created by Adam Kirk on 7/25/15.
@@ -11,15 +11,15 @@ import Foundation
 /**
 Some common patterns you can use for `matchPattern`.
 */
-let FormRegexValidationPatternEmail     = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$"
-let FormRegexValidationPatternUsername  = "^[a-z0-9_-]{3,16}$"
-let FormRegexValidationPatternPassword  = "^[a-z0-9_-]{6,18}$"
-let FormRegexValidationPatternHex       = "^#?([a-f0-9]{6}|[a-f0-9]{3})$"
-let FormRegexValidationPatternSlug      = "^[a-z0-9-]+$"
-let FormRegexValidationPatternURL       = "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$"
-let FormRegexValidationPatternIPAddress = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+let RegexFormValidatorPatternEmail     = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$"
+let RegexFormValidatorPatternUsername  = "^[a-z0-9_-]{3,16}$"
+let RegexFormValidatorPatternPassword  = "^[a-z0-9_-]{6,18}$"
+let RegexFormValidatorPatternHex       = "^#?([a-f0-9]{6}|[a-f0-9]{3})$"
+let RegexFormValidatorPatternSlug      = "^[a-z0-9-]+$"
+let RegexFormValidatorPatternURL       = "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$"
+let RegexFormValidatorPatternIPAddress = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
 
-public struct RegexValidator: FormValidatorType {
+public struct RegexFormValidator: FormValidatorType {
 
     /**
     If YES, a nil value will reported as valid. No match will be attempted. Default is NO.
@@ -121,7 +121,7 @@ public struct RegexValidator: FormValidatorType {
     // MARK: - Private
 
     private func userFriendlyFailureStringFromPattern(pattern: String) -> String? {
-        if matchPattern == FormRegexValidationPatternEmail {
+        if matchPattern == RegexFormValidatorPatternEmail {
             return "Must be a valid E-mail."
         }
         return nil

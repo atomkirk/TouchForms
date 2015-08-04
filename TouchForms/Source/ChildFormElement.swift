@@ -1,5 +1,5 @@
 //
-//  FormChildElement.swift
+//  ChildFormElement.swift
 //  TouchForms
 //
 //  Created by Adam Kirk on 7/24/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FormChildElementType {
+enum ChildFormElementType {
     case Loading
     case ValidationError
     case Error
@@ -16,15 +16,15 @@ enum FormChildElementType {
     case View
 }
 
-class FormChildElement: FormElement {
+class ChildFormElement: FormElement {
 
     var parentElement: FormElement
 
     var position: FormElementRelativePosition
 
-    let type: FormChildElementType
+    let type: ChildFormElementType
 
-    init(parentElement element: FormElement, type: FormChildElementType, position: FormElementRelativePosition) {
+    init(parentElement element: FormElement, type: ChildFormElementType, position: FormElementRelativePosition) {
         self.parentElement = element
         self.type = type
         self.position = position

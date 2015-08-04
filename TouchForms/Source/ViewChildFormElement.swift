@@ -1,5 +1,5 @@
 //
-//  FormViewChildElement.swift
+//  ViewChildFormElement.swift
 //  TouchForms
 //
 //  Created by Adam Kirk on 7/24/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FormViewChildElement: FormChildElement {
+class ViewChildFormElement: ChildFormElement {
 
     let view: UIView
 

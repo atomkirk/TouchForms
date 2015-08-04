@@ -24,7 +24,7 @@ protocol FormElementDelegate {
 /**
 Do not create direct instances of this class. It is meant to be subclassed.
 */
-public class FormElement: Equatable {
+public class FormElement: FormCellDelegate, Equatable {
 
 
     public typealias FormCellConfigurationBlock = (FormCell) -> Void
@@ -93,6 +93,7 @@ public class FormElement: Equatable {
     public internal(set) var cell: FormCell? {
         didSet {
             if let cell = self.cell {
+                cell.delegate = self
                 cellConfigurationBlock?(cell)
             }
         }
@@ -203,6 +204,23 @@ public class FormElement: Equatable {
     }
 
 
+    // MARK: - Acting as the Cell's Delegate
+
+    /**
+    Override this when you need to respond to the user interacting with this element's cell.
+    */
+    public func formCell(cell: FormCell, userDidPerformInteraction interaction: FormCellUserInteraction) {
+
+    }
+
+    /**
+    Override this when you want to respond to the cell changing value. Always call `super`.
+    */
+    public func formCell(cell: FormCell, valueDidChange value: AnyObject) {
+        delegate?.formElement(self, valueDidChange: value)
+    }
+
+
     // MARK: - Internal
 
     /**
@@ -223,7 +241,7 @@ public class FormElement: Equatable {
         return childElementsAbove + [self] + childElementsBelow
     }
 
-    func addChildElement(childElement: FormChildElement) {
+    func addChildElement(childElement: ChildFormElement) {
         if childElement.position == .Above {
             childElementsAbove.append(childElement)
         }
@@ -232,7 +250,7 @@ public class FormElement: Equatable {
         }
     }
 
-    func removeChildElement(childElement: FormChildElement) {
+    func removeChildElement(childElement: ChildFormElement) {
         if let index = find(childElementsAbove, childElement) {
             childElementsAbove.removeAtIndex(index)
         }

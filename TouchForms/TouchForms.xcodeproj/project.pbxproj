@@ -12,17 +12,21 @@
 		C232FA461B698CDA000635E2 /* StringFromTimeZoneValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA451B698CDA000635E2 /* StringFromTimeZoneValueTransformer.swift */; };
 		C232FA481B698CF9000635E2 /* StringFromNumberValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA471B698CF9000635E2 /* StringFromNumberValueTransformer.swift */; };
 		C232FA4A1B698D19000635E2 /* ImageFromDataValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA491B698D19000635E2 /* ImageFromDataValueTransformer.swift */; };
-		C26BD6AE1B62DECA00C014A6 /* FormChildElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6AD1B62DECA00C014A6 /* FormChildElement.swift */; };
-		C26BD6B21B62DFA900C014A6 /* FormViewChildElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B11B62DFA900C014A6 /* FormViewChildElement.swift */; };
-		C26BD6B51B63F77F00C014A6 /* FormChildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B41B63F77F00C014A6 /* FormChildCell.swift */; };
-		C26BD6B71B63F78D00C014A6 /* FormMessageChildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B61B63F78D00C014A6 /* FormMessageChildCell.swift */; };
-		C26BD6B91B63F79F00C014A6 /* FormViewChildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B81B63F79F00C014A6 /* FormViewChildCell.swift */; };
-		C26BD6BC1B64035500C014A6 /* PresenceValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6BB1B64035500C014A6 /* PresenceValidator.swift */; };
-		C26BD6BE1B640C5300C014A6 /* RegexValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6BD1B640C5300C014A6 /* RegexValidator.swift */; };
-		C26BD6C11B6417F500C014A6 /* TextFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6C01B6417F500C014A6 /* TextFieldElement.swift */; };
-		C26BD6C51B6418CF00C014A6 /* FormMessageChildCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26BD6C41B6418CF00C014A6 /* FormMessageChildCell.xib */; };
-		C26BD6C81B6419A000C014A6 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6C71B6419A000C014A6 /* TextFieldCell.swift */; };
-		C26BD6CA1B6419AA00C014A6 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26BD6C91B6419AA00C014A6 /* TextFieldCell.xib */; };
+		C232FA641B715D85000635E2 /* LabelFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA611B715D85000635E2 /* LabelFormCell.swift */; };
+		C232FA651B715D85000635E2 /* LabelFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA621B715D85000635E2 /* LabelFormCell.xib */; };
+		C232FA661B715D85000635E2 /* LabelFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA631B715D85000635E2 /* LabelFormElement.swift */; };
+		C232FA681B7162B0000635E2 /* LoadingChildFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA671B7162B0000635E2 /* LoadingChildFormCell.xib */; };
+		C232FA6A1B7176E5000635E2 /* LoadingChildFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA691B7176E5000635E2 /* LoadingChildFormCell.swift */; };
+		C26BD6AE1B62DECA00C014A6 /* ChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */; };
+		C26BD6B21B62DFA900C014A6 /* ViewChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B11B62DFA900C014A6 /* ViewChildFormElement.swift */; };
+		C26BD6B71B63F78D00C014A6 /* MessageChildFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B61B63F78D00C014A6 /* MessageChildFormCell.swift */; };
+		C26BD6B91B63F79F00C014A6 /* ViewChildFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B81B63F79F00C014A6 /* ViewChildFormCell.swift */; };
+		C26BD6BC1B64035500C014A6 /* PresenceFormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6BB1B64035500C014A6 /* PresenceFormValidator.swift */; };
+		C26BD6BE1B640C5300C014A6 /* RegexFormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6BD1B640C5300C014A6 /* RegexFormValidator.swift */; };
+		C26BD6C11B6417F500C014A6 /* TextFieldFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6C01B6417F500C014A6 /* TextFieldFormElement.swift */; };
+		C26BD6C51B6418CF00C014A6 /* MessageChildFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26BD6C41B6418CF00C014A6 /* MessageChildFormCell.xib */; };
+		C26BD6C81B6419A000C014A6 /* TextFieldFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6C71B6419A000C014A6 /* TextFieldFormCell.swift */; };
+		C26BD6CA1B6419AA00C014A6 /* TextFieldFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26BD6C91B6419AA00C014A6 /* TextFieldFormCell.xib */; };
 		C2D2A2211B602D01003901A7 /* TouchForms.h in Headers */ = {isa = PBXBuildFile; fileRef = C2D2A2201B602D01003901A7 /* TouchForms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2D2A2271B602D01003901A7 /* TouchForms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D2A21B1B602D01003901A7 /* TouchForms.framework */; };
 		C2D2A22E1B602D01003901A7 /* TouchFormsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A22D1B602D01003901A7 /* TouchFormsTests.swift */; };
@@ -32,7 +36,7 @@
 		C2D2A2411B619AD4003901A7 /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2401B619AD4003901A7 /* FormCell.swift */; };
 		C2D2A2431B619C1B003901A7 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2421B619C1B003901A7 /* FormButton.swift */; };
 		C2D2A2451B619E9A003901A7 /* FormValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2441B619E9A003901A7 /* FormValueTransformer.swift */; };
-		C2D2A2471B61C9E4003901A7 /* FormMessageChildElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2461B61C9E4003901A7 /* FormMessageChildElement.swift */; };
+		C2D2A2471B61C9E4003901A7 /* MessageChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2461B61C9E4003901A7 /* MessageChildFormElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,17 +55,21 @@
 		C232FA451B698CDA000635E2 /* StringFromTimeZoneValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFromTimeZoneValueTransformer.swift; sourceTree = "<group>"; };
 		C232FA471B698CF9000635E2 /* StringFromNumberValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFromNumberValueTransformer.swift; sourceTree = "<group>"; };
 		C232FA491B698D19000635E2 /* ImageFromDataValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFromDataValueTransformer.swift; sourceTree = "<group>"; };
-		C26BD6AD1B62DECA00C014A6 /* FormChildElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormChildElement.swift; sourceTree = "<group>"; };
-		C26BD6B11B62DFA900C014A6 /* FormViewChildElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewChildElement.swift; sourceTree = "<group>"; };
-		C26BD6B41B63F77F00C014A6 /* FormChildCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormChildCell.swift; sourceTree = "<group>"; };
-		C26BD6B61B63F78D00C014A6 /* FormMessageChildCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormMessageChildCell.swift; sourceTree = "<group>"; };
-		C26BD6B81B63F79F00C014A6 /* FormViewChildCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewChildCell.swift; sourceTree = "<group>"; };
-		C26BD6BB1B64035500C014A6 /* PresenceValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenceValidator.swift; sourceTree = "<group>"; };
-		C26BD6BD1B640C5300C014A6 /* RegexValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexValidator.swift; sourceTree = "<group>"; };
-		C26BD6C01B6417F500C014A6 /* TextFieldElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldElement.swift; sourceTree = "<group>"; };
-		C26BD6C41B6418CF00C014A6 /* FormMessageChildCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FormMessageChildCell.xib; sourceTree = "<group>"; };
-		C26BD6C71B6419A000C014A6 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
-		C26BD6C91B6419AA00C014A6 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		C232FA611B715D85000635E2 /* LabelFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelFormCell.swift; sourceTree = "<group>"; };
+		C232FA621B715D85000635E2 /* LabelFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelFormCell.xib; sourceTree = "<group>"; };
+		C232FA631B715D85000635E2 /* LabelFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelFormElement.swift; sourceTree = "<group>"; };
+		C232FA671B7162B0000635E2 /* LoadingChildFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingChildFormCell.xib; sourceTree = "<group>"; };
+		C232FA691B7176E5000635E2 /* LoadingChildFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingChildFormCell.swift; sourceTree = "<group>"; };
+		C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildFormElement.swift; sourceTree = "<group>"; };
+		C26BD6B11B62DFA900C014A6 /* ViewChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewChildFormElement.swift; sourceTree = "<group>"; };
+		C26BD6B61B63F78D00C014A6 /* MessageChildFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageChildFormCell.swift; sourceTree = "<group>"; };
+		C26BD6B81B63F79F00C014A6 /* ViewChildFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewChildFormCell.swift; sourceTree = "<group>"; };
+		C26BD6BB1B64035500C014A6 /* PresenceFormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenceFormValidator.swift; sourceTree = "<group>"; };
+		C26BD6BD1B640C5300C014A6 /* RegexFormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexFormValidator.swift; sourceTree = "<group>"; };
+		C26BD6C01B6417F500C014A6 /* TextFieldFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFormElement.swift; sourceTree = "<group>"; };
+		C26BD6C41B6418CF00C014A6 /* MessageChildFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageChildFormCell.xib; sourceTree = "<group>"; };
+		C26BD6C71B6419A000C014A6 /* TextFieldFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFormCell.swift; sourceTree = "<group>"; };
+		C26BD6C91B6419AA00C014A6 /* TextFieldFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldFormCell.xib; sourceTree = "<group>"; };
 		C2D2A21B1B602D01003901A7 /* TouchForms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TouchForms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D2A21F1B602D01003901A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Source/Info.plist; sourceTree = "<group>"; };
 		C2D2A2201B602D01003901A7 /* TouchForms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TouchForms.h; path = ../Source/TouchForms.h; sourceTree = "<group>"; };
@@ -74,7 +82,7 @@
 		C2D2A2401B619AD4003901A7 /* FormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
 		C2D2A2421B619C1B003901A7 /* FormButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
 		C2D2A2441B619E9A003901A7 /* FormValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueTransformer.swift; sourceTree = "<group>"; };
-		C2D2A2461B61C9E4003901A7 /* FormMessageChildElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormMessageChildElement.swift; sourceTree = "<group>"; };
+		C2D2A2461B61C9E4003901A7 /* MessageChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageChildFormElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,18 +107,35 @@
 		C232FA5F1B704EA5000635E2 /* Text Field */ = {
 			isa = PBXGroup;
 			children = (
-				C26BD6C01B6417F500C014A6 /* TextFieldElement.swift */,
-				C26BD6C71B6419A000C014A6 /* TextFieldCell.swift */,
-				C26BD6C91B6419AA00C014A6 /* TextFieldCell.xib */,
+				C26BD6C01B6417F500C014A6 /* TextFieldFormElement.swift */,
+				C26BD6C71B6419A000C014A6 /* TextFieldFormCell.swift */,
+				C26BD6C91B6419AA00C014A6 /* TextFieldFormCell.xib */,
 			);
 			name = "Text Field";
+			sourceTree = "<group>";
+		};
+		C232FA601B715D5A000635E2 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				C232FA631B715D85000635E2 /* LabelFormElement.swift */,
+				C232FA611B715D85000635E2 /* LabelFormCell.swift */,
+				C232FA621B715D85000635E2 /* LabelFormCell.xib */,
+			);
+			name = Label;
+			sourceTree = "<group>";
+		};
+		C232FA6D1B717F44000635E2 /* Text View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Text View";
 			sourceTree = "<group>";
 		};
 		C26BD6AC1B62DE9F00C014A6 /* Child Elements */ = {
 			isa = PBXGroup;
 			children = (
-				C2D2A2461B61C9E4003901A7 /* FormMessageChildElement.swift */,
-				C26BD6B11B62DFA900C014A6 /* FormViewChildElement.swift */,
+				C2D2A2461B61C9E4003901A7 /* MessageChildFormElement.swift */,
+				C26BD6B11B62DFA900C014A6 /* ViewChildFormElement.swift */,
 			);
 			name = "Child Elements";
 			sourceTree = "<group>";
@@ -134,8 +159,7 @@
 		C26BD6B01B62DEFF00C014A6 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				C26BD6AD1B62DECA00C014A6 /* FormChildElement.swift */,
-				C26BD6B41B63F77F00C014A6 /* FormChildCell.swift */,
+				C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */,
 				C26BD6AC1B62DE9F00C014A6 /* Child Elements */,
 				C26BD6B31B63F76F00C014A6 /* Child Cells */,
 			);
@@ -145,9 +169,11 @@
 		C26BD6B31B63F76F00C014A6 /* Child Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C26BD6B61B63F78D00C014A6 /* FormMessageChildCell.swift */,
-				C26BD6C41B6418CF00C014A6 /* FormMessageChildCell.xib */,
-				C26BD6B81B63F79F00C014A6 /* FormViewChildCell.swift */,
+				C26BD6B61B63F78D00C014A6 /* MessageChildFormCell.swift */,
+				C26BD6C41B6418CF00C014A6 /* MessageChildFormCell.xib */,
+				C232FA691B7176E5000635E2 /* LoadingChildFormCell.swift */,
+				C232FA671B7162B0000635E2 /* LoadingChildFormCell.xib */,
+				C26BD6B81B63F79F00C014A6 /* ViewChildFormCell.swift */,
 			);
 			name = "Child Cells";
 			sourceTree = "<group>";
@@ -155,8 +181,8 @@
 		C26BD6BA1B64033600C014A6 /* Validators */ = {
 			isa = PBXGroup;
 			children = (
-				C26BD6BB1B64035500C014A6 /* PresenceValidator.swift */,
-				C26BD6BD1B640C5300C014A6 /* RegexValidator.swift */,
+				C26BD6BB1B64035500C014A6 /* PresenceFormValidator.swift */,
+				C26BD6BD1B640C5300C014A6 /* RegexFormValidator.swift */,
 			);
 			name = Validators;
 			sourceTree = "<group>";
@@ -164,7 +190,9 @@
 		C26BD6BF1B6417C700C014A6 /* Form Elements */ = {
 			isa = PBXGroup;
 			children = (
+				C232FA601B715D5A000635E2 /* Label */,
 				C232FA5F1B704EA5000635E2 /* Text Field */,
+				C232FA6D1B717F44000635E2 /* Text View */,
 			);
 			name = "Form Elements";
 			sourceTree = "<group>";
@@ -334,8 +362,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C26BD6C51B6418CF00C014A6 /* FormMessageChildCell.xib in Resources */,
-				C26BD6CA1B6419AA00C014A6 /* TextFieldCell.xib in Resources */,
+				C232FA651B715D85000635E2 /* LabelFormCell.xib in Resources */,
+				C26BD6C51B6418CF00C014A6 /* MessageChildFormCell.xib in Resources */,
+				C26BD6CA1B6419AA00C014A6 /* TextFieldFormCell.xib in Resources */,
+				C232FA681B7162B0000635E2 /* LoadingChildFormCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,27 +383,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C232FA661B715D85000635E2 /* LabelFormElement.swift in Sources */,
 				C232FA461B698CDA000635E2 /* StringFromTimeZoneValueTransformer.swift in Sources */,
 				C2D2A2431B619C1B003901A7 /* FormButton.swift in Sources */,
 				C2D2A23D1B606B21003901A7 /* FormValidatorType.swift in Sources */,
 				C232FA441B698CBC000635E2 /* StringFromURLValueTransformer.swift in Sources */,
 				C2D2A2411B619AD4003901A7 /* FormCell.swift in Sources */,
-				C26BD6B71B63F78D00C014A6 /* FormMessageChildCell.swift in Sources */,
-				C26BD6BC1B64035500C014A6 /* PresenceValidator.swift in Sources */,
-				C26BD6AE1B62DECA00C014A6 /* FormChildElement.swift in Sources */,
+				C26BD6B71B63F78D00C014A6 /* MessageChildFormCell.swift in Sources */,
+				C26BD6BC1B64035500C014A6 /* PresenceFormValidator.swift in Sources */,
+				C26BD6AE1B62DECA00C014A6 /* ChildFormElement.swift in Sources */,
 				C22057B61B648AF300560324 /* FormTextField.swift in Sources */,
-				C26BD6B51B63F77F00C014A6 /* FormChildCell.swift in Sources */,
+				C232FA641B715D85000635E2 /* LabelFormCell.swift in Sources */,
 				C2D2A23B1B602FCB003901A7 /* FormElement.swift in Sources */,
 				C2D2A2391B602DEA003901A7 /* FormController.swift in Sources */,
-				C2D2A2471B61C9E4003901A7 /* FormMessageChildElement.swift in Sources */,
-				C26BD6BE1B640C5300C014A6 /* RegexValidator.swift in Sources */,
-				C26BD6B21B62DFA900C014A6 /* FormViewChildElement.swift in Sources */,
-				C26BD6C11B6417F500C014A6 /* TextFieldElement.swift in Sources */,
+				C2D2A2471B61C9E4003901A7 /* MessageChildFormElement.swift in Sources */,
+				C26BD6BE1B640C5300C014A6 /* RegexFormValidator.swift in Sources */,
+				C26BD6B21B62DFA900C014A6 /* ViewChildFormElement.swift in Sources */,
+				C26BD6C11B6417F500C014A6 /* TextFieldFormElement.swift in Sources */,
 				C2D2A2451B619E9A003901A7 /* FormValueTransformer.swift in Sources */,
+				C232FA6A1B7176E5000635E2 /* LoadingChildFormCell.swift in Sources */,
 				C232FA481B698CF9000635E2 /* StringFromNumberValueTransformer.swift in Sources */,
-				C26BD6B91B63F79F00C014A6 /* FormViewChildCell.swift in Sources */,
+				C26BD6B91B63F79F00C014A6 /* ViewChildFormCell.swift in Sources */,
 				C232FA4A1B698D19000635E2 /* ImageFromDataValueTransformer.swift in Sources */,
-				C26BD6C81B6419A000C014A6 /* TextFieldCell.swift in Sources */,
+				C26BD6C81B6419A000C014A6 /* TextFieldFormCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,17 @@
 
 import Foundation
 
+public enum FormCellUserInteraction {
+    case Tap
+    case LongPress
+    case Swipe
+}
+
+public protocol FormCellDelegate {
+    func formCell(cell: FormCell, valueDidChange value: AnyObject)
+    func formCell(cell: FormCell, userDidPerformInteraction interaction: FormCellUserInteraction)
+}
+
 public class FormCell: UICollectionViewCell {
 
     // MARK: - Initializing
@@ -55,5 +66,10 @@ public class FormCell: UICollectionViewCell {
     public func didChangeValueAtKeyPath() {
 
     }
+
+
+    // MARK: - Delegate
+
+    public var delegate: FormCellDelegate?
 
 }

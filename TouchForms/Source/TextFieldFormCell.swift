@@ -1,5 +1,5 @@
 //
-//  TextFieldCell.swift
+//  TextFieldFormCell.swift
 //  TouchForms
 //
 //  Created by Adam Kirk on 7/25/15.
@@ -8,13 +8,7 @@
 
 import UIKit
 
-public protocol TextFieldCellDelegate: class {
-    func textFormCell(cell: TextFieldCell, textDidChange text: String)
-}
-
-public class TextFieldCell: FormCell, UITextFieldDelegate {
-
-    public weak var textFieldDelegate: TextFieldCellDelegate?
+public class TextFieldFormCell: FormCell, UITextFieldDelegate {
 
     @IBOutlet public weak var textField: UITextField!
 
@@ -27,6 +21,7 @@ public class TextFieldCell: FormCell, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+
     // MARK: - FormCell
 
     public override var valueKeyPath: String? {
@@ -37,7 +32,7 @@ public class TextFieldCell: FormCell, UITextFieldDelegate {
     // MARK: - DELEGATE text field
 
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
-        NSNotificationCenter.defaultCenter().postNotificationName(TextFieldCellDidHitReturnKeyNotification, object: self)
+        NSNotificationCenter.defaultCenter().postNotificationName(TextFieldFormCellDidHitReturnKeyNotification, object: self)
         return true
     }
 
@@ -45,7 +40,7 @@ public class TextFieldCell: FormCell, UITextFieldDelegate {
     // MARK: - Notifications
 
     func textFieldDidChange(note: NSNotification) {
-        textFieldDelegate?.textFormCell(self, textDidChange: textField.text)
+        delegate?.formCell(self, valueDidChange: textField.text)
     }
 
 }

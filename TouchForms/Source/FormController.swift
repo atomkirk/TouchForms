@@ -8,7 +8,7 @@
 
 import UIKit
 
-let TextFieldCellDidHitReturnKeyNotification = "TextFieldCellDidHitReturnKeyNotification"
+let TextFieldFormCellDidHitReturnKeyNotification = "TextFieldFormCellDidHitReturnKeyNotification"
 
 public typealias FormBasicBlock = () -> Void
 
@@ -160,13 +160,13 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
 
         // validate and add any needed form elements
         var valid = true
-        var errorElementsToShow = [FormMessageChildElement]()
+        var errorElementsToShow = [MessageChildFormElement]()
         for element in elements {
             let validationErrors = element.validationErrors()
             if validationErrors.count > 0 {
                 valid = false
                 for error in validationErrors {
-                    let errorFormElement = FormMessageChildElement(message: error.localizedDescription, type: .ValidationError, parentElement: element)
+                    let errorFormElement = MessageChildFormElement(message: error.localizedDescription, type: .ValidationError, parentElement: element)
                     errorElementsToShow.append(errorFormElement)
                 }
             }
@@ -209,7 +209,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         if collectionView?.window == nil {
             return
         }
-        let loadingElement = FormMessageChildElement(message: message, type: .Loading, parentElement: element)
+        let loadingElement = MessageChildFormElement(message: message, type: .Loading, parentElement: element)
         showChildElements([loadingElement], position: .Above, duration: 0, completion: completion)
     }
 
@@ -230,7 +230,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         if collectionView?.window == nil {
             return
         }
-        let errorlement = FormMessageChildElement(message: message, type: .Error, parentElement: element)
+        let errorlement = MessageChildFormElement(message: message, type: .Error, parentElement: element)
         showChildElements([errorlement], position: .Below, duration: duration, completion: completion)
     }
 
@@ -251,7 +251,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         if collectionView?.window == nil {
             return
         }
-        let errorlement = FormMessageChildElement(message: message, type: .Success, parentElement: element)
+        let errorlement = MessageChildFormElement(message: message, type: .Success, parentElement: element)
         showChildElements([errorlement], position: .Below, duration: duration, completion: completion)
     }
 
@@ -269,7 +269,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
     Show an arbitrary view below an element in the form.
     */
     public func showView(view: UIView, relativeTo element: FormElement, position: FormElementRelativePosition, completion: FormBasicBlock? = nil) {
-        let viewChildElement = FormViewChildElement(view: view, parentElement: element)
+        let viewChildElement = ViewChildFormElement(view: view, parentElement: element)
         showChildElements([viewChildElement], position: position, duration: 0, completion: completion)
     }
 
@@ -367,7 +367,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
     }
 
     public func formElement(element: FormElement, didRequestPresentationOfChildView childView: UIView) {
-        let viewChildElement = FormViewChildElement(view: childView, parentElement: element)
+        let viewChildElement = ViewChildFormElement(view: childView, parentElement: element)
         showChildElements([viewChildElement], position: .Below, duration: 0, completion: nil)
     }
 
@@ -452,7 +452,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         }
     }
 
-    func textFieldCellDidHitReturnKeyNotification(note: NSNotification) {
+    func textFieldDidHitReturnKeyNotification(note: NSNotification) {
         if let cell = note.object as? FormCell,
             let textField = cell.textInput,
             let element = elementContainingView(textField) {
@@ -470,14 +470,14 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
 
     // MARK: (showing/hiding child elements)
 
-    private func showChildElements(childElements: [FormChildElement], position: FormElementRelativePosition, duration: NSTimeInterval, completion: FormBasicBlock? = nil) {
+    private func showChildElements(childElements: [ChildFormElement], position: FormElementRelativePosition, duration: NSTimeInterval, completion: FormBasicBlock? = nil) {
         if collectionView?.window == nil {
             return
         }
 
         var indexPathsToInsert = [NSIndexPath]()
 
-        var visibleChildElements = [FormChildElement]()
+        var visibleChildElements = [ChildFormElement]()
         for childElement in childElements {
             let visibleChildElements = childElementsOfParentElement(childElement, type: childElement.type)
             if contains(visibleChildElements, childElement) {
@@ -509,12 +509,12 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         }
     }
 
-    private func hideChildrenOfElements(elements: [FormElement], type: FormChildElementType, completion: FormBasicBlock? = nil) {
+    private func hideChildrenOfElements(elements: [FormElement], type: ChildFormElementType, completion: FormBasicBlock? = nil) {
         if collectionView?.window == nil {
             return
         }
 
-        var childElements = [FormChildElement]()
+        var childElements = [ChildFormElement]()
         for element in elements {
             childElements += childElementsOfParentElement(element, type: type)
         }
@@ -540,14 +540,14 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         }
     }
 
-    private func childElementsOfParentElement(element: FormElement, type: FormChildElementType) -> [FormChildElement] {
+    private func childElementsOfParentElement(element: FormElement, type: ChildFormElementType) -> [ChildFormElement] {
         let filtered = element.elementGroup.filter { el in
-            if let childElement = el as? FormChildElement {
+            if let childElement = el as? ChildFormElement {
                 return childElement.type == type
             }
             return false
         }
-        if let elements = filtered as? [FormChildElement] {
+        if let elements = filtered as? [ChildFormElement] {
             return elements
         }
         else {
@@ -563,7 +563,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidBeginEditingNotification:", name: UITextFieldTextDidBeginEditingNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidEndEditingNotification:", name: UITextFieldTextDidEndEditingNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldCellDidHitReturnKeyNotification:", name: TextFieldCellDidHitReturnKeyNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidHitReturnKeyNotification:", name: TextFieldFormCellDidHitReturnKeyNotification, object: nil)
     }
 
 
@@ -590,7 +590,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
     func elementAfter(anElement: FormElement) -> FormElement? {
         var returnNext = false
         for element in elements {
-            if !element.isEditable() || element is FormChildElement {
+            if !element.isEditable() || element is ChildFormElement {
                 continue
             }
             if returnNext {
@@ -642,10 +642,10 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         }
 
         // register metadata cells
-        registerCellClassForReuse(FormMessageChildCell.self)
+        registerCellClassForReuse(MessageChildFormCell.self)
 
         // register view child cell
-//        collectionView?.registerClass(FormViewChildCell.self, forCellWithReuseIdentifier: stringFromClassWithoutModule(FormViewChildCell.self))
+//        collectionView?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: stringFromClassWithoutModule(ViewChildFormCell.self))
     }
 
 

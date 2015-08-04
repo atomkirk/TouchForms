@@ -18,7 +18,7 @@ class BasicForm: FormController {
 
     override func configureForm() {
 
-        let firstElement = TextFieldElement(label: "Hello")
+        let firstElement = TextFieldFormElement(label: "Hello")
         addFormElement(firstElement)
 
     }

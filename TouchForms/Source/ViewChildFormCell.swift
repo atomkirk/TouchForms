@@ -1,5 +1,5 @@
 //
-//  FormMessageChildCell.swift
+//  FormLoadingChildCell.swift
 //  TouchForms
 //
 //  Created by Adam Kirk on 7/25/15.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-class FormMessageChildCell {
-
+class ViewChildFormCell {
+    
 }

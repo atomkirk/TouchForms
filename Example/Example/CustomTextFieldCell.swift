@@ -9,7 +9,7 @@
 import UIKit
 import TouchForms
 
-class CustomTextFieldCell: TextFieldCell {
+class CustomTextFieldCell: TextFieldFormCell {
 
     @IBOutlet weak var trailingSpaceConstraint: NSLayoutConstraint!
 

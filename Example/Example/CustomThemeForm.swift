@@ -17,7 +17,7 @@ class CustomThemeForm: FormController {
         Here we are just using a customized xib for the cell to customize the appearance.
         This is the easiest way to just change the way an existing element looks.
         */
-        let textFieldElement = TextFieldElement(label: "Hello")
+        let textFieldElement = TextFieldFormElement(label: "Hello")
         textFieldElement.cellXib = "CustomXibTextField"
         addFormElement(textFieldElement)
 
@@ -26,11 +26,8 @@ class CustomThemeForm: FormController {
         Customization is limited to things related to the appearnce of the cell, like animation
         and dynamic changes in positioning/color/etc.
         */
-        let customTextFieldElement = TextFieldElement(label: "Custom")
+        let customTextFieldElement = TextFieldFormElement(label: "Custom")
         customTextFieldElement.cellClass = CustomTextFieldCell.self
-        customTextFieldElement.configureCellBlock { cell in
-            
-        }
         addFormElement(customTextFieldElement)
 
         /**
