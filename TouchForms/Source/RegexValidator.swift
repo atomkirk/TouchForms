@@ -1,5 +1,5 @@
 //
-//  FormRegexValidator.swift
+//  RegexValidator.swift
 //  TouchForms
 //
 //  Created by Adam Kirk on 7/25/15.
@@ -19,7 +19,7 @@ let FormRegexValidationPatternSlug      = "^[a-z0-9-]+$"
 let FormRegexValidationPatternURL       = "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$"
 let FormRegexValidationPatternIPAddress = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
 
-public struct FormRegexValidator: FormValidatorType {
+public struct RegexValidator: FormValidatorType {
 
     /**
     If YES, a nil value will reported as valid. No match will be attempted. Default is NO.

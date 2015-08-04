@@ -1,5 +1,5 @@
 //
-//  FormTextFieldElement.swift
+//  TextFieldElement.swift
 //  TouchForms
 //
 //  Created by Adam Kirk on 7/25/15.
@@ -9,7 +9,9 @@
 import UIKit
 
 
-public class FormTextFieldElement: FormElement, FormTextFieldCellDelegate {
+public class TextFieldElement: FormElement, TextFieldCellDelegate {
+
+    public typealias CellType = TextFieldCell
 
     public var label: String?
 
@@ -20,8 +22,7 @@ public class FormTextFieldElement: FormElement, FormTextFieldCellDelegate {
 
     // MARK: - Overrides
 
-    public override func isTextInput() -> Bool {
-        return true
+    public override func populateCell() {
     }
 
     public override func isEditable() -> Bool {
@@ -34,7 +35,7 @@ public class FormTextFieldElement: FormElement, FormTextFieldCellDelegate {
 
     public override var cell: FormCell? {
         didSet {
-            if let cell = cell as? FormTextFieldCell {
+            if let cell = cell as? TextFieldCell {
                 cell.textFieldDelegate = self
             }
         }
@@ -43,7 +44,7 @@ public class FormTextFieldElement: FormElement, FormTextFieldCellDelegate {
 
     // MARK: - DELEGATE text field cell
 
-    public func textFormCell(cell: FormTextFieldCell, textDidChange text: String) {
+    public func textFormCell(cell: TextFieldCell, textDidChange text: String) {
         delegate?.formElement(self, valueDidChange: text)
     }
 

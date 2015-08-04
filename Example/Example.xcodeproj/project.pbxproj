@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C232FA4E1B69C338000635E2 /* CustomThemeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA4D1B69C338000635E2 /* CustomThemeForm.swift */; };
+		C232FA511B69C3F8000635E2 /* CustomXibTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA501B69C3F8000635E2 /* CustomXibTextField.xib */; };
+		C232FA551B6AC656000635E2 /* CustomTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA541B6AC656000635E2 /* CustomTextFieldCell.xib */; };
+		C232FA571B6AC67B000635E2 /* CustomTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA561B6AC67B000635E2 /* CustomTextFieldCell.swift */; };
+		C232FA5A1B6AE600000635E2 /* ProgressFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA591B6AE600000635E2 /* ProgressFormElement.swift */; };
+		C232FA5C1B6AE624000635E2 /* ProgressFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA5B1B6AE624000635E2 /* ProgressFormCell.swift */; };
+		C232FA5E1B6AE634000635E2 /* ProgressFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA5D1B6AE634000635E2 /* ProgressFormCell.xib */; };
 		C26BD6DA1B641A8000C014A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6D91B641A8000C014A6 /* AppDelegate.swift */; };
 		C26BD6DC1B641A8000C014A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6DB1B641A8000C014A6 /* ViewController.swift */; };
 		C26BD6DF1B641A8000C014A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C26BD6DD1B641A8000C014A6 /* Main.storyboard */; };
@@ -15,7 +22,7 @@
 		C26BD6F01B641A8000C014A6 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6EF1B641A8000C014A6 /* ExampleTests.swift */; };
 		C26BD7071B641C3500C014A6 /* TouchForms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26BD7011B641BC800C014A6 /* TouchForms.framework */; };
 		C26BD7091B641C5100C014A6 /* TouchForms.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C26BD7011B641BC800C014A6 /* TouchForms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C26BD70C1B641D3600C014A6 /* BasicExampleForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD70B1B641D3600C014A6 /* BasicExampleForm.swift */; };
+		C26BD70C1B641D3600C014A6 /* BasicForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD70B1B641D3600C014A6 /* BasicForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +71,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C232FA4D1B69C338000635E2 /* CustomThemeForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomThemeForm.swift; sourceTree = "<group>"; };
+		C232FA501B69C3F8000635E2 /* CustomXibTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomXibTextField.xib; sourceTree = "<group>"; };
+		C232FA541B6AC656000635E2 /* CustomTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextFieldCell.xib; sourceTree = "<group>"; };
+		C232FA561B6AC67B000635E2 /* CustomTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextFieldCell.swift; sourceTree = "<group>"; };
+		C232FA591B6AE600000635E2 /* ProgressFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressFormElement.swift; sourceTree = "<group>"; };
+		C232FA5B1B6AE624000635E2 /* ProgressFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressFormCell.swift; sourceTree = "<group>"; };
+		C232FA5D1B6AE634000635E2 /* ProgressFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressFormCell.xib; sourceTree = "<group>"; };
 		C26BD6D41B641A8000C014A6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26BD6D81B641A8000C014A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C26BD6D91B641A8000C014A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +89,7 @@
 		C26BD6EE1B641A8000C014A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C26BD6EF1B641A8000C014A6 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		C26BD6FB1B641BC800C014A6 /* TouchForms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TouchForms.xcodeproj; path = ../TouchForms/TouchForms.xcodeproj; sourceTree = "<group>"; };
-		C26BD70B1B641D3600C014A6 /* BasicExampleForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicExampleForm.swift; sourceTree = "<group>"; };
+		C26BD70B1B641D3600C014A6 /* BasicForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +111,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C232FA4B1B69C30A000635E2 /* Example Forms */ = {
+			isa = PBXGroup;
+			children = (
+				C26BD70B1B641D3600C014A6 /* BasicForm.swift */,
+				C232FA4D1B69C338000635E2 /* CustomThemeForm.swift */,
+				C232FA4F1B69C39D000635E2 /* Custom Elements */,
+			);
+			name = "Example Forms";
+			sourceTree = "<group>";
+		};
+		C232FA4F1B69C39D000635E2 /* Custom Elements */ = {
+			isa = PBXGroup;
+			children = (
+				C232FA521B6A574F000635E2 /* Custom Xib */,
+				C232FA531B6A575D000635E2 /* Custom Cell (Subclass) */,
+				C232FA581B6AE54D000635E2 /* Custom Element */,
+			);
+			name = "Custom Elements";
+			sourceTree = "<group>";
+		};
+		C232FA521B6A574F000635E2 /* Custom Xib */ = {
+			isa = PBXGroup;
+			children = (
+				C232FA501B69C3F8000635E2 /* CustomXibTextField.xib */,
+			);
+			name = "Custom Xib";
+			sourceTree = "<group>";
+		};
+		C232FA531B6A575D000635E2 /* Custom Cell (Subclass) */ = {
+			isa = PBXGroup;
+			children = (
+				C232FA561B6AC67B000635E2 /* CustomTextFieldCell.swift */,
+				C232FA541B6AC656000635E2 /* CustomTextFieldCell.xib */,
+			);
+			name = "Custom Cell (Subclass)";
+			sourceTree = "<group>";
+		};
+		C232FA581B6AE54D000635E2 /* Custom Element */ = {
+			isa = PBXGroup;
+			children = (
+				C232FA591B6AE600000635E2 /* ProgressFormElement.swift */,
+				C232FA5B1B6AE624000635E2 /* ProgressFormCell.swift */,
+				C232FA5D1B6AE634000635E2 /* ProgressFormCell.xib */,
+			);
+			name = "Custom Element";
+			sourceTree = "<group>";
+		};
 		C26BD6CB1B641A7F00C014A6 = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +183,7 @@
 				C26BD6D91B641A8000C014A6 /* AppDelegate.swift */,
 				C26BD6DD1B641A8000C014A6 /* Main.storyboard */,
 				C26BD6DB1B641A8000C014A6 /* ViewController.swift */,
-				C26BD70B1B641D3600C014A6 /* BasicExampleForm.swift */,
+				C232FA4B1B69C30A000635E2 /* Example Forms */,
 				C26BD70A1B641C7700C014A6 /* Resources */,
 				C26BD6D71B641A8000C014A6 /* Supporting Files */,
 			);
@@ -286,6 +347,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C232FA5E1B6AE634000635E2 /* ProgressFormCell.xib in Resources */,
+				C232FA551B6AC656000635E2 /* CustomTextFieldCell.xib in Resources */,
+				C232FA511B69C3F8000635E2 /* CustomXibTextField.xib in Resources */,
 				C26BD6DF1B641A8000C014A6 /* Main.storyboard in Resources */,
 				C26BD6E41B641A8000C014A6 /* LaunchScreen.xib in Resources */,
 				C26BD6E11B641A8000C014A6 /* Images.xcassets in Resources */,
@@ -306,9 +370,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C232FA571B6AC67B000635E2 /* CustomTextFieldCell.swift in Sources */,
 				C26BD6DC1B641A8000C014A6 /* ViewController.swift in Sources */,
 				C26BD6DA1B641A8000C014A6 /* AppDelegate.swift in Sources */,
-				C26BD70C1B641D3600C014A6 /* BasicExampleForm.swift in Sources */,
+				C232FA4E1B69C338000635E2 /* CustomThemeForm.swift in Sources */,
+				C26BD70C1B641D3600C014A6 /* BasicForm.swift in Sources */,
+				C232FA5C1B6AE624000635E2 /* ProgressFormCell.swift in Sources */,
+				C232FA5A1B6AE600000635E2 /* ProgressFormElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

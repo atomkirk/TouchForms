@@ -28,6 +28,7 @@ class FormChildElement: FormElement {
         self.parentElement = element
         self.type = type
         self.position = position
+        super.init()
     }
     
 }

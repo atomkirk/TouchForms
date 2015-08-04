@@ -8,7 +8,7 @@
 
 import UIKit
 
-let FormTextFieldCellDidHitReturnKeyNotification = "FormTextFieldCellDidHitReturnKeyNotification"
+let TextFieldCellDidHitReturnKeyNotification = "TextFieldCellDidHitReturnKeyNotification"
 
 public typealias FormBasicBlock = () -> Void
 
@@ -46,7 +46,6 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
             if let collectionView = collectionView,
                 let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
                     flowLayout.estimatedItemSize = CGSizeMake(collectionView.bounds.size.width, 100)
-//                    flowLayout.itemSize = CGSizeMake(collectionView.bounds.size.width - 30, 44)
                     flowLayout.minimumLineSpacing = 0
                     flowLayout.minimumInteritemSpacing = 0
             }
@@ -63,19 +62,6 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         NSNotificationCenter.defaultCenter().removeObserver(self)
         removeAllModelObservers()
     }
-
-//    public override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-//        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-//        cachedCellSizes.removeAll(keepCapacity: true)
-//        collectionView?.reloadData()
-//        collectionView?.collectionViewLayout.invalidateLayout()
-//    }
-//
-//    public override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-//        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-//        cachedCellSizes.removeAll(keepCapacity: true)
-//        collectionView?.reloadData()
-//    }
 
 
     // MARK: - Public
@@ -330,7 +316,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
     // MARK: - DELEGATE flow layout
 
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
 
@@ -577,7 +563,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidBeginEditingNotification:", name: UITextFieldTextDidBeginEditingNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidEndEditingNotification:", name: UITextFieldTextDidEndEditingNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldCellDidHitReturnKeyNotification:", name: FormTextFieldCellDidHitReturnKeyNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldCellDidHitReturnKeyNotification:", name: TextFieldCellDidHitReturnKeyNotification, object: nil)
     }
 
 
@@ -636,24 +622,30 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         return nil
     }
 
-    private func registerCellForClass(cellClass: AnyClass) {
+    private func registerCellClassForReuse(cellClass: AnyClass, xib: String? = nil) {
+        let nib: UINib
         let classString = stringFromClassWithoutModule(cellClass)
-        let bundle = NSBundle(forClass: cellClass)
-        let nib = UINib(nibName: classString, bundle: bundle)
-        let cell = nib.instantiateWithOwner(self, options: nil)
+        if let xib = xib {
+            let bundle = NSBundle(forClass: self.dynamicType)
+            nib = UINib(nibName: xib, bundle: bundle)
+        }
+        else {
+            let bundle = NSBundle(forClass: cellClass)
+            nib = UINib(nibName: classString, bundle: bundle)
+        }
         collectionView?.registerNib(nib, forCellWithReuseIdentifier: classString)
     }
 
     private func registerElementCellsForReuse() {
         for element in elements {
-            registerCellForClass(element.cellClass)
+            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
         }
 
         // register metadata cells
-//        registerCellForClass(FormMessageChildCell.self)
+        registerCellClassForReuse(FormMessageChildCell.self)
 
         // register view child cell
-//        collectionView?.registerClass(FormViewChildCell.self, forCellWithReuseIdentifier: stringFromClassWithoutModule(FormViewChildCell))
+//        collectionView?.registerClass(FormViewChildCell.self, forCellWithReuseIdentifier: stringFromClassWithoutModule(FormViewChildCell.self))
     }
 
 

@@ -9,7 +9,7 @@
 import UIKit
 import TouchForms
 
-class BasicExampleForm: FormController {
+class BasicForm: FormController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class BasicExampleForm: FormController {
 
     override func configureForm() {
 
-        let firstElement = FormTextFieldElement(label: "Hello")
+        let firstElement = TextFieldElement(label: "Hello")
         addFormElement(firstElement)
 
     }

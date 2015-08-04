@@ -1,5 +1,5 @@
 //
-//  FormPresenceValidator.swift
+//  PresenceValidator.swift
 //  TouchForms
 //
 //  Created by Adam Kirk on 7/25/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct FormPresenceValidator: FormValidatorType {
+public struct PresenceValidator: FormValidatorType {
 
     public var failedString: String = "Can't be blank."
 
