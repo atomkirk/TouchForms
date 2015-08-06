@@ -13,21 +13,16 @@ public class LabelFormElement: FormElement {
 
     public let text: String
 
-    public let font: UIFont
+    public var font: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
 
-    public init(text: String, font: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)) {
+    public init(text: String) {
         self.text = text
-        self.font = font
     }
 
-
-    // MARK: - Overrides
-
     public override func populateCell() {
-        if let cell = cell as? LabelFormCell,
-            let label = cell.textLabel {
-                label.text = text
-                label.font = font
+        if let cell = cell as? LabelFormCell {
+            cell.textLabel?.text = text
+            cell.textLabel?.font = font
         }
     }
 

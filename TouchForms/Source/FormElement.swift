@@ -36,6 +36,10 @@ public class FormElement: FormCellDelegate, Equatable {
 
     }
 
+    deinit {
+        delegate = nil
+    }
+
 
     // MARK: - Subclassing
 

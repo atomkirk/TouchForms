@@ -10,7 +10,7 @@ import UIKit
 
 public class TextFieldFormCell: FormCell, UITextFieldDelegate {
 
-    @IBOutlet public weak var textField: UITextField!
+    @IBOutlet public weak var textField: UITextField?
 
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +28,10 @@ public class TextFieldFormCell: FormCell, UITextFieldDelegate {
         return "textField.text"
     }
 
+    public override var textInput: UIView? {
+        return textField
+    }
+
 
     // MARK: - DELEGATE text field
 
@@ -40,7 +44,9 @@ public class TextFieldFormCell: FormCell, UITextFieldDelegate {
     // MARK: - Notifications
 
     func textFieldDidChange(note: NSNotification) {
-        delegate?.formCell(self, valueDidChange: textField.text)
+        if let text = textField?.text {
+            delegate?.formCell(self, valueDidChange: text)
+        }
     }
 
 }

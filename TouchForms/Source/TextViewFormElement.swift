@@ -9,20 +9,19 @@
 import UIKit
 
 
-public class TextFieldFormElement: FormElement {
+public class TextViewFormElement: FormElement {
 
-    public var label: String?
+    public var font: UIFont?
 
-    public init(label: String) {
-        self.label = label
-    }
+    public var editable: Bool = true
 
 
     // MARK: - Overrides
 
     public override func populateCell() {
-        if let cell = cell as? TextFieldFormCell {
-            cell.textField?.placeholder = label
+        if let cell = cell as? TextViewFormCell {
+            cell.textView.font = font
+            cell.textView.editable = editable
         }
     }
 

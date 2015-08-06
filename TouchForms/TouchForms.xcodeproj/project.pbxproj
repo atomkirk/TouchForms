@@ -17,6 +17,9 @@
 		C232FA661B715D85000635E2 /* LabelFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA631B715D85000635E2 /* LabelFormElement.swift */; };
 		C232FA681B7162B0000635E2 /* LoadingChildFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA671B7162B0000635E2 /* LoadingChildFormCell.xib */; };
 		C232FA6A1B7176E5000635E2 /* LoadingChildFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA691B7176E5000635E2 /* LoadingChildFormCell.swift */; };
+		C232FA711B7184D0000635E2 /* TextViewFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA6E1B7184D0000635E2 /* TextViewFormCell.swift */; };
+		C232FA721B7184D0000635E2 /* TextViewFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA6F1B7184D0000635E2 /* TextViewFormCell.xib */; };
+		C232FA731B7184D0000635E2 /* TextViewFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA701B7184D0000635E2 /* TextViewFormElement.swift */; };
 		C26BD6AE1B62DECA00C014A6 /* ChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */; };
 		C26BD6B21B62DFA900C014A6 /* ViewChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B11B62DFA900C014A6 /* ViewChildFormElement.swift */; };
 		C26BD6B71B63F78D00C014A6 /* MessageChildFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B61B63F78D00C014A6 /* MessageChildFormCell.swift */; };
@@ -27,6 +30,9 @@
 		C26BD6C51B6418CF00C014A6 /* MessageChildFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26BD6C41B6418CF00C014A6 /* MessageChildFormCell.xib */; };
 		C26BD6C81B6419A000C014A6 /* TextFieldFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6C71B6419A000C014A6 /* TextFieldFormCell.swift */; };
 		C26BD6CA1B6419AA00C014A6 /* TextFieldFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26BD6C91B6419AA00C014A6 /* TextFieldFormCell.xib */; };
+		C28DB7DE1B72ED0F0085F92F /* ButtonFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7DB1B72ED0F0085F92F /* ButtonFormCell.swift */; };
+		C28DB7DF1B72ED0F0085F92F /* ButtonFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28DB7DC1B72ED0F0085F92F /* ButtonFormCell.xib */; };
+		C28DB7E01B72ED0F0085F92F /* ButtonFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7DD1B72ED0F0085F92F /* ButtonFormElement.swift */; };
 		C2D2A2211B602D01003901A7 /* TouchForms.h in Headers */ = {isa = PBXBuildFile; fileRef = C2D2A2201B602D01003901A7 /* TouchForms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2D2A2271B602D01003901A7 /* TouchForms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D2A21B1B602D01003901A7 /* TouchForms.framework */; };
 		C2D2A22E1B602D01003901A7 /* TouchFormsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A22D1B602D01003901A7 /* TouchFormsTests.swift */; };
@@ -60,6 +66,9 @@
 		C232FA631B715D85000635E2 /* LabelFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelFormElement.swift; sourceTree = "<group>"; };
 		C232FA671B7162B0000635E2 /* LoadingChildFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingChildFormCell.xib; sourceTree = "<group>"; };
 		C232FA691B7176E5000635E2 /* LoadingChildFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingChildFormCell.swift; sourceTree = "<group>"; };
+		C232FA6E1B7184D0000635E2 /* TextViewFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewFormCell.swift; sourceTree = "<group>"; };
+		C232FA6F1B7184D0000635E2 /* TextViewFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewFormCell.xib; sourceTree = "<group>"; };
+		C232FA701B7184D0000635E2 /* TextViewFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewFormElement.swift; sourceTree = "<group>"; };
 		C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildFormElement.swift; sourceTree = "<group>"; };
 		C26BD6B11B62DFA900C014A6 /* ViewChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewChildFormElement.swift; sourceTree = "<group>"; };
 		C26BD6B61B63F78D00C014A6 /* MessageChildFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageChildFormCell.swift; sourceTree = "<group>"; };
@@ -70,6 +79,9 @@
 		C26BD6C41B6418CF00C014A6 /* MessageChildFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageChildFormCell.xib; sourceTree = "<group>"; };
 		C26BD6C71B6419A000C014A6 /* TextFieldFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFormCell.swift; sourceTree = "<group>"; };
 		C26BD6C91B6419AA00C014A6 /* TextFieldFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldFormCell.xib; sourceTree = "<group>"; };
+		C28DB7DB1B72ED0F0085F92F /* ButtonFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFormCell.swift; sourceTree = "<group>"; };
+		C28DB7DC1B72ED0F0085F92F /* ButtonFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonFormCell.xib; sourceTree = "<group>"; };
+		C28DB7DD1B72ED0F0085F92F /* ButtonFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFormElement.swift; sourceTree = "<group>"; };
 		C2D2A21B1B602D01003901A7 /* TouchForms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TouchForms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D2A21F1B602D01003901A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Source/Info.plist; sourceTree = "<group>"; };
 		C2D2A2201B602D01003901A7 /* TouchForms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TouchForms.h; path = ../Source/TouchForms.h; sourceTree = "<group>"; };
@@ -127,6 +139,9 @@
 		C232FA6D1B717F44000635E2 /* Text View */ = {
 			isa = PBXGroup;
 			children = (
+				C232FA701B7184D0000635E2 /* TextViewFormElement.swift */,
+				C232FA6E1B7184D0000635E2 /* TextViewFormCell.swift */,
+				C232FA6F1B7184D0000635E2 /* TextViewFormCell.xib */,
 			);
 			name = "Text View";
 			sourceTree = "<group>";
@@ -193,6 +208,7 @@
 				C232FA601B715D5A000635E2 /* Label */,
 				C232FA5F1B704EA5000635E2 /* Text Field */,
 				C232FA6D1B717F44000635E2 /* Text View */,
+				C28DB7DA1B72ECF30085F92F /* Button */,
 			);
 			name = "Form Elements";
 			sourceTree = "<group>";
@@ -215,6 +231,16 @@
 				C232FA471B698CF9000635E2 /* StringFromNumberValueTransformer.swift */,
 			);
 			name = "Value Transformers";
+			sourceTree = "<group>";
+		};
+		C28DB7DA1B72ECF30085F92F /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				C28DB7DD1B72ED0F0085F92F /* ButtonFormElement.swift */,
+				C28DB7DB1B72ED0F0085F92F /* ButtonFormCell.swift */,
+				C28DB7DC1B72ED0F0085F92F /* ButtonFormCell.xib */,
+			);
+			name = Button;
 			sourceTree = "<group>";
 		};
 		C2D2A2111B602D01003901A7 = {
@@ -363,8 +389,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C232FA651B715D85000635E2 /* LabelFormCell.xib in Resources */,
+				C232FA721B7184D0000635E2 /* TextViewFormCell.xib in Resources */,
 				C26BD6C51B6418CF00C014A6 /* MessageChildFormCell.xib in Resources */,
 				C26BD6CA1B6419AA00C014A6 /* TextFieldFormCell.xib in Resources */,
+				C28DB7DF1B72ED0F0085F92F /* ButtonFormCell.xib in Resources */,
 				C232FA681B7162B0000635E2 /* LoadingChildFormCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,19 +413,23 @@
 			files = (
 				C232FA661B715D85000635E2 /* LabelFormElement.swift in Sources */,
 				C232FA461B698CDA000635E2 /* StringFromTimeZoneValueTransformer.swift in Sources */,
+				C28DB7DE1B72ED0F0085F92F /* ButtonFormCell.swift in Sources */,
 				C2D2A2431B619C1B003901A7 /* FormButton.swift in Sources */,
 				C2D2A23D1B606B21003901A7 /* FormValidatorType.swift in Sources */,
 				C232FA441B698CBC000635E2 /* StringFromURLValueTransformer.swift in Sources */,
 				C2D2A2411B619AD4003901A7 /* FormCell.swift in Sources */,
 				C26BD6B71B63F78D00C014A6 /* MessageChildFormCell.swift in Sources */,
 				C26BD6BC1B64035500C014A6 /* PresenceFormValidator.swift in Sources */,
+				C28DB7E01B72ED0F0085F92F /* ButtonFormElement.swift in Sources */,
 				C26BD6AE1B62DECA00C014A6 /* ChildFormElement.swift in Sources */,
 				C22057B61B648AF300560324 /* FormTextField.swift in Sources */,
+				C232FA731B7184D0000635E2 /* TextViewFormElement.swift in Sources */,
 				C232FA641B715D85000635E2 /* LabelFormCell.swift in Sources */,
 				C2D2A23B1B602FCB003901A7 /* FormElement.swift in Sources */,
 				C2D2A2391B602DEA003901A7 /* FormController.swift in Sources */,
 				C2D2A2471B61C9E4003901A7 /* MessageChildFormElement.swift in Sources */,
 				C26BD6BE1B640C5300C014A6 /* RegexFormValidator.swift in Sources */,
+				C232FA711B7184D0000635E2 /* TextViewFormCell.swift in Sources */,
 				C26BD6B21B62DFA900C014A6 /* ViewChildFormElement.swift in Sources */,
 				C26BD6C11B6417F500C014A6 /* TextFieldFormElement.swift in Sources */,
 				C2D2A2451B619E9A003901A7 /* FormValueTransformer.swift in Sources */,

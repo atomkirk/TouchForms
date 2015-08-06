@@ -23,6 +23,7 @@
 		C26BD7071B641C3500C014A6 /* TouchForms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26BD7011B641BC800C014A6 /* TouchForms.framework */; };
 		C26BD7091B641C5100C014A6 /* TouchForms.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C26BD7011B641BC800C014A6 /* TouchForms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C26BD70C1B641D3600C014A6 /* BasicForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD70B1B641D3600C014A6 /* BasicForm.swift */; };
+		C28DB7D81B72E7020085F92F /* ElementCatalogForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7D71B72E7020085F92F /* ElementCatalogForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		C26BD6EF1B641A8000C014A6 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		C26BD6FB1B641BC800C014A6 /* TouchForms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TouchForms.xcodeproj; path = ../TouchForms/TouchForms.xcodeproj; sourceTree = "<group>"; };
 		C26BD70B1B641D3600C014A6 /* BasicForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicForm.swift; sourceTree = "<group>"; };
+		C28DB7D71B72E7020085F92F /* ElementCatalogForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementCatalogForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				C26BD70B1B641D3600C014A6 /* BasicForm.swift */,
 				C232FA4D1B69C338000635E2 /* CustomThemeForm.swift */,
 				C232FA4F1B69C39D000635E2 /* Custom Elements */,
+				C28DB7D71B72E7020085F92F /* ElementCatalogForm.swift */,
 			);
 			name = "Example Forms";
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				C26BD6DC1B641A8000C014A6 /* ViewController.swift in Sources */,
 				C26BD6DA1B641A8000C014A6 /* AppDelegate.swift in Sources */,
 				C232FA4E1B69C338000635E2 /* CustomThemeForm.swift in Sources */,
+				C28DB7D81B72E7020085F92F /* ElementCatalogForm.swift in Sources */,
 				C26BD70C1B641D3600C014A6 /* BasicForm.swift in Sources */,
 				C232FA5C1B6AE624000635E2 /* ProgressFormCell.swift in Sources */,
 				C232FA5A1B6AE600000635E2 /* ProgressFormElement.swift in Sources */,
