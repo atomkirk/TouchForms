@@ -92,6 +92,7 @@
 		C26BD6FB1B641BC800C014A6 /* TouchForms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TouchForms.xcodeproj; path = ../TouchForms/TouchForms.xcodeproj; sourceTree = "<group>"; };
 		C26BD70B1B641D3600C014A6 /* BasicForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicForm.swift; sourceTree = "<group>"; };
 		C28DB7D71B72E7020085F92F /* ElementCatalogForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementCatalogForm.swift; sourceTree = "<group>"; };
+		C28DB7E11B7449B40085F92F /* TouchForms.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TouchForms.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +165,7 @@
 		C26BD6CB1B641A7F00C014A6 = {
 			isa = PBXGroup;
 			children = (
+				C28DB7E11B7449B40085F92F /* TouchForms.playground */,
 				C26BD6D61B641A8000C014A6 /* Example */,
 				C26BD6EC1B641A8000C014A6 /* ExampleTests */,
 				C26BD6D51B641A8000C014A6 /* Products */,

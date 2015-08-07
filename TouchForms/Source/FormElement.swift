@@ -213,7 +213,7 @@ public class FormElement: FormCellDelegate, Equatable {
     /**
     Override this when you need to respond to the user interacting with this element's cell.
     */
-    public func formCell(cell: FormCell, userDidPerformInteraction interaction: FormCellUserInteraction) {
+    public func formCell(cell: FormCell, userDidPerformInteraction interaction: FormCellUserInteraction, view: UIView) {
 
     }
 

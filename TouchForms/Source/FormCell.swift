@@ -16,7 +16,7 @@ public enum FormCellUserInteraction {
 
 public protocol FormCellDelegate {
     func formCell(cell: FormCell, valueDidChange value: AnyObject)
-    func formCell(cell: FormCell, userDidPerformInteraction interaction: FormCellUserInteraction)
+    func formCell(cell: FormCell, userDidPerformInteraction interaction: FormCellUserInteraction, view: UIView)
 }
 
 public class FormCell: UICollectionViewCell {
