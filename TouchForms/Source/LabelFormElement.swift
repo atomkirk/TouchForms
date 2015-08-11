@@ -19,11 +19,17 @@ public class LabelFormElement: FormElement {
         self.text = text
     }
 
+    public override func estimatedHeightForSize(size: CGSize) -> CGSize {
+        let string: NSString = text
+        return string.boundingRectWithSize(CGSizeMake(size.width, CGFloat(FLT_MAX)), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil).size
+    }
+
     public override func populateCell() {
         if let cell = cell as? LabelFormCell {
             cell.textLabel?.text = text
             cell.textLabel?.font = font
         }
+        super.populateCell()
     }
 
 }

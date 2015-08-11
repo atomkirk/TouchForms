@@ -63,7 +63,7 @@ public class FormCell: UICollectionViewCell {
     Override this to give yourself a chance to update the cell to display
     the current model value when it changes.
     */
-    public func didChangeValueAtKeyPath() {
+    public func modelValueDidChange() {
 
     }
 

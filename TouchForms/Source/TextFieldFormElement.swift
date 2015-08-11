@@ -24,6 +24,7 @@ public class TextFieldFormElement: FormElement {
         if let cell = cell as? TextFieldFormCell {
             cell.textField?.placeholder = label
         }
+        super.populateCell()
     }
 
     public override func isEditable() -> Bool {

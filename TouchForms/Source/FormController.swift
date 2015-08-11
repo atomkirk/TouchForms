@@ -45,7 +45,8 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
             }
             if let collectionView = collectionView,
                 let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                    flowLayout.estimatedItemSize = CGSizeMake(collectionView.bounds.size.width, 100)
+//                    flowLayout.estimatedItemSize = CGSizeMake(collectionView.bounds.size.width, 100)
+//                    flowLayout.itemSize = CGSize(width: collectionView.bounds.size.width, height: 100)
                     flowLayout.minimumLineSpacing = 0
                     flowLayout.minimumInteritemSpacing = 0
             }
@@ -143,10 +144,15 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
             elements.append(element)
         }
 
+        registerCellClassForReuse(element.cellClass)
+        element.testcell = collectionView?.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: NSIndexPath(forItem: 0, inSection: elements.count - 1)) as? FormCell
+        element.updateCell()
+
         if let modelKeyPath = element.modelKeyPath
             where elementHasValidKeyPath(element) {
                 model?.addObserver(self, forKeyPath: modelKeyPath, options: nil, context: nil)
         }
+        collectionView?.reloadData()
     }
 
     /**
@@ -295,9 +301,10 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let elementGroup = elements[indexPath.section].elementGroup
         let element = elementGroup[indexPath.row]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
+        let cell = element.testcell!//collectionView.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
+        cell.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        cell.contentView.addConstraint(NSLayoutConstraint(item: cell.contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: view.bounds.size.width))
         element.cell = cell
-        element.updateCell()
         return cell
     }
 
@@ -315,8 +322,20 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
 
     // MARK: - DELEGATE flow layout
 
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let elementGroup = elements[indexPath.section].elementGroup
+        let element = elementGroup[indexPath.item]
+        if let cell = element.testcell {
+            cell.layoutIfNeeded()
+            return CGSize(width: collectionView.bounds.size.width, height: cell.bounds.size.height)
+        }
+        else {
+            return CGSize(width: collectionView.bounds.size.width, height: 44)
+        }
+    }
+
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     }
 
 
@@ -334,7 +353,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
 
     // MARK: - DELEGATE form element
 
-    public func formElement(element: FormElement, valueDidChange value: AnyObject) {
+    public func formElement(element: FormElement, valueDidChange value: AnyObject?) {
 
         var transformedValue: AnyObject? = value
 
@@ -366,6 +385,10 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         presentViewController(controller, animated: animated, completion: completion)
     }
 
+    public func formElement(element: FormElement, didRequestPresentationOfActionSheet actionSheet: UIActionSheet) {
+        actionSheet.showInView(view)
+    }
+
     public func formElement(element: FormElement, didRequestPresentationOfChildView childView: UIView) {
         let viewChildElement = ViewChildFormElement(view: childView, parentElement: element)
         showChildElements([viewChildElement], position: .Below, duration: 0, completion: nil)
@@ -379,21 +402,18 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         navigationController?.pushViewController(controller, animated: true)
     }
 
-    public func formElementDidRequestResignationOfFirstResponder(element: FormElement) {
-        attemptToDismissKeyboard()
-    }
-
 
     // MARK: - KVO (the model changed)
 
     public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         for element in elements {
             if element.modelKeyPath == keyPath {
-                if let textInput = element.cell?.textInput where !textInput.isFirstResponder() {
-                    if let ip = indexPathOfElement(element) {
-                        if ip.section < collectionView?.numberOfSections() {
-                            collectionView?.reloadItemsAtIndexPaths([ip])
-                        }
+                if let textInput = element.cell?.textInput where textInput.isFirstResponder() {
+                    return
+                }
+                if let ip = indexPathOfElement(element) {
+                    if ip.section < collectionView?.numberOfSections() {
+                        collectionView?.reloadItemsAtIndexPaths([ip])
                     }
                 }
             }
@@ -457,6 +477,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
             let textField = cell.textInput,
             let element = elementContainingView(textField) {
                 if let nextElement = elementAfter(element) {
+                    attemptToDismissKeyboard()
                     nextElement.beginEditing()
                 }
                 else {
@@ -479,7 +500,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
 
         var visibleChildElements = [ChildFormElement]()
         for childElement in childElements {
-            let visibleChildElements = childElementsOfParentElement(childElement, type: childElement.type)
+            let visibleChildElements = childElementsOfParentElement(childElement.parentElement, type: childElement.type)
             if contains(visibleChildElements, childElement) {
                 continue
             }
@@ -637,15 +658,15 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
     }
 
     private func registerElementCellsForReuse() {
-        for element in elements {
-            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
-        }
+//        for element in elements {
+//            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
+//        }
 
         // register metadata cells
         registerCellClassForReuse(MessageChildFormCell.self)
 
         // register view child cell
-//        collectionView?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: stringFromClassWithoutModule(ViewChildFormCell.self))
+        collectionView?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: stringFromClassWithoutModule(ViewChildFormCell.self))
     }
 
 

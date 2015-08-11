@@ -13,11 +13,11 @@ protocol FormElementDataSource {
 }
 
 protocol FormElementDelegate {
-    func formElement(element: FormElement, valueDidChange value: AnyObject)
+    func formElement(element: FormElement, valueDidChange value: AnyObject?)
     func formElement(element: FormElement, didRequestPresentationOfViewController controller: UIViewController, animated: Bool, completion: FormBasicBlock?)
+    func formElement(element: FormElement, didRequestPresentationOfActionSheet actionSheet: UIActionSheet)
     func formElement(element: FormElement, didRequestPresentationOfChildView childView: UIView)
     func formElement(element: FormElement, didRequestDismissalOfChildView childView: UIView)
-    func formElementDidRequestResignationOfFirstResponder(element: FormElement)
     func formElement(element: FormElement, didRequestPushOfViewController controller: UIViewController)
 }
 
@@ -26,6 +26,7 @@ Do not create direct instances of this class. It is meant to be subclassed.
 */
 public class FormElement: FormCellDelegate, Equatable {
 
+    var testcell: FormCell?
 
     public typealias FormCellConfigurationBlock = (FormCell) -> Void
 
@@ -43,12 +44,17 @@ public class FormElement: FormCellDelegate, Equatable {
 
     // MARK: - Subclassing
 
+    public func estimatedHeightForSize(size: CGSize) -> CGSize {
+        return CGSize(width: size.width, height: 44)
+    }
+
     /**
     Override this method to populate the UI elements of the cell with the information from
     this element.
     */
     public func populateCell() {
-
+        cell?.setNeedsLayout()
+        cell?.setNeedsDisplay()
     }
 
     /**
@@ -174,7 +180,7 @@ public class FormElement: FormCellDelegate, Equatable {
                 if let modelValue: AnyObject = transformedModelValue(),
                     let keyPath = cell.valueKeyPath {
                         cell.setValue(modelValue, forKeyPath: keyPath)
-                        cell.didChangeValueAtKeyPath()
+                        cell.modelValueDidChange()
                 }
             }
         }
@@ -226,6 +232,8 @@ public class FormElement: FormCellDelegate, Equatable {
 
 
     // MARK: - Internal
+
+    var autoCalculatedSize: CGSize?
 
     /**
     When creating custom form elements, you this will be set up for you and you can use the delegate methods to instruct

@@ -18,7 +18,7 @@ enum ChildFormElementType {
 
 class ChildFormElement: FormElement {
 
-    var parentElement: FormElement
+    let parentElement: FormElement
 
     var position: FormElementRelativePosition
 

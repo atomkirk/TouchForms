@@ -33,6 +33,12 @@
 		C28DB7DE1B72ED0F0085F92F /* ButtonFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7DB1B72ED0F0085F92F /* ButtonFormCell.swift */; };
 		C28DB7DF1B72ED0F0085F92F /* ButtonFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28DB7DC1B72ED0F0085F92F /* ButtonFormCell.xib */; };
 		C28DB7E01B72ED0F0085F92F /* ButtonFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7DD1B72ED0F0085F92F /* ButtonFormElement.swift */; };
+		C28DB7E61B7557B40085F92F /* LabelAndButtonFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7E31B7557B40085F92F /* LabelAndButtonFormCell.swift */; };
+		C28DB7E71B7557B40085F92F /* LabelAndButtonFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28DB7E41B7557B40085F92F /* LabelAndButtonFormCell.xib */; };
+		C28DB7E81B7557B40085F92F /* LabelAndButtonFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7E51B7557B40085F92F /* LabelAndButtonFormElement.swift */; };
+		C28DB7ED1B7562E30085F92F /* ImagePickerFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7EA1B7562E30085F92F /* ImagePickerFormCell.swift */; };
+		C28DB7EE1B7562E30085F92F /* ImagePickerFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28DB7EB1B7562E30085F92F /* ImagePickerFormCell.xib */; };
+		C28DB7EF1B7562E30085F92F /* ImagePickerFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7EC1B7562E30085F92F /* ImagePickerFormElement.swift */; };
 		C2D2A2211B602D01003901A7 /* TouchForms.h in Headers */ = {isa = PBXBuildFile; fileRef = C2D2A2201B602D01003901A7 /* TouchForms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2D2A2271B602D01003901A7 /* TouchForms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D2A21B1B602D01003901A7 /* TouchForms.framework */; };
 		C2D2A22E1B602D01003901A7 /* TouchFormsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A22D1B602D01003901A7 /* TouchFormsTests.swift */; };
@@ -43,6 +49,9 @@
 		C2D2A2431B619C1B003901A7 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2421B619C1B003901A7 /* FormButton.swift */; };
 		C2D2A2451B619E9A003901A7 /* FormValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2441B619E9A003901A7 /* FormValueTransformer.swift */; };
 		C2D2A2471B61C9E4003901A7 /* MessageChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2461B61C9E4003901A7 /* MessageChildFormElement.swift */; };
+		C2F4A60D1B763DEA00AD5AF0 /* PickerFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4A60A1B763DEA00AD5AF0 /* PickerFormCell.swift */; };
+		C2F4A60E1B763DEA00AD5AF0 /* PickerFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F4A60B1B763DEA00AD5AF0 /* PickerFormCell.xib */; };
+		C2F4A60F1B763DEA00AD5AF0 /* PickerFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4A60C1B763DEA00AD5AF0 /* PickerFormElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +69,7 @@
 		C232FA431B698CBC000635E2 /* StringFromURLValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFromURLValueTransformer.swift; sourceTree = "<group>"; };
 		C232FA451B698CDA000635E2 /* StringFromTimeZoneValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFromTimeZoneValueTransformer.swift; sourceTree = "<group>"; };
 		C232FA471B698CF9000635E2 /* StringFromNumberValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringFromNumberValueTransformer.swift; sourceTree = "<group>"; };
-		C232FA491B698D19000635E2 /* ImageFromDataValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFromDataValueTransformer.swift; sourceTree = "<group>"; };
+		C232FA491B698D19000635E2 /* ImageFromDataValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ImageFromDataValueTransformer.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C232FA611B715D85000635E2 /* LabelFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelFormCell.swift; sourceTree = "<group>"; };
 		C232FA621B715D85000635E2 /* LabelFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelFormCell.xib; sourceTree = "<group>"; };
 		C232FA631B715D85000635E2 /* LabelFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelFormElement.swift; sourceTree = "<group>"; };
@@ -82,6 +91,12 @@
 		C28DB7DB1B72ED0F0085F92F /* ButtonFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFormCell.swift; sourceTree = "<group>"; };
 		C28DB7DC1B72ED0F0085F92F /* ButtonFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonFormCell.xib; sourceTree = "<group>"; };
 		C28DB7DD1B72ED0F0085F92F /* ButtonFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFormElement.swift; sourceTree = "<group>"; };
+		C28DB7E31B7557B40085F92F /* LabelAndButtonFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelAndButtonFormCell.swift; sourceTree = "<group>"; };
+		C28DB7E41B7557B40085F92F /* LabelAndButtonFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelAndButtonFormCell.xib; sourceTree = "<group>"; };
+		C28DB7E51B7557B40085F92F /* LabelAndButtonFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelAndButtonFormElement.swift; sourceTree = "<group>"; };
+		C28DB7EA1B7562E30085F92F /* ImagePickerFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ImagePickerFormCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C28DB7EB1B7562E30085F92F /* ImagePickerFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePickerFormCell.xib; sourceTree = "<group>"; };
+		C28DB7EC1B7562E30085F92F /* ImagePickerFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ImagePickerFormElement.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2D2A21B1B602D01003901A7 /* TouchForms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TouchForms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D2A21F1B602D01003901A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Source/Info.plist; sourceTree = "<group>"; };
 		C2D2A2201B602D01003901A7 /* TouchForms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TouchForms.h; path = ../Source/TouchForms.h; sourceTree = "<group>"; };
@@ -89,12 +104,15 @@
 		C2D2A22C1B602D01003901A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2D2A22D1B602D01003901A7 /* TouchFormsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TouchFormsTests.swift; path = ../Tests/TouchFormsTests.swift; sourceTree = "<group>"; };
 		C2D2A2381B602DEA003901A7 /* FormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
-		C2D2A23A1B602FCB003901A7 /* FormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormElement.swift; sourceTree = "<group>"; };
+		C2D2A23A1B602FCB003901A7 /* FormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FormElement.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2D2A23C1B606B21003901A7 /* FormValidatorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidatorType.swift; sourceTree = "<group>"; };
 		C2D2A2401B619AD4003901A7 /* FormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
 		C2D2A2421B619C1B003901A7 /* FormButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
 		C2D2A2441B619E9A003901A7 /* FormValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueTransformer.swift; sourceTree = "<group>"; };
 		C2D2A2461B61C9E4003901A7 /* MessageChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageChildFormElement.swift; sourceTree = "<group>"; };
+		C2F4A60A1B763DEA00AD5AF0 /* PickerFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerFormCell.swift; sourceTree = "<group>"; };
+		C2F4A60B1B763DEA00AD5AF0 /* PickerFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerFormCell.xib; sourceTree = "<group>"; };
+		C2F4A60C1B763DEA00AD5AF0 /* PickerFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerFormElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +227,9 @@
 				C232FA5F1B704EA5000635E2 /* Text Field */,
 				C232FA6D1B717F44000635E2 /* Text View */,
 				C28DB7DA1B72ECF30085F92F /* Button */,
+				C28DB7E21B7557970085F92F /* Label & Button */,
+				C28DB7E91B7562BE0085F92F /* Image */,
+				C2F4A6091B763C7B00AD5AF0 /* Picker */,
 			);
 			name = "Form Elements";
 			sourceTree = "<group>";
@@ -241,6 +262,26 @@
 				C28DB7DC1B72ED0F0085F92F /* ButtonFormCell.xib */,
 			);
 			name = Button;
+			sourceTree = "<group>";
+		};
+		C28DB7E21B7557970085F92F /* Label & Button */ = {
+			isa = PBXGroup;
+			children = (
+				C28DB7E51B7557B40085F92F /* LabelAndButtonFormElement.swift */,
+				C28DB7E31B7557B40085F92F /* LabelAndButtonFormCell.swift */,
+				C28DB7E41B7557B40085F92F /* LabelAndButtonFormCell.xib */,
+			);
+			name = "Label & Button";
+			sourceTree = "<group>";
+		};
+		C28DB7E91B7562BE0085F92F /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				C28DB7EC1B7562E30085F92F /* ImagePickerFormElement.swift */,
+				C28DB7EA1B7562E30085F92F /* ImagePickerFormCell.swift */,
+				C28DB7EB1B7562E30085F92F /* ImagePickerFormCell.xib */,
+			);
+			name = Image;
 			sourceTree = "<group>";
 		};
 		C2D2A2111B602D01003901A7 = {
@@ -295,6 +336,16 @@
 				C2D2A22C1B602D01003901A7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2F4A6091B763C7B00AD5AF0 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				C2F4A60C1B763DEA00AD5AF0 /* PickerFormElement.swift */,
+				C2F4A60A1B763DEA00AD5AF0 /* PickerFormCell.swift */,
+				C2F4A60B1B763DEA00AD5AF0 /* PickerFormCell.xib */,
+			);
+			name = Picker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,8 +443,11 @@
 				C232FA721B7184D0000635E2 /* TextViewFormCell.xib in Resources */,
 				C26BD6C51B6418CF00C014A6 /* MessageChildFormCell.xib in Resources */,
 				C26BD6CA1B6419AA00C014A6 /* TextFieldFormCell.xib in Resources */,
+				C28DB7E71B7557B40085F92F /* LabelAndButtonFormCell.xib in Resources */,
 				C28DB7DF1B72ED0F0085F92F /* ButtonFormCell.xib in Resources */,
+				C28DB7EE1B7562E30085F92F /* ImagePickerFormCell.xib in Resources */,
 				C232FA681B7162B0000635E2 /* LoadingChildFormCell.xib in Resources */,
+				C2F4A60E1B763DEA00AD5AF0 /* PickerFormCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +467,7 @@
 			files = (
 				C232FA661B715D85000635E2 /* LabelFormElement.swift in Sources */,
 				C232FA461B698CDA000635E2 /* StringFromTimeZoneValueTransformer.swift in Sources */,
+				C28DB7ED1B7562E30085F92F /* ImagePickerFormCell.swift in Sources */,
 				C28DB7DE1B72ED0F0085F92F /* ButtonFormCell.swift in Sources */,
 				C2D2A2431B619C1B003901A7 /* FormButton.swift in Sources */,
 				C2D2A23D1B606B21003901A7 /* FormValidatorType.swift in Sources */,
@@ -429,15 +484,20 @@
 				C2D2A2391B602DEA003901A7 /* FormController.swift in Sources */,
 				C2D2A2471B61C9E4003901A7 /* MessageChildFormElement.swift in Sources */,
 				C26BD6BE1B640C5300C014A6 /* RegexFormValidator.swift in Sources */,
+				C28DB7E81B7557B40085F92F /* LabelAndButtonFormElement.swift in Sources */,
 				C232FA711B7184D0000635E2 /* TextViewFormCell.swift in Sources */,
 				C26BD6B21B62DFA900C014A6 /* ViewChildFormElement.swift in Sources */,
+				C28DB7EF1B7562E30085F92F /* ImagePickerFormElement.swift in Sources */,
 				C26BD6C11B6417F500C014A6 /* TextFieldFormElement.swift in Sources */,
 				C2D2A2451B619E9A003901A7 /* FormValueTransformer.swift in Sources */,
+				C2F4A60F1B763DEA00AD5AF0 /* PickerFormElement.swift in Sources */,
 				C232FA6A1B7176E5000635E2 /* LoadingChildFormCell.swift in Sources */,
+				C28DB7E61B7557B40085F92F /* LabelAndButtonFormCell.swift in Sources */,
 				C232FA481B698CF9000635E2 /* StringFromNumberValueTransformer.swift in Sources */,
 				C26BD6B91B63F79F00C014A6 /* ViewChildFormCell.swift in Sources */,
 				C232FA4A1B698D19000635E2 /* ImageFromDataValueTransformer.swift in Sources */,
 				C26BD6C81B6419A000C014A6 /* TextFieldFormCell.swift in Sources */,
+				C2F4A60D1B763DEA00AD5AF0 /* PickerFormCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +619,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -576,6 +637,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

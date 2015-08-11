@@ -23,6 +23,7 @@ public class TextViewFormElement: FormElement {
             cell.textView.font = font
             cell.textView.editable = editable
         }
+        super.populateCell()
     }
 
     public override func isEditable() -> Bool {

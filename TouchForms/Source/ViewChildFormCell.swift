@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Adam Kirk. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class ViewChildFormCell {
+class ViewChildFormCell: FormCell {
     
 }

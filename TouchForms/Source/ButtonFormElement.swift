@@ -11,18 +11,24 @@ import UIKit
 
 public class ButtonFormElement: FormElement {
 
-    public var buttons = [FormButton]()
+    public var buttons: [FormButton] {
+        didSet {
+            if let cell = cell as? ButtonFormCell {
+                cell.buttons = buttons
+            }
+        }
+    }
 
     public init(buttons: [FormButton]) {
         self.buttons = buttons
     }
 
-    // MARK: - Cell Delegate
-
-    public override func formCell(cell: FormCell, userDidPerformInteraction interaction: FormCellUserInteraction, view: UIView) {
-        if let button = view as? FormButton {
-            button.action?(self)
+    public override func populateCell() {
+        if let cell = cell as? ButtonFormCell {
+            cell.buttons = buttons
+            cell.enabled = enabled
         }
+        super.populateCell()
     }
 
 }

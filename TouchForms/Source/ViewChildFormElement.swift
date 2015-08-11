@@ -17,4 +17,19 @@ class ViewChildFormElement: ChildFormElement {
         super.init(parentElement: parentElement, type: .View, position: .Below)
     }
 
+    override func populateCell() {
+        super.populateCell()
+        if let contentView = cell?.contentView {
+            for view in contentView.subviews {
+                view.removeFromSuperview()
+            }
+            view.setTranslatesAutoresizingMaskIntoConstraints(false)
+            contentView.addSubview(view)
+            contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Top,      relatedBy: .Equal, toItem: view, attribute: .Top,      multiplier: 1, constant: 0))
+            contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Bottom,   relatedBy: .Equal, toItem: view, attribute: .Bottom,   multiplier: 1, constant: 0))
+            contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Leading,  relatedBy: .Equal, toItem: view, attribute: .Leading,  multiplier: 1, constant: 0))
+            contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
+        }
+    }
+
 }
