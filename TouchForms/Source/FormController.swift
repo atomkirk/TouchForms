@@ -45,8 +45,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
             }
             if let collectionView = collectionView,
                 let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//                    flowLayout.estimatedItemSize = CGSizeMake(collectionView.bounds.size.width, 100)
-//                    flowLayout.itemSize = CGSize(width: collectionView.bounds.size.width, height: 100)
+                    flowLayout.estimatedItemSize = CGSizeMake(collectionView.bounds.size.width, 100)
                     flowLayout.minimumLineSpacing = 0
                     flowLayout.minimumInteritemSpacing = 0
             }
@@ -144,15 +143,10 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
             elements.append(element)
         }
 
-        registerCellClassForReuse(element.cellClass)
-        element.testcell = collectionView?.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: NSIndexPath(forItem: 0, inSection: elements.count - 1)) as? FormCell
-        element.updateCell()
-
         if let modelKeyPath = element.modelKeyPath
             where elementHasValidKeyPath(element) {
                 model?.addObserver(self, forKeyPath: modelKeyPath, options: nil, context: nil)
         }
-        collectionView?.reloadData()
     }
 
     /**
@@ -301,7 +295,7 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let elementGroup = elements[indexPath.section].elementGroup
         let element = elementGroup[indexPath.row]
-        let cell = element.testcell!//collectionView.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
         cell.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
         cell.contentView.addConstraint(NSLayoutConstraint(item: cell.contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: view.bounds.size.width))
         element.cell = cell
@@ -322,17 +316,17 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
 
     // MARK: - DELEGATE flow layout
 
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let elementGroup = elements[indexPath.section].elementGroup
-        let element = elementGroup[indexPath.item]
-        if let cell = element.testcell {
-            cell.layoutIfNeeded()
-            return CGSize(width: collectionView.bounds.size.width, height: cell.bounds.size.height)
-        }
-        else {
-            return CGSize(width: collectionView.bounds.size.width, height: 44)
-        }
-    }
+//    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        let elementGroup = elements[indexPath.section].elementGroup
+//        let element = elementGroup[indexPath.item]
+//        if let cell = element.testcell {
+//            cell.layoutIfNeeded()
+//            return CGSize(width: collectionView.bounds.size.width, height: cell.bounds.size.height)
+//        }
+//        else {
+//            return CGSize(width: collectionView.bounds.size.width, height: 44)
+//        }
+//    }
 
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
@@ -658,9 +652,9 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
     }
 
     private func registerElementCellsForReuse() {
-//        for element in elements {
-//            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
-//        }
+        for element in elements {
+            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
+        }
 
         // register metadata cells
         registerCellClassForReuse(MessageChildFormCell.self)

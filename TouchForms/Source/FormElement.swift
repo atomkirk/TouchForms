@@ -26,7 +26,6 @@ Do not create direct instances of this class. It is meant to be subclassed.
 */
 public class FormElement: FormCellDelegate, Equatable {
 
-    var testcell: FormCell?
 
     public typealias FormCellConfigurationBlock = (FormCell) -> Void
 
@@ -232,8 +231,6 @@ public class FormElement: FormCellDelegate, Equatable {
 
 
     // MARK: - Internal
-
-    var autoCalculatedSize: CGSize?
 
     /**
     When creating custom form elements, you this will be set up for you and you can use the delegate methods to instruct
