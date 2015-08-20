@@ -14,6 +14,7 @@ class ElementCatalogForm: FormController {
     override func viewDidLoad() {
         super.viewDidLoad()
         model = NSMutableDictionary()
+        model?.setObject("Blah\nBlah\nBlah\nBlah", forKey: "longtext")
     }
 
     override func configureForm() {
@@ -28,6 +29,7 @@ class ElementCatalogForm: FormController {
 
         // Text View
         let textViewElement = TextViewFormElement()
+        textViewElement.modelKeyPath = "longtext"
         addFormElement(textViewElement)
 
         // Button
@@ -62,7 +64,6 @@ class ElementCatalogForm: FormController {
         let imageElement = ImagePickerFormElement(label: "Pick a Photo")
         imageElement.modelKeyPath = "image"
         addFormElement(imageElement)
-
     }
 
 }

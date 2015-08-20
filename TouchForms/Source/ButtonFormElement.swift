@@ -23,6 +23,10 @@ public class ButtonFormElement: FormElement {
         self.buttons = buttons
     }
 
+    public override func calculatedSizeForWidth(width: CGFloat) -> CGSize {
+        return CGSize(width: width, height: 44 + 8 + 8)
+    }
+
     public override func populateCell() {
         if let cell = cell as? ButtonFormCell {
             cell.buttons = buttons

@@ -40,6 +40,18 @@ public class FormCell: UICollectionViewCell {
         commonInit()
     }
 
+    // MARK: - UIView
+
+    private var heightContstraint: NSLayoutConstraint?
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        if heightContstraint == nil {
+            heightContstraint = NSLayoutConstraint(item: self.contentView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: self.bounds.size.height)
+            addConstraint(heightContstraint!)
+            layoutIfNeeded()
+        }
+    }
 
     // MARK: - Subclassing
 

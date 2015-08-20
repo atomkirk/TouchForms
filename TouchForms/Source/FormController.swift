@@ -23,7 +23,7 @@ create one of these form view controllers and configure it by adding form elemen
 compatible with storyboards. Drag a Collection View Controller onto your storyboard and assign your subclass to it. When it is
 instantiated, your implementation of `configureForm` will be called where you can add form elements.
 */
-public class FormController: UICollectionViewController, UICollectionViewDelegateFlowLayout, FormElementDataSource, FormElementDelegate {
+public class FormController: UICollectionViewController {
 
     public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,7 +45,6 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
             }
             if let collectionView = collectionView,
                 let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                    flowLayout.estimatedItemSize = CGSizeMake(collectionView.bounds.size.width, 100)
                     flowLayout.minimumLineSpacing = 0
                     flowLayout.minimumInteritemSpacing = 0
             }
@@ -281,121 +280,6 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
     }
 
 
-    // MARK: - DATASOURCE collection view
-
-    public override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return self.elements.count
-    }
-
-    public override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let element = elements[section]
-        return element.elementGroup.count
-    }
-
-    public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let elementGroup = elements[indexPath.section].elementGroup
-        let element = elementGroup[indexPath.row]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
-        cell.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        cell.contentView.addConstraint(NSLayoutConstraint(item: cell.contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: view.bounds.size.width))
-        element.cell = cell
-        return cell
-    }
-
-
-    // MARK: - DELEGATE collection view
-
-    public override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section < elements.count,
-            let cell = cell as? FormCell {
-                let element = elements[indexPath.section]
-                formElementsDelegate?.formController(self, willRemoveElement: element, cell: cell)
-        }
-    }
-
-
-    // MARK: - DELEGATE flow layout
-
-//    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        let elementGroup = elements[indexPath.section].elementGroup
-//        let element = elementGroup[indexPath.item]
-//        if let cell = element.testcell {
-//            cell.layoutIfNeeded()
-//            return CGSize(width: collectionView.bounds.size.width, height: cell.bounds.size.height)
-//        }
-//        else {
-//            return CGSize(width: collectionView.bounds.size.width, height: 44)
-//        }
-//    }
-
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-    }
-
-
-    // MARK: - DATASOURCE form element
-
-    public func modelValueForFormElement(element: FormElement) -> AnyObject? {
-        if elementHasValidKeyPath(element) {
-            if let model: AnyObject = model, modelKeyPath = element.modelKeyPath {
-                return model.valueForKeyPath(modelKeyPath)
-            }
-        }
-        return nil
-    }
-
-
-    // MARK: - DELEGATE form element
-
-    public func formElement(element: FormElement, valueDidChange value: AnyObject?) {
-
-        var transformedValue: AnyObject? = value
-
-        // tranform the value if needed
-        if let valueTransformer = element.valueTransformer {
-            transformedValue = element.valueTransformer?.reverseTransformedValue(value)
-        }
-
-        if let transformedValue: AnyObject = transformedValue {
-            if self.elementHasValidKeyPath(element) {
-                if let modelKeyPath = element.modelKeyPath {
-                    model?.setValue(transformedValue, forKeyPath: modelKeyPath)
-                }
-                formModelDelegate?.formController(self, didUpdateModelWithValue: transformedValue, element: element)
-            }
-            else {
-                formModelDelegate?.formController(self, failedToUpdateModelWithValue: transformedValue, element: element)
-            }
-        }
-    }
-
-    public func formElementNeedsLayout(element: FormElement) {
-        if let ip = indexPathOfElement(element) {
-            collectionView?.reloadItemsAtIndexPaths([ip])
-        }
-    }
-
-    public func formElement(element: FormElement, didRequestPresentationOfViewController controller: UIViewController, animated: Bool, completion: FormBasicBlock? = nil) {
-        presentViewController(controller, animated: animated, completion: completion)
-    }
-
-    public func formElement(element: FormElement, didRequestPresentationOfActionSheet actionSheet: UIActionSheet) {
-        actionSheet.showInView(view)
-    }
-
-    public func formElement(element: FormElement, didRequestPresentationOfChildView childView: UIView) {
-        let viewChildElement = ViewChildFormElement(view: childView, parentElement: element)
-        showChildElements([viewChildElement], position: .Below, duration: 0, completion: nil)
-    }
-
-    public func formElement(element: FormElement, didRequestDismissalOfChildView childView: UIView) {
-        hideChildrenOfElements([element], type: .View, completion: nil)
-    }
-
-    public func formElement(element: FormElement, didRequestPushOfViewController controller: UIViewController) {
-        navigationController?.pushViewController(controller, animated: true)
-    }
-
 
     // MARK: - KVO (the model changed)
 
@@ -413,73 +297,6 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
             }
         }
     }
-
-
-    // MARK: - Notifications
-
-    func keyboardWillShowNotification(note: NSNotification) {
-        if let endFrame = note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue,
-            let animationDuration = note.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
-            let curve = note.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber,
-            var insets = collectionView?.contentInset,
-            var offset = collectionView?.contentOffset,
-            let collectionView = collectionView {
-                insets.bottom = endFrame.CGRectValue().size.height
-                offset.y += insets.bottom
-                UIView.animateWithDuration(animationDuration.doubleValue, delay: 0, options: UIViewAnimationOptions(curve.unsignedLongValue >> 16), animations: { () -> Void in
-                    collectionView.contentInset = insets
-                }, completion: nil)
-        }
-    }
-
-    func keyboardWillHideNotification(note: NSNotification) {
-        if let animationDuration = note.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
-            let curve = note.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber,
-            var insets = collectionView?.contentInset,
-            let collectionView = collectionView {
-                insets.bottom = 0
-                UIView.animateWithDuration(animationDuration.doubleValue, delay: 0, options: UIViewAnimationOptions(curve.unsignedLongValue >> 16), animations: { () -> Void in
-                    collectionView.contentInset = insets
-                }, completion: nil)
-        }
-    }
-
-    func textFieldDidBeginEditingNotification(note: NSNotification) {
-        if let textField = note.object as? UITextField,
-            let element = elementContainingView(textField) {
-                if let nextElement = elementAfter(element) {
-                    textField.returnKeyType = .Next
-                }
-                else {
-                    textField.returnKeyType = .Done
-                }
-        }
-    }
-
-    func textFieldDidEndEditingNotification(note: NSNotification) {
-        if let textField = note.object as? UITextField {
-            if contains(visibleTextInputs(), textField) {
-                if outstandingValidationErrorCount > 0 {
-                    validate()
-                }
-            }
-        }
-    }
-
-    func textFieldDidHitReturnKeyNotification(note: NSNotification) {
-        if let cell = note.object as? FormCell,
-            let textField = cell.textInput,
-            let element = elementContainingView(textField) {
-                if let nextElement = elementAfter(element) {
-                    attemptToDismissKeyboard()
-                    nextElement.beginEditing()
-                }
-                else {
-                    formDelegate?.formControllerDidSubmit(self)
-                }
-        }
-    }
-
 
     // MARK: - Private
 
@@ -663,8 +480,216 @@ public class FormController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: stringFromClassWithoutModule(ViewChildFormCell.self))
     }
 
+}
 
-    // MARK: (helpers)
+
+// MARK: - UICollectionViewDataSource
+
+extension FormController: UICollectionViewDataSource {
+
+    public override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return self.elements.count
+    }
+
+    public override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let element = elements[section]
+        return element.elementGroup.count
+    }
+
+    public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let elementGroup = elements[indexPath.section].elementGroup
+        let element = elementGroup[indexPath.row]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
+        element.cell = cell
+        element.updateCell()
+        return cell
+    }
+
+}
+
+
+// MARK: - UICollectionViewDelegate
+
+extension FormController: UICollectionViewDelegate {
+
+    public override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section < elements.count,
+            let cell = cell as? FormCell {
+                let element = elements[indexPath.section]
+                formElementsDelegate?.formController(self, willRemoveElement: element, cell: cell)
+        }
+    }
+
+}
+
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension FormController: UICollectionViewDelegateFlowLayout {
+
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let elementGroup = elements[indexPath.section].elementGroup
+        let element = elementGroup[indexPath.item]
+        var size = element.calculatedSizeForWidth(collectionView.bounds.size.width)
+        size.height = element.height ?? size.height
+        size.width = element.width ?? size.width
+        return size
+    }
+
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        let element = elements[section]
+        return element.margins
+    }
+    
+}
+
+
+// MARK: - FormElementDataSource
+
+extension FormController: FormElementDataSource {
+
+    public func modelValueForFormElement(element: FormElement) -> AnyObject? {
+        if elementHasValidKeyPath(element) {
+            if let model: AnyObject = model, modelKeyPath = element.modelKeyPath {
+                return model.valueForKeyPath(modelKeyPath)
+            }
+        }
+        return nil
+    }
+
+}
+
+
+// MARK: - FormElementDelegate
+
+extension FormController: FormElementDelegate {
+
+    public func formElement(element: FormElement, valueDidChange value: AnyObject?) {
+
+        var transformedValue: AnyObject? = value
+
+        // tranform the value if needed
+        if let valueTransformer = element.valueTransformer {
+            transformedValue = element.valueTransformer?.reverseTransformedValue(value)
+        }
+
+        if let transformedValue: AnyObject = transformedValue {
+            if self.elementHasValidKeyPath(element) {
+                if let modelKeyPath = element.modelKeyPath {
+                    model?.setValue(transformedValue, forKeyPath: modelKeyPath)
+                }
+                formModelDelegate?.formController(self, didUpdateModelWithValue: transformedValue, element: element)
+            }
+            else {
+                formModelDelegate?.formController(self, failedToUpdateModelWithValue: transformedValue, element: element)
+            }
+        }
+    }
+
+    public func formElementNeedsLayout(element: FormElement) {
+        if let ip = indexPathOfElement(element) {
+            collectionView?.reloadItemsAtIndexPaths([ip])
+        }
+    }
+
+    public func formElement(element: FormElement, didRequestPresentationOfViewController controller: UIViewController, animated: Bool, completion: FormBasicBlock? = nil) {
+        presentViewController(controller, animated: animated, completion: completion)
+    }
+
+    public func formElement(element: FormElement, didRequestPresentationOfActionSheet actionSheet: UIActionSheet) {
+        actionSheet.showInView(view)
+    }
+
+    public func formElement(element: FormElement, didRequestPresentationOfChildView childView: UIView) {
+        let viewChildElement = ViewChildFormElement(view: childView, parentElement: element)
+        showChildElements([viewChildElement], position: .Below, duration: 0, completion: nil)
+    }
+
+    public func formElement(element: FormElement, didRequestDismissalOfChildView childView: UIView) {
+        hideChildrenOfElements([element], type: .View, completion: nil)
+    }
+    
+    public func formElement(element: FormElement, didRequestPushOfViewController controller: UIViewController) {
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
+}
+
+
+
+// MARK: - Notifications
+
+extension FormController {
+
+    func keyboardWillShowNotification(note: NSNotification) {
+        if let endFrame = note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+            let animationDuration = note.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
+            let curve = note.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber,
+            var insets = collectionView?.contentInset,
+            var offset = collectionView?.contentOffset,
+            let collectionView = collectionView {
+                insets.bottom = endFrame.CGRectValue().size.height
+                offset.y += insets.bottom
+                UIView.animateWithDuration(animationDuration.doubleValue, delay: 0, options: UIViewAnimationOptions(curve.unsignedLongValue >> 16), animations: { () -> Void in
+                    collectionView.contentInset = insets
+                    }, completion: nil)
+        }
+    }
+
+    func keyboardWillHideNotification(note: NSNotification) {
+        if let animationDuration = note.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
+            let curve = note.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber,
+            var insets = collectionView?.contentInset,
+            let collectionView = collectionView {
+                insets.bottom = 0
+                UIView.animateWithDuration(animationDuration.doubleValue, delay: 0, options: UIViewAnimationOptions(curve.unsignedLongValue >> 16), animations: { () -> Void in
+                    collectionView.contentInset = insets
+                    }, completion: nil)
+        }
+    }
+
+    func textFieldDidBeginEditingNotification(note: NSNotification) {
+        if let textField = note.object as? UITextField,
+            let element = elementContainingView(textField) {
+                if let nextElement = elementAfter(element) {
+                    textField.returnKeyType = .Next
+                }
+                else {
+                    textField.returnKeyType = .Done
+                }
+        }
+    }
+
+    func textFieldDidEndEditingNotification(note: NSNotification) {
+        if let textField = note.object as? UITextField {
+            if contains(visibleTextInputs(), textField) {
+                if outstandingValidationErrorCount > 0 {
+                    validate()
+                }
+            }
+        }
+    }
+
+    func textFieldDidHitReturnKeyNotification(note: NSNotification) {
+        if let cell = note.object as? FormCell,
+            let textField = cell.textInput,
+            let element = elementContainingView(textField) {
+                if let nextElement = elementAfter(element) {
+                    attemptToDismissKeyboard()
+                    nextElement.beginEditing()
+                }
+                else {
+                    formDelegate?.formControllerDidSubmit(self)
+                }
+        }
+    }
+
+}
+
+
+// MARK: - Helpers
+
+extension FormController {
 
     private func indexPathOfElement(element: FormElement) -> NSIndexPath? {
         if let section = find(elements, element),

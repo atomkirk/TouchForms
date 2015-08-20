@@ -20,6 +20,7 @@
 		C232FA711B7184D0000635E2 /* TextViewFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA6E1B7184D0000635E2 /* TextViewFormCell.swift */; };
 		C232FA721B7184D0000635E2 /* TextViewFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA6F1B7184D0000635E2 /* TextViewFormCell.xib */; };
 		C232FA731B7184D0000635E2 /* TextViewFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA701B7184D0000635E2 /* TextViewFormElement.swift */; };
+		C239CA591B7BAB58000095D7 /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = C239CA581B7BAB58000095D7 /* String+Size.swift */; };
 		C26BD6AE1B62DECA00C014A6 /* ChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */; };
 		C26BD6B21B62DFA900C014A6 /* ViewChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B11B62DFA900C014A6 /* ViewChildFormElement.swift */; };
 		C26BD6B71B63F78D00C014A6 /* MessageChildFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B61B63F78D00C014A6 /* MessageChildFormCell.swift */; };
@@ -78,6 +79,7 @@
 		C232FA6E1B7184D0000635E2 /* TextViewFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewFormCell.swift; sourceTree = "<group>"; };
 		C232FA6F1B7184D0000635E2 /* TextViewFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewFormCell.xib; sourceTree = "<group>"; };
 		C232FA701B7184D0000635E2 /* TextViewFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewFormElement.swift; sourceTree = "<group>"; };
+		C239CA581B7BAB58000095D7 /* String+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
 		C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildFormElement.swift; sourceTree = "<group>"; };
 		C26BD6B11B62DFA900C014A6 /* ViewChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewChildFormElement.swift; sourceTree = "<group>"; };
 		C26BD6B61B63F78D00C014A6 /* MessageChildFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageChildFormCell.swift; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 			name = "Text View";
 			sourceTree = "<group>";
 		};
+		C239CA571B7BAB45000095D7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C239CA581B7BAB58000095D7 /* String+Size.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		C26BD6AC1B62DE9F00C014A6 /* Child Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 				C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */,
 				C26BD6AC1B62DE9F00C014A6 /* Child Elements */,
 				C26BD6B31B63F76F00C014A6 /* Child Cells */,
+				C239CA571B7BAB45000095D7 /* Extensions */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -484,6 +495,7 @@
 				C2D2A2391B602DEA003901A7 /* FormController.swift in Sources */,
 				C2D2A2471B61C9E4003901A7 /* MessageChildFormElement.swift in Sources */,
 				C26BD6BE1B640C5300C014A6 /* RegexFormValidator.swift in Sources */,
+				C239CA591B7BAB58000095D7 /* String+Size.swift in Sources */,
 				C28DB7E81B7557B40085F92F /* LabelAndButtonFormElement.swift in Sources */,
 				C232FA711B7184D0000635E2 /* TextViewFormCell.swift in Sources */,
 				C26BD6B21B62DFA900C014A6 /* ViewChildFormElement.swift in Sources */,

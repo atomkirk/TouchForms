@@ -11,7 +11,9 @@ import UIKit
 
 public class TextFieldFormElement: FormElement {
 
-    public var label: String?
+    public var label: String
+
+    public var font: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
 
     public init(label: String) {
         self.label = label
@@ -19,6 +21,15 @@ public class TextFieldFormElement: FormElement {
 
 
     // MARK: - Overrides
+
+    public override func calculatedSizeForWidth(width: CGFloat) -> CGSize {
+        var size = label.sizeWithWidth(width, font: font)
+        // add cell padding around text
+        size.height += 7 * 2
+        // adding top and bottom margins
+        size.height += 8 * 2
+        return size
+    }
 
     public override func populateCell() {
         if let cell = cell as? TextFieldFormCell {

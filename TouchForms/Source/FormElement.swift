@@ -8,19 +8,6 @@
 
 import Foundation
 
-protocol FormElementDataSource {
-    func modelValueForFormElement(element: FormElement) -> AnyObject?
-}
-
-protocol FormElementDelegate {
-    func formElement(element: FormElement, valueDidChange value: AnyObject?)
-    func formElement(element: FormElement, didRequestPresentationOfViewController controller: UIViewController, animated: Bool, completion: FormBasicBlock?)
-    func formElement(element: FormElement, didRequestPresentationOfActionSheet actionSheet: UIActionSheet)
-    func formElement(element: FormElement, didRequestPresentationOfChildView childView: UIView)
-    func formElement(element: FormElement, didRequestDismissalOfChildView childView: UIView)
-    func formElement(element: FormElement, didRequestPushOfViewController controller: UIViewController)
-}
-
 /**
 Do not create direct instances of this class. It is meant to be subclassed.
 */
@@ -43,8 +30,8 @@ public class FormElement: FormCellDelegate, Equatable {
 
     // MARK: - Subclassing
 
-    public func estimatedHeightForSize(size: CGSize) -> CGSize {
-        return CGSize(width: size.width, height: 44)
+    public func calculatedSizeForWidth(width: CGFloat) -> CGSize {
+        return CGSize(width: width, height: 44)
     }
 
     /**
@@ -92,6 +79,20 @@ public class FormElement: FormCellDelegate, Equatable {
             updateCell()
         }
     }
+
+
+    // MARK: - Customizing Appearance
+
+    /**
+    Most element's have an intrinsic size it can figure out on it's own, but you can set it explictly.
+    */
+    public var width: CGFloat?
+    public var height: CGFloat?
+
+    /**
+    Set how much space there is around the outside of the cell.
+    */
+    public var margins = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
 
 
     // MARK: - Configuring the Cell
@@ -301,4 +302,17 @@ public class FormElement: FormCellDelegate, Equatable {
 
 public func ==(lhs: FormElement, rhs: FormElement) -> Bool {
     return lhs === rhs
+}
+
+protocol FormElementDataSource {
+    func modelValueForFormElement(element: FormElement) -> AnyObject?
+}
+
+protocol FormElementDelegate {
+    func formElement(element: FormElement, valueDidChange value: AnyObject?)
+    func formElement(element: FormElement, didRequestPresentationOfViewController controller: UIViewController, animated: Bool, completion: FormBasicBlock?)
+    func formElement(element: FormElement, didRequestPresentationOfActionSheet actionSheet: UIActionSheet)
+    func formElement(element: FormElement, didRequestPresentationOfChildView childView: UIView)
+    func formElement(element: FormElement, didRequestDismissalOfChildView childView: UIView)
+    func formElement(element: FormElement, didRequestPushOfViewController controller: UIViewController)
 }
