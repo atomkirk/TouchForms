@@ -19,10 +19,6 @@ public class LabelFormElement: FormElement {
         self.text = text
     }
 
-    public override func calculatedSizeForWidth(width: CGFloat) -> CGSize {
-        return text.sizeWithWidth(width, font: font)
-    }
-
     public override func populateCell() {
         if let cell = cell as? LabelFormCell {
             cell.textLabel?.text = text

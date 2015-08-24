@@ -17,12 +17,6 @@ class ViewChildFormElement: ChildFormElement {
         super.init(parentElement: parentElement, type: .View, position: .Below)
     }
 
-    override func calculatedSizeForWidth(width: CGFloat) -> CGSize {
-        var size = view.bounds.size
-        size.width = width
-        return size
-    }
-
     override func populateCell() {
         super.populateCell()
         if let contentView = cell?.contentView {

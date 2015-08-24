@@ -12,7 +12,9 @@ import Foundation
 Do not create direct instances of this class. It is meant to be subclassed.
 */
 public class FormElement: FormCellDelegate, Equatable {
-
+    
+    
+    public var testcell: FormCell?
 
     public typealias FormCellConfigurationBlock = (FormCell) -> Void
 
@@ -29,10 +31,6 @@ public class FormElement: FormCellDelegate, Equatable {
 
 
     // MARK: - Subclassing
-
-    public func calculatedSizeForWidth(width: CGFloat) -> CGSize {
-        return CGSize(width: width, height: 44)
-    }
 
     /**
     Override this method to populate the UI elements of the cell with the information from

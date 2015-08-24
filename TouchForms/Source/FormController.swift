@@ -141,6 +141,9 @@ public class FormController: UICollectionViewController {
         else {
             elements.append(element)
         }
+        
+        registerCellClassForReuse(element.cellClass)
+        element.testcell = collectionView?.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: NSIndexPath(forItem: 0, inSection: elements.count - 1)) as? FormCell
 
         if let modelKeyPath = element.modelKeyPath
             where elementHasValidKeyPath(element) {
@@ -453,8 +456,14 @@ public class FormController: UICollectionViewController {
         }
         return nil
     }
-
+    
     private func registerCellClassForReuse(cellClass: AnyClass, xib: String? = nil) {
+        let nib = nibForCellClass(cellClass, xib: xib)
+        let classString = stringFromClassWithoutModule(cellClass)
+        collectionView?.registerNib(nib, forCellWithReuseIdentifier: classString)
+    }
+    
+    private func nibForCellClass(cellClass: AnyClass, xib: String? = nil) -> UINib {
         let nib: UINib
         let classString = stringFromClassWithoutModule(cellClass)
         if let xib = xib {
@@ -465,13 +474,13 @@ public class FormController: UICollectionViewController {
             let bundle = NSBundle(forClass: cellClass)
             nib = UINib(nibName: classString, bundle: bundle)
         }
-        collectionView?.registerNib(nib, forCellWithReuseIdentifier: classString)
+        return nib
     }
 
     private func registerElementCellsForReuse() {
-        for element in elements {
-            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
-        }
+//        for element in elements {
+//            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
+//        }
 
         // register metadata cells
         registerCellClassForReuse(MessageChildFormCell.self)
@@ -488,7 +497,7 @@ public class FormController: UICollectionViewController {
 extension FormController: UICollectionViewDataSource {
 
     public override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return self.elements.count
+        return elements.count
     }
 
     public override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -499,7 +508,7 @@ extension FormController: UICollectionViewDataSource {
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let elementGroup = elements[indexPath.section].elementGroup
         let element = elementGroup[indexPath.row]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
+        let cell = element.testcell!// collectionView.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
         element.cell = cell
         element.updateCell()
         return cell
@@ -527,14 +536,10 @@ extension FormController: UICollectionViewDelegate {
 
 extension FormController: UICollectionViewDelegateFlowLayout {
 
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let elementGroup = elements[indexPath.section].elementGroup
-        let element = elementGroup[indexPath.item]
-        var size = element.calculatedSizeForWidth(collectionView.bounds.size.width)
-        size.height = element.height ?? size.height
-        size.width = element.width ?? size.width
-        return size
-    }
+//    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        let width = collectionView.bounds.size.width
+//        
+//    }
 
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         let element = elements[section]
