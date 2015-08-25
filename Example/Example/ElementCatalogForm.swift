@@ -33,10 +33,9 @@ class ElementCatalogForm: FormController {
         addFormElement(textViewElement)
 
         // Button
-        let button = FormButton(label: "Button", style: .Bordered) {
+        let buttonElement = ButtonFormElement(label: "Button") {
             println("button tapped")
         }
-        let buttonElement = ButtonFormElement(buttons: [button])
         addFormElement(buttonElement)
 
         // Picker
@@ -45,14 +44,15 @@ class ElementCatalogForm: FormController {
         addFormElement(pickerElement)
 
         // Buttons
-        let button1 = FormButton(label: "Button 1", style: .Filled) {
+        let button1Element = ButtonFormElement(label: "Button 1") {
             println("button1 tapped")
         }
-        let button2 = FormButton(label: "Button 2", style: .Filled) {
+        addFormElement(button1Element)
+        
+        let button2Element = ButtonFormElement(label: "Button 2") { () -> Void in
             println("button2 tapped")
         }
-        let buttonsElement = ButtonFormElement(buttons: [button1, button2])
-        addFormElement(buttonsElement)
+        addFormElement(button2Element)
 
         // Label and Button
         let labelAndButtonElement = LabelAndButtonFormElement(label: "A label", buttonTitle: "Button") {

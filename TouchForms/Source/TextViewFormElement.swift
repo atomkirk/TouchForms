@@ -11,8 +11,6 @@ import UIKit
 
 public class TextViewFormElement: FormElement {
 
-    public var font: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-
     public var editable: Bool = true
 
 
@@ -20,8 +18,7 @@ public class TextViewFormElement: FormElement {
 
     public override func populateCell() {
         if let cell = cell as? TextViewFormCell {
-            cell.textView.font = font
-            cell.textView.editable = editable
+            cell.textView?.editable = editable
         }
         super.populateCell()
     }

@@ -24,6 +24,9 @@
 		C26BD7091B641C5100C014A6 /* TouchForms.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C26BD7011B641BC800C014A6 /* TouchForms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C26BD70C1B641D3600C014A6 /* BasicForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD70B1B641D3600C014A6 /* BasicForm.swift */; };
 		C28DB7D81B72E7020085F92F /* ElementCatalogForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7D71B72E7020085F92F /* ElementCatalogForm.swift */; };
+		C2F9380A1B8BA33B00A93266 /* StoryboardPrototypeCellsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F938091B8BA33B00A93266 /* StoryboardPrototypeCellsForm.swift */; };
+		C2F9380F1B8CC52B00A93266 /* SignUpForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9380E1B8CC52B00A93266 /* SignUpForm.swift */; };
+		C2F938121B8CC55A00A93266 /* ExampleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F938111B8CC55A00A93266 /* ExampleUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,9 @@
 		C26BD70B1B641D3600C014A6 /* BasicForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicForm.swift; sourceTree = "<group>"; };
 		C28DB7D71B72E7020085F92F /* ElementCatalogForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementCatalogForm.swift; sourceTree = "<group>"; };
 		C28DB7E11B7449B40085F92F /* Example.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example.playground; sourceTree = "<group>"; };
+		C2F938091B8BA33B00A93266 /* StoryboardPrototypeCellsForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardPrototypeCellsForm.swift; sourceTree = "<group>"; };
+		C2F9380E1B8CC52B00A93266 /* SignUpForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpForm.swift; sourceTree = "<group>"; };
+		C2F938111B8CC55A00A93266 /* ExampleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +123,12 @@
 		C232FA4B1B69C30A000635E2 /* Example Forms */ = {
 			isa = PBXGroup;
 			children = (
+				C2F9380E1B8CC52B00A93266 /* SignUpForm.swift */,
 				C26BD70B1B641D3600C014A6 /* BasicForm.swift */,
 				C232FA4D1B69C338000635E2 /* CustomThemeForm.swift */,
 				C232FA4F1B69C39D000635E2 /* Custom Elements */,
 				C28DB7D71B72E7020085F92F /* ElementCatalogForm.swift */,
+				C2F938091B8BA33B00A93266 /* StoryboardPrototypeCellsForm.swift */,
 			);
 			name = "Example Forms";
 			sourceTree = "<group>";
@@ -189,6 +197,7 @@
 				C26BD6DD1B641A8000C014A6 /* Main.storyboard */,
 				C26BD6DB1B641A8000C014A6 /* ViewController.swift */,
 				C232FA4B1B69C30A000635E2 /* Example Forms */,
+				C2F938101B8CC54500A93266 /* Example Models */,
 				C26BD70A1B641C7700C014A6 /* Resources */,
 				C26BD6D71B641A8000C014A6 /* Supporting Files */,
 			);
@@ -244,6 +253,14 @@
 				C26BD6E21B641A8000C014A6 /* LaunchScreen.xib */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		C2F938101B8CC54500A93266 /* Example Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2F938111B8CC55A00A93266 /* ExampleUser.swift */,
+			);
+			name = "Example Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,12 +393,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C232FA571B6AC67B000635E2 /* CustomTextFieldCell.swift in Sources */,
+				C2F938121B8CC55A00A93266 /* ExampleUser.swift in Sources */,
 				C26BD6DC1B641A8000C014A6 /* ViewController.swift in Sources */,
 				C26BD6DA1B641A8000C014A6 /* AppDelegate.swift in Sources */,
 				C232FA4E1B69C338000635E2 /* CustomThemeForm.swift in Sources */,
 				C28DB7D81B72E7020085F92F /* ElementCatalogForm.swift in Sources */,
+				C2F9380F1B8CC52B00A93266 /* SignUpForm.swift in Sources */,
 				C26BD70C1B641D3600C014A6 /* BasicForm.swift in Sources */,
 				C232FA5C1B6AE624000635E2 /* ProgressFormCell.swift in Sources */,
+				C2F9380A1B8BA33B00A93266 /* StoryboardPrototypeCellsForm.swift in Sources */,
 				C232FA5A1B6AE600000635E2 /* ProgressFormElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

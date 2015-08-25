@@ -20,7 +20,7 @@ public class FormButton: UIButton {
 
     public let style: FormButtonStyle
 
-    public let action: FormButtonAction
+    public var action: FormButtonAction
 
     public init(label: String, style: FormButtonStyle, _ action: FormButtonAction) {
         self.style = style

@@ -13,8 +13,6 @@ public class TextFieldFormElement: FormElement {
 
     public var label: String
 
-    public var font: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-
     public init(label: String) {
         self.label = label
     }

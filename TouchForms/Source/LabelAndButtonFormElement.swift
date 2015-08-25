@@ -15,9 +15,9 @@ public class LabelAndButtonFormElement: FormElement {
 
     public let buttonTitle: String
 
-    public let action: FormButtonAction
+    public let action: FormButtonAction?
 
-    public init(label: String, buttonTitle: String, action: FormButtonAction) {
+    public init(label: String, buttonTitle: String, _ action: FormButtonAction) {
         self.label = label
         self.buttonTitle = buttonTitle
         self.action = action
@@ -25,9 +25,9 @@ public class LabelAndButtonFormElement: FormElement {
 
     public override func populateCell() {
         if let cell = cell as? LabelAndButtonFormCell {
-            cell.label.text = label
-            cell.button.enabled = enabled
-            cell.button.setTitle(buttonTitle, forState: .Normal)
+            cell.label?.text = label
+            cell.button?.enabled = enabled
+            cell.button?.setTitle(buttonTitle, forState: .Normal)
         }
         super.populateCell()
     }
@@ -35,7 +35,7 @@ public class LabelAndButtonFormElement: FormElement {
     // MARK: - FormCell Delegate
 
     public override func formCell(cell: FormCell, userDidPerformInteraction interaction: FormCellUserInteraction, view: UIView) {
-        action()
+        action?()
     }
 
 }

@@ -14,8 +14,6 @@ Do not create direct instances of this class. It is meant to be subclassed.
 public class FormElement: FormCellDelegate, Equatable {
     
     
-    public var testcell: FormCell?
-
     public typealias FormCellConfigurationBlock = (FormCell) -> Void
 
 
@@ -82,9 +80,9 @@ public class FormElement: FormCellDelegate, Equatable {
     // MARK: - Customizing Appearance
 
     /**
-    Most element's have an intrinsic size it can figure out on it's own, but you can set it explictly.
+    Most element's have an intrinsic height it can figure out on it's own using auto layout
+    constraints, but you can set it explictly.
     */
-    public var width: CGFloat?
     public var height: CGFloat?
 
     /**
@@ -114,6 +112,12 @@ public class FormElement: FormCellDelegate, Equatable {
     public func configureCellBlock(block: FormCellConfigurationBlock) {
         self.cellConfigurationBlock = block
     }
+    
+    /**
+    If you are desiging your cells right in storyboards as prototype cells, you can give them identifiers and
+    set those identifiers on the element here so it knows what cell to use from the storyboard list of prototype cells.
+    */
+    public var prototypeCellIdentifier: String?
 
     /**
     The class of the cell to be used to display this form element. By default, this is the same name as this class with 'Cell' replacing 'Element'.

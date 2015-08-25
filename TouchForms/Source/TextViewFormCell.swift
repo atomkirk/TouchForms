@@ -10,11 +10,11 @@ import UIKit
 
 public class TextViewFormCell: FormCell, UITextViewDelegate {
 
-    @IBOutlet public weak var textView: UITextView!
+    @IBOutlet public weak var textView: UITextView?
 
     public override func awakeFromNib() {
         super.awakeFromNib()
-        textView.delegate = self
+        textView?.delegate = self
     }
 
     // MARK: - FormCell

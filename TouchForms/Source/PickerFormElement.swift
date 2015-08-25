@@ -40,9 +40,9 @@ class PickerFormElementDelegate: NSObject, UIPickerViewDataSource, UIPickerViewD
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let value = element.values[row]
         element.delegate?.formElement(element, valueDidChange: value)
-//        if element.closesOnSelect {
-//            element.closePicker()
-//        }
+        if element.closesOnSelect {
+            element.closePicker()
+        }
     }
 
 }

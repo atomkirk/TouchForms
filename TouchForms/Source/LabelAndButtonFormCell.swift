@@ -10,13 +10,13 @@ import UIKit
 
 public class LabelAndButtonFormCell: FormCell {
 
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var label: UILabel?
 
-    @IBOutlet weak var button: FormButton!
+    @IBOutlet weak var button: FormButton?
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        button.setTitleColor(tintColor, forState: .Normal)
+        button?.setTitleColor(tintColor, forState: .Normal)
     }
 
     // MARK: - Actions

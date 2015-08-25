@@ -8,25 +8,24 @@
 
 import UIKit
 
-
 public class ButtonFormElement: FormElement {
+    
+    public var label: String
+    
+    public var action: FormButtonAction
 
-    public var buttons: [FormButton] {
-        didSet {
-            if let cell = cell as? ButtonFormCell {
-                cell.buttons = buttons
-            }
-        }
-    }
-
-    public init(buttons: [FormButton]) {
-        self.buttons = buttons
+    public init(label: String, _ action: FormButtonAction) {
+        self.label = label
+        self.action = action
     }
 
     public override func populateCell() {
         if let cell = cell as? ButtonFormCell {
-            cell.buttons = buttons
             cell.enabled = enabled
+            cell.button?.setTitle(label, forState: .Normal)
+            if let button = cell.button {
+                button.action = self.action
+            }
         }
         super.populateCell()
     }

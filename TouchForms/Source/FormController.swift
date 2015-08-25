@@ -8,6 +8,8 @@
 
 import UIKit
 
+private var formKVOContext = 0
+
 let TextFieldFormCellDidHitReturnKeyNotification = "TextFieldFormCellDidHitReturnKeyNotification"
 
 public typealias FormBasicBlock = () -> Void
@@ -45,6 +47,7 @@ public class FormController: UICollectionViewController {
             }
             if let collectionView = collectionView,
                 let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                    flowLayout.estimatedItemSize = CGSize(width: collectionView.bounds.size.width, height: 10)
                     flowLayout.minimumLineSpacing = 0
                     flowLayout.minimumInteritemSpacing = 0
             }
@@ -82,7 +85,7 @@ public class FormController: UICollectionViewController {
             for element in elements {
                 if let modelKeyPath = element.modelKeyPath
                 where elementHasValidKeyPath(element) {
-                    model?.addObserver(self, forKeyPath: modelKeyPath, options: nil, context: nil)
+                    model?.addObserver(self, forKeyPath: modelKeyPath, options: nil, context: &formKVOContext)
                 }
                 element.updateCell()
             }
@@ -142,12 +145,9 @@ public class FormController: UICollectionViewController {
             elements.append(element)
         }
         
-        registerCellClassForReuse(element.cellClass)
-        element.testcell = collectionView?.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: NSIndexPath(forItem: 0, inSection: elements.count - 1)) as? FormCell
-
         if let modelKeyPath = element.modelKeyPath
             where elementHasValidKeyPath(element) {
-                model?.addObserver(self, forKeyPath: modelKeyPath, options: nil, context: nil)
+                model?.addObserver(self, forKeyPath: modelKeyPath, options: nil, context: &formKVOContext)
         }
     }
 
@@ -478,9 +478,12 @@ public class FormController: UICollectionViewController {
     }
 
     private func registerElementCellsForReuse() {
-//        for element in elements {
-//            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
-//        }
+        for element in elements {
+            if element.prototypeCellIdentifier != nil {
+                continue
+            }
+            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
+        }
 
         // register metadata cells
         registerCellClassForReuse(MessageChildFormCell.self)
@@ -508,7 +511,9 @@ extension FormController: UICollectionViewDataSource {
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let elementGroup = elements[indexPath.section].elementGroup
         let element = elementGroup[indexPath.row]
-        let cell = element.testcell!// collectionView.dequeueReusableCellWithReuseIdentifier(stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(element.prototypeCellIdentifier ?? stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
+        cell.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        cell.contentView.addConstraint(NSLayoutConstraint(item: cell.contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: view.bounds.size.width))
         element.cell = cell
         element.updateCell()
         return cell
@@ -520,6 +525,12 @@ extension FormController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension FormController: UICollectionViewDelegate {
+    
+    public override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        let elementGroup = elements[indexPath.section].elementGroup
+        let element = elementGroup[indexPath.row]
+        element.height = cell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+    }
 
     public override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section < elements.count,
@@ -536,10 +547,17 @@ extension FormController: UICollectionViewDelegate {
 
 extension FormController: UICollectionViewDelegateFlowLayout {
 
-//    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        let width = collectionView.bounds.size.width
-//        
-//    }
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let elementGroup = elements[indexPath.section].elementGroup
+        let element = elementGroup[indexPath.row]
+        if let height = element.height {
+            return CGSize(width: collectionView.bounds.size.width, height: height)
+        }
+        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
+            return layout.estimatedItemSize
+        }
+        return CGSizeZero
+    }
 
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         let element = elements[section]
