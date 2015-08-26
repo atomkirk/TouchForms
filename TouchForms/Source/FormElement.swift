@@ -204,13 +204,13 @@ public class FormElement: FormCellDelegate, Equatable {
     */
     public func validationErrors() -> [NSError] {
         var validationErrors = [NSError]()
-        if let keyPath = modelKeyPath,
-            let value: AnyObject = currentModelValue() {
-                for validator in validators {
-                    if let error = validator.errorFromValidatingValue(value) {
-                        validationErrors.append(error)
-                    }
+        let value: AnyObject? = currentModelValue()
+        if let keyPath = modelKeyPath {
+            for validator in validators {
+                if let error = validator.errorFromValidatingValue(value) {
+                    validationErrors.append(error)
                 }
+            }
         }
         return validationErrors
     }

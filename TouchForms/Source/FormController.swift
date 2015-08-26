@@ -180,7 +180,7 @@ public class FormController: UICollectionViewController {
             self.showChildElements(errorElementsToShow, position: .Below, duration: 0)
         }
 
-        return true
+        return valid
     }
 
     /**
@@ -487,6 +487,7 @@ public class FormController: UICollectionViewController {
 
         // register metadata cells
         registerCellClassForReuse(MessageChildFormCell.self)
+        registerCellClassForReuse(LoadingChildFormCell.self)
 
         // register view child cell
         collectionView?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: stringFromClassWithoutModule(ViewChildFormCell.self))

@@ -11,13 +11,13 @@ import Foundation
 /**
 Some common patterns you can use for `matchPattern`.
 */
-let RegexFormValidatorPatternEmail     = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$"
-let RegexFormValidatorPatternUsername  = "^[a-z0-9_-]{3,16}$"
-let RegexFormValidatorPatternPassword  = "^[a-z0-9_-]{6,18}$"
-let RegexFormValidatorPatternHex       = "^#?([a-f0-9]{6}|[a-f0-9]{3})$"
-let RegexFormValidatorPatternSlug      = "^[a-z0-9-]+$"
-let RegexFormValidatorPatternURL       = "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$"
-let RegexFormValidatorPatternIPAddress = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+public let RegexFormValidatorPatternEmail     = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$"
+public let RegexFormValidatorPatternUsername  = "^[a-z0-9_-]{3,16}$"
+public let RegexFormValidatorPatternPassword  = "^[a-z0-9_-]{6,18}$"
+public let RegexFormValidatorPatternHex       = "^#?([a-f0-9]{6}|[a-f0-9]{3})$"
+public let RegexFormValidatorPatternSlug      = "^[a-z0-9-]+$"
+public let RegexFormValidatorPatternURL       = "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$"
+public let RegexFormValidatorPatternIPAddress = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
 
 public struct RegexFormValidator: FormValidatorType {
 
@@ -103,7 +103,7 @@ public struct RegexFormValidator: FormValidatorType {
     /**
     A convenience constructor that uses the same rules as setting `matchPattern`.
     */
-    init(pattern: String, failedString: String) {
+    public init(pattern: String, failedString: String) {
         matchPattern = pattern
         self.failedString = failedString
     }
@@ -111,7 +111,7 @@ public struct RegexFormValidator: FormValidatorType {
     /**
     Convenient constructor for using `MYSFormValidationPattern…` constants that define a pattern and sane failureString.
     */
-    init(patternName: String) {
+    public init(patternName: String) {
         matchPattern = patternName
         if let suggestedFailString = userFriendlyFailureStringFromPattern(matchPattern) {
             failedString = suggestedFailString

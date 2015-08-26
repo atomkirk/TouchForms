@@ -10,7 +10,11 @@ import Foundation
 
 public struct PresenceFormValidator: FormValidatorType {
 
-    public var failedString: String = "Can't be blank."
+    public var failedString: String
+
+    public init(failedString: String = "Can't be blank") {
+        self.failedString = failedString
+    }
 
     public func errorFromValidatingValue(value: AnyObject?) -> NSError? {
         if value != nil {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C200A8F81B8D140200C54127 /* ValidationsExampleForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200A8F71B8D140200C54127 /* ValidationsExampleForm.swift */; };
 		C232FA4E1B69C338000635E2 /* CustomThemeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA4D1B69C338000635E2 /* CustomThemeForm.swift */; };
 		C232FA511B69C3F8000635E2 /* CustomXibTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA501B69C3F8000635E2 /* CustomXibTextField.xib */; };
 		C232FA551B6AC656000635E2 /* CustomTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA541B6AC656000635E2 /* CustomTextFieldCell.xib */; };
@@ -23,6 +24,7 @@
 		C26BD7071B641C3500C014A6 /* TouchForms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26BD7011B641BC800C014A6 /* TouchForms.framework */; };
 		C26BD7091B641C5100C014A6 /* TouchForms.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C26BD7011B641BC800C014A6 /* TouchForms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C26BD70C1B641D3600C014A6 /* BasicForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD70B1B641D3600C014A6 /* BasicForm.swift */; };
+		C282BF981B8D1E75002970C0 /* LoadingExampleForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282BF971B8D1E75002970C0 /* LoadingExampleForm.swift */; };
 		C28DB7D81B72E7020085F92F /* ElementCatalogForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DB7D71B72E7020085F92F /* ElementCatalogForm.swift */; };
 		C2F9380A1B8BA33B00A93266 /* StoryboardPrototypeCellsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F938091B8BA33B00A93266 /* StoryboardPrototypeCellsForm.swift */; };
 		C2F9380F1B8CC52B00A93266 /* SignUpForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9380E1B8CC52B00A93266 /* SignUpForm.swift */; };
@@ -75,6 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C200A8F71B8D140200C54127 /* ValidationsExampleForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationsExampleForm.swift; sourceTree = "<group>"; };
 		C232FA4D1B69C338000635E2 /* CustomThemeForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomThemeForm.swift; sourceTree = "<group>"; };
 		C232FA501B69C3F8000635E2 /* CustomXibTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomXibTextField.xib; sourceTree = "<group>"; };
 		C232FA541B6AC656000635E2 /* CustomTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextFieldCell.xib; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		C26BD6EF1B641A8000C014A6 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		C26BD6FB1B641BC800C014A6 /* TouchForms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TouchForms.xcodeproj; path = ../TouchForms/TouchForms.xcodeproj; sourceTree = "<group>"; };
 		C26BD70B1B641D3600C014A6 /* BasicForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicForm.swift; sourceTree = "<group>"; };
+		C282BF971B8D1E75002970C0 /* LoadingExampleForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingExampleForm.swift; sourceTree = "<group>"; };
 		C28DB7D71B72E7020085F92F /* ElementCatalogForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementCatalogForm.swift; sourceTree = "<group>"; };
 		C28DB7E11B7449B40085F92F /* Example.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example.playground; sourceTree = "<group>"; };
 		C2F938091B8BA33B00A93266 /* StoryboardPrototypeCellsForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardPrototypeCellsForm.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				C2F9380E1B8CC52B00A93266 /* SignUpForm.swift */,
+				C200A8F71B8D140200C54127 /* ValidationsExampleForm.swift */,
+				C282BF971B8D1E75002970C0 /* LoadingExampleForm.swift */,
 				C26BD70B1B641D3600C014A6 /* BasicForm.swift */,
 				C232FA4D1B69C338000635E2 /* CustomThemeForm.swift */,
 				C232FA4F1B69C39D000635E2 /* Custom Elements */,
@@ -397,7 +403,9 @@
 				C26BD6DC1B641A8000C014A6 /* ViewController.swift in Sources */,
 				C26BD6DA1B641A8000C014A6 /* AppDelegate.swift in Sources */,
 				C232FA4E1B69C338000635E2 /* CustomThemeForm.swift in Sources */,
+				C200A8F81B8D140200C54127 /* ValidationsExampleForm.swift in Sources */,
 				C28DB7D81B72E7020085F92F /* ElementCatalogForm.swift in Sources */,
+				C282BF981B8D1E75002970C0 /* LoadingExampleForm.swift in Sources */,
 				C2F9380F1B8CC52B00A93266 /* SignUpForm.swift in Sources */,
 				C26BD70C1B641D3600C014A6 /* BasicForm.swift in Sources */,
 				C232FA5C1B6AE624000635E2 /* ProgressFormCell.swift in Sources */,
@@ -485,7 +493,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -524,7 +532,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
