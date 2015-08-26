@@ -23,7 +23,7 @@ class ValidationsExampleForm: FormController {
         let headlineElement = LabelFormElement(text: "Edit User")
         headlineElement.configureCellBlock { (cell) -> Void in
             if let cell = cell as? LabelFormCell {
-                cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
             }
         }
 
@@ -31,7 +31,7 @@ class ValidationsExampleForm: FormController {
         let footnoteElement = LabelFormElement(text: "Example of a form that utilizes validations.")
         footnoteElement.configureCellBlock { (cell) -> Void in
             if let cell = cell as? LabelFormCell {
-                cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
             }
         }
 
@@ -54,7 +54,7 @@ class ValidationsExampleForm: FormController {
         emailElement.addFormValidator(RegexFormValidator(patternName: RegexFormValidatorPatternEmail))
         emailElement.configureCellBlock { (cell) -> Void in
             if let cell = cell as? TextFieldFormCell {
-                cell.textField?.keyboardType = .EmailAddress
+                cell.formTextField?.keyboardType = .EmailAddress
             }
         }
         addFormElement(emailElement)

@@ -22,8 +22,8 @@ public class ButtonFormElement: FormElement {
     public override func populateCell() {
         if let cell = cell as? ButtonFormCell {
             cell.enabled = enabled
-            cell.button?.setTitle(label, forState: .Normal)
-            if let button = cell.button {
+            cell.formButton?.setTitle(label, forState: .Normal)
+            if let button = cell.formButton {
                 button.action = self.action
             }
         }

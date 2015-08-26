@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Adam Kirk. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ExampleUser: NSObject {
     
@@ -17,6 +17,8 @@ class ExampleUser: NSObject {
     dynamic var email: String?
     
     dynamic var password: String?
+    
+    dynamic var avatar: UIImage?
     
     dynamic var yearsOld: Int = 0
     

@@ -12,19 +12,19 @@ public class ImagePickerFormCell: FormCell {
 
     public var placeholderImage: UIImage?
 
-    @IBOutlet weak var label: UILabel?
+    @IBOutlet public weak var formLabel: UILabel?
 
-    @IBOutlet weak var button: UIButton?
+    @IBOutlet public weak var formImageView: UIImageView?
 
-    @IBOutlet weak var imageView: UIImageView?
+    @IBOutlet weak var formButton: UIButton?
 
     public override var valueKeyPath: String {
-        return "imageView.image"
+        return "formImageView.image"
     }
 
     public override func modelValueDidChange() {
-        if imageView?.image == nil {
-            imageView?.image = placeholderImage
+        if formImageView?.image == nil {
+            formImageView?.image = placeholderImage
         }
     }
 

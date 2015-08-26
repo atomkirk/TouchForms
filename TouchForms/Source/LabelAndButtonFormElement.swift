@@ -25,9 +25,9 @@ public class LabelAndButtonFormElement: FormElement {
 
     public override func populateCell() {
         if let cell = cell as? LabelAndButtonFormCell {
-            cell.label?.text = label
-            cell.button?.enabled = enabled
-            cell.button?.setTitle(buttonTitle, forState: .Normal)
+            cell.formLabel?.text = label
+            cell.formButton?.enabled = enabled
+            cell.formButton?.setTitle(buttonTitle, forState: .Normal)
         }
         super.populateCell()
     }

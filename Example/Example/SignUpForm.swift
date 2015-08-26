@@ -26,7 +26,7 @@ class SignUpForm: FormController {
         let footnoteElement = LabelFormElement(text: "Example of a subclassed form view controller where a blank model is created in its viewDidLoad.")
         footnoteElement.configureCellBlock { (cell) -> Void in
             if let cell = cell as? LabelFormCell {
-                cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
             }
         }
         addFormElement(footnoteElement)
@@ -46,7 +46,7 @@ class SignUpForm: FormController {
         emailElement.modelKeyPath = "email"
         emailElement.configureCellBlock { cell in
             if let cell = cell as? TextFieldFormCell {
-                cell.textField?.keyboardType = .EmailAddress
+                cell.formTextField?.keyboardType = .EmailAddress
             }
         }
         addFormElement(emailElement)
@@ -56,7 +56,7 @@ class SignUpForm: FormController {
         passwordElement.modelKeyPath = "password"
         passwordElement.configureCellBlock { cell in
             if let cell = cell as? TextFieldFormCell {
-                cell.textField?.secureTextEntry = true
+                cell.formTextField?.secureTextEntry = true
             }
         }
         addFormElement(passwordElement)

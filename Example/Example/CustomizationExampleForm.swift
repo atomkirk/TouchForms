@@ -9,7 +9,7 @@
 import UIKit
 import TouchForms
 
-class CustomThemeForm: FormController {
+class CustomizationExampleForm: FormController {
 
     override func configureForm() {
 
@@ -17,7 +17,7 @@ class CustomThemeForm: FormController {
         Here we are just using a customized xib for the cell to customize the appearance.
         This is the easiest way to just change the way an existing element looks.
         */
-        let textFieldElement = TextFieldFormElement(label: "Hello")
+        let textFieldElement = TextFieldFormElement(label: "Custom Xib")
         textFieldElement.cellXib = "CustomXibTextField"
         addFormElement(textFieldElement)
 
@@ -26,15 +26,9 @@ class CustomThemeForm: FormController {
         Customization is limited to things related to the appearnce of the cell, like animation
         and dynamic changes in positioning/color/etc.
         */
-        let customTextFieldElement = TextFieldFormElement(label: "Custom")
+        let customTextFieldElement = TextFieldFormElement(label: "Custom Cell Where I Animate Width")
         customTextFieldElement.cellClass = CustomTextFieldCell.self
         addFormElement(customTextFieldElement)
-
-        /**
-        Here we are subclassing an existing element to use it's basic functionality and add
-        some custom functionality. With this approach, the element will behave like it's superclass
-        unless
-        */
 
         /**
         Here we create an entirely new kind of element. We subclass FormElement, FormCell and create

@@ -330,6 +330,12 @@ public class FormController: UICollectionViewController {
                 let ip = NSIndexPath(forItem: newIndex, inSection: section)
                 indexPathsToInsert.append(ip)
             }
+            
+            if duration > 0 {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(duration * NSTimeInterval(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                    self.hideChildrenOfElements([childElement.parentElement], type: childElement.type, completion: nil)
+                })
+            }
         }
 
         if indexPathsToInsert.count > 0 {
@@ -461,6 +467,7 @@ public class FormController: UICollectionViewController {
         let nib = nibForCellClass(cellClass, xib: xib)
         let classString = stringFromClassWithoutModule(cellClass)
         collectionView?.registerNib(nib, forCellWithReuseIdentifier: classString)
+        cellFactory?.registerNib(nib, forCellWithReuseIdentifier: classString)
     }
     
     private func nibForCellClass(cellClass: AnyClass, xib: String? = nil) -> UINib {
@@ -490,8 +497,38 @@ public class FormController: UICollectionViewController {
         registerCellClassForReuse(LoadingChildFormCell.self)
 
         // register view child cell
-        collectionView?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: stringFromClassWithoutModule(ViewChildFormCell.self))
+        let childViewClassName = stringFromClassWithoutModule(ViewChildFormCell.self)
+        collectionView?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: childViewClassName)
+        cellFactory?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: childViewClassName)
     }
+    
+    // MARK: - Cell Factory
+    
+    class CellFactoryDelegate: NSObject, UICollectionViewDataSource {
+        
+        func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+            return 10000
+        }
+    
+        func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return 10000
+        }
+        
+        func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+            return collectionView.dequeueReusableCellWithReuseIdentifier("", forIndexPath: indexPath) as! UICollectionViewCell
+        }
+        
+    }
+    
+    private cellFactoryDataSource
+    private lazy var cellFactory: UICollectionView? = {
+        if let collectionView = self.collectionView,
+            let cellFactory = NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(collectionView)) as? UICollectionView {
+                cellFactory.dataSource =
+                return cellFactory
+        }
+        return nil
+    }()
 
 }
 
@@ -555,7 +592,9 @@ extension FormController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.size.width, height: height)
         }
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-            return layout.estimatedItemSize
+//            println("\(cell?.systemLayoutSizeFittingSize(CGSizeZero))")
+            return CGSize(width: collectionView.bounds.size.width, height: 40)
+//            return layout.estimatedItemSize
         }
         return CGSizeZero
     }

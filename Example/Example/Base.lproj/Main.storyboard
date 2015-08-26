@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Basic Example-->
+        <!--Customization Example-->
         <scene sceneID="89N-EY-5NB">
             <objects>
-                <collectionViewController id="obT-w1-YUk" customClass="CustomThemeForm" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="obT-w1-YUk" customClass="CustomizationExampleForm" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Dj4-Rb-e72">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,12 +25,12 @@
                             <outlet property="delegate" destination="obT-w1-YUk" id="JTi-hy-p6M"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Basic Example" id="5V2-Po-3ec"/>
+                    <navigationItem key="navigationItem" title="Customization Example" id="5V2-Po-3ec"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVT-4p-Iig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-542" y="1692"/>
+            <point key="canvasLocation" x="1830" y="539"/>
         </scene>
         <!--Examples-->
         <scene sceneID="ebP-ZK-Js1">
@@ -103,14 +103,14 @@
                                             <segue destination="wiT-sh-aFy" kind="show" id="vTS-NH-wz4"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ptf-nj-av1" style="IBUITableViewCellStyleDefault" id="kzX-lc-rbS">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ywi-gD-2cZ" style="IBUITableViewCellStyleDefault" id="CWh-co-LMz">
+                                        <rect key="frame" x="0.0" y="152" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kzX-lc-rbS" id="NUu-zk-FpH">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CWh-co-LMz" id="Cck-dn-g4x">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Basic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ptf-nj-av1">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Errors Example" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ywi-gD-2cZ">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -120,27 +120,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="yhf-a3-VXA" kind="show" id="f9X-6H-OSu"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="NQY-JR-Roa" style="IBUITableViewCellStyleDefault" id="oAy-Pf-UiM">
-                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oAy-Pf-UiM" id="nBs-ra-0HN">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Custom Theme" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NQY-JR-Roa">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="obT-w1-YUk" kind="show" id="70N-8m-bAl"/>
+                                            <segue destination="nep-4a-DEv" kind="show" id="e8t-th-3Oe"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ZoT-XN-VrT" style="IBUITableViewCellStyleDefault" id="gyz-3t-bvU">
@@ -161,6 +141,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="kBk-mp-RNK" kind="show" id="7mB-25-4Qo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="NQY-JR-Roa" style="IBUITableViewCellStyleDefault" id="oAy-Pf-UiM">
+                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oAy-Pf-UiM" id="nBs-ra-0HN">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Customization Example" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NQY-JR-Roa">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="obT-w1-YUk" kind="show" id="70N-8m-bAl"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Jf1-kN-1ye" style="IBUITableViewCellStyleDefault" id="Sqw-5u-w5p">
@@ -223,34 +223,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkD-tD-Bp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="-116"/>
-        </scene>
-        <!--Basic Example-->
-        <scene sceneID="VL4-Vj-eCE">
-            <objects>
-                <collectionViewController id="yhf-a3-VXA" customClass="BasicForm" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rbt-mG-UWI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SPU-aN-QEQ">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="yhf-a3-VXA" id="lVe-2P-q1J"/>
-                            <outlet property="delegate" destination="yhf-a3-VXA" id="l6N-oJ-Ri9"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Basic Example" id="qIJ-rN-aid"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yPR-Gz-n3W" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-173" y="1692"/>
+            <point key="canvasLocation" x="1103" y="-205"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rL7-mh-KXp">
@@ -296,7 +269,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NuH-MM-2Y2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-911" y="1697"/>
+            <point key="canvasLocation" x="1465" y="474"/>
         </scene>
         <!--Storyboard Prototype Cells Form-->
         <scene sceneID="NZM-A2-Eag">
@@ -348,7 +321,7 @@
                                 </constraints>
                                 <size key="customSize" width="320" height="66"/>
                                 <connections>
-                                    <outlet property="textField" destination="iFa-6o-raN" id="SPP-j1-JjJ"/>
+                                    <outlet property="formTextField" destination="iFa-6o-raN" id="S5S-BO-P7w"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buttonInLabel" id="4eB-KN-Jt7" customClass="LabelAndButtonFormCell" customModule="TouchForms">
@@ -396,7 +369,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VTW-c4-LBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="201" y="1692"/>
+            <point key="canvasLocation" x="1103" y="1035"/>
         </scene>
         <!--Validation Example-->
         <scene sceneID="EpF-uy-J0Q">
@@ -423,7 +396,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Acl-Gt-zf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="435"/>
+            <point key="canvasLocation" x="1465" y="-153"/>
         </scene>
         <!--Loading Example-->
         <scene sceneID="UcT-Wc-sjU">
@@ -450,7 +423,34 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDN-QZ-XM9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="997"/>
+            <point key="canvasLocation" x="1830" y="-111"/>
+        </scene>
+        <!--Errors Example-->
+        <scene sceneID="25p-g9-8z4">
+            <objects>
+                <collectionViewController id="nep-4a-DEv" customClass="ErrorExampleForm" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zQm-Kz-8gY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aUp-zo-XJK">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="nep-4a-DEv" id="beC-Uy-8kR"/>
+                            <outlet property="delegate" destination="nep-4a-DEv" id="k6Y-9f-W0n"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Errors Example" id="x4W-9q-j6M"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6ry-a5-9mV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1103" y="418"/>
         </scene>
     </scenes>
 </document>

@@ -18,7 +18,7 @@ public class TextViewFormElement: FormElement {
 
     public override func populateCell() {
         if let cell = cell as? TextViewFormCell {
-            cell.textView?.editable = editable
+            cell.formTextView?.editable = editable
         }
         super.populateCell()
     }

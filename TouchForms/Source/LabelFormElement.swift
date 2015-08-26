@@ -19,7 +19,7 @@ public class LabelFormElement: FormElement {
 
     public override func populateCell() {
         if let cell = cell as? LabelFormCell {
-            cell.textLabel?.text = text
+            cell.formLabel?.text = text
         }
         super.populateCell()
     }

@@ -107,8 +107,8 @@ public class PickerFormElement: FormElement {
 
     public override func populateCell() {
         if let cell = cell as? PickerFormCell {
-            cell.label?.text = label
-            cell.button?.enabled = enabled
+            cell.formLabel?.text = label
+            cell.formButton?.enabled = enabled
         }
         super.populateCell()
     }

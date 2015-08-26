@@ -19,7 +19,7 @@ class ProgressFormElement: FormElement {
 
     override func populateCell() {
         if let cell = cell as? ProgressFormCell {
-            cell.progressView.progress = progress
+            cell.formProgressView.progress = progress
         }
     }
 

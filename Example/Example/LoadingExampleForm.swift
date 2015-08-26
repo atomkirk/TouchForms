@@ -27,7 +27,7 @@ class LoadingExampleForm: FormController {
         let headlineElement = LabelFormElement(text: "Edit User")
         headlineElement.configureCellBlock { (cell) -> Void in
             if let cell = cell as? LabelFormCell {
-                cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
             }
         }
 
@@ -35,7 +35,7 @@ class LoadingExampleForm: FormController {
         let footnoteElement = LabelFormElement(text: "Example of a form that utilizes validations.")
         footnoteElement.configureCellBlock { (cell) -> Void in
             if let cell = cell as? LabelFormCell {
-                cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
             }
         }
 

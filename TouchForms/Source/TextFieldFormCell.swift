@@ -10,11 +10,11 @@ import UIKit
 
 public class TextFieldFormCell: FormCell, UITextFieldDelegate {
 
-    @IBOutlet public weak var textField: UITextField?
+    @IBOutlet public weak var formTextField: UITextField?
 
     public override func awakeFromNib() {
         super.awakeFromNib()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidChange:", name: UITextFieldTextDidChangeNotification, object: textField)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidChange:", name: UITextFieldTextDidChangeNotification, object: formTextField)
     }
 
     deinit {
@@ -25,11 +25,11 @@ public class TextFieldFormCell: FormCell, UITextFieldDelegate {
     // MARK: - FormCell
 
     public override var valueKeyPath: String? {
-        return "textField.text"
+        return "formTextField.text"
     }
 
     public override var textInput: UIView? {
-        return textField
+        return formTextField
     }
 
 
@@ -44,7 +44,7 @@ public class TextFieldFormCell: FormCell, UITextFieldDelegate {
     // MARK: - Notifications
 
     func textFieldDidChange(note: NSNotification) {
-        if let text = textField?.text {
+        if let text = formTextField?.text {
             delegate?.formCell(self, valueDidChange: text)
         }
     }

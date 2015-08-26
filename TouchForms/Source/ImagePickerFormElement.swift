@@ -28,14 +28,15 @@ class ImagePickerDelegate: NSObject, UIImagePickerControllerDelegate, UINavigati
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         picker.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
-
-    func imagePickerPickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage ?? info[UIImagePickerControllerOriginalImage] as? UIImage {
             element.updateCell()
             element.delegate?.formElement(element, valueDidChange: image)
             picker.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
+
 
     // MARK: - Action Sheet Delegate
 
@@ -88,8 +89,8 @@ public class ImagePickerFormElement: FormElement {
 
     public override func populateCell() {
         if let cell = cell as? ImagePickerFormCell {
-            cell.label?.text = label
-            cell.button?.enabled = enabled
+            cell.formLabel?.text = label
+            cell.formButton?.enabled = enabled
             cell.placeholderImage = placeholderImage
         }
         super.populateCell()
@@ -124,7 +125,7 @@ public class ImagePickerFormElement: FormElement {
         if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
             actionSheet.addButtonWithTitle(SelectionOptions.ChooseFromLibrary.rawValue)
         }
-        if let cell = cell as? ImagePickerFormCell, let image = cell.imageView?.image {
+        if let cell = cell as? ImagePickerFormCell, let image = cell.formImageView?.image {
             actionSheet.destructiveButtonIndex = actionSheet.addButtonWithTitle(SelectionOptions.RemovePhoto.rawValue)
         }
         actionSheet.cancelButtonIndex = actionSheet.addButtonWithTitle(SelectionOptions.Cancel.rawValue)

@@ -11,7 +11,7 @@ import TouchForms
 
 class ProgressFormCell: FormCell {
 
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var formProgressView: UIProgressView!
 
     override var valueKeyPath: String? {
         return "progressView.progress"

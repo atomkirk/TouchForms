@@ -12,9 +12,9 @@ public class ButtonFormCell: FormCell {
     
     public var enabled = false
 
-    @IBOutlet weak var button: FormButton? {
+    @IBOutlet weak var formButton: FormButton? {
         didSet {
-            button?.addTarget(self, action: "buttonWasTapped:", forControlEvents: .TouchUpInside)
+            formButton?.addTarget(self, action: "buttonWasTapped:", forControlEvents: .TouchUpInside)
         }
     }
 

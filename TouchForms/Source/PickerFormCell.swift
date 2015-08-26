@@ -11,10 +11,10 @@ import UIKit
 public class PickerFormCell: FormCell {
 
     public var selectedValue: String?
+    
+    @IBOutlet public weak var formLabel: UILabel?
 
-    @IBOutlet public weak var button: FormButton?
-
-    @IBOutlet public weak var label: UILabel?
+    @IBOutlet public weak var formButton: FormButton?
 
 
     // MARK: - FormCell
@@ -24,7 +24,7 @@ public class PickerFormCell: FormCell {
     }
 
     public override func modelValueDidChange() {
-        button?.setTitle(selectedValue, forState: .Normal)
+        formButton?.setTitle(selectedValue, forState: .Normal)
     }
 
     // MARK: - Actions

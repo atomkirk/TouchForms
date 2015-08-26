@@ -13,8 +13,7 @@ class ElementCatalogForm: FormController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        model = NSMutableDictionary()
-        model?.setObject("Blah\nBlah\nBlah\nBlah", forKey: "longtext")
+        model = ExampleUser()
     }
 
     override func configureForm() {
@@ -24,12 +23,13 @@ class ElementCatalogForm: FormController {
         addFormElement(labelElement)
 
         // Text Field
-        let textFieldElement = TextFieldFormElement(label: "Hello")
+        let textFieldElement = TextFieldFormElement(label: "First Name")
+        textFieldElement.modelKeyPath = "firstName"
         addFormElement(textFieldElement)
 
         // Text View
         let textViewElement = TextViewFormElement()
-        textViewElement.modelKeyPath = "longtext"
+        textViewElement.modelKeyPath = "biography"
         addFormElement(textViewElement)
 
         // Button
@@ -39,8 +39,9 @@ class ElementCatalogForm: FormController {
         addFormElement(buttonElement)
 
         // Picker
-        let pickerElement = PickerFormElement(label: "Select an animal", values: ["Cat", "Dog", "Bird"])
-        pickerElement.modelKeyPath = "animalName"
+        let pickerElement = PickerFormElement(label: "Age", values: (0...120).map{ "\($0)" })
+        pickerElement.modelKeyPath = "yearsOld"
+        pickerElement.valueTransformer = StringFromNumberValueTransformer()
         addFormElement(pickerElement)
 
         // Buttons
@@ -62,7 +63,7 @@ class ElementCatalogForm: FormController {
 
         // Image Picker
         let imageElement = ImagePickerFormElement(label: "Pick a Photo")
-        imageElement.modelKeyPath = "image"
+        imageElement.modelKeyPath = "avatar"
         addFormElement(imageElement)
     }
 

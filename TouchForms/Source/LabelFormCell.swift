@@ -10,6 +10,6 @@ import UIKit
 
 public class LabelFormCell: FormCell {
 
-    @IBOutlet public weak var textLabel: UILabel?
+    @IBOutlet public weak var formLabel: UILabel?
 
 }

@@ -22,7 +22,7 @@ public class TextFieldFormElement: FormElement {
 
     public override func populateCell() {
         if let cell = cell as? TextFieldFormCell {
-            cell.textField?.placeholder = label
+            cell.formTextField?.placeholder = label
         }
         super.populateCell()
     }
