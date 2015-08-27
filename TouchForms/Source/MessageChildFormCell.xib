@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="7sY-dS-Fgb">
-                        <rect key="frame" x="40" y="2" width="260" height="131"/>
+                        <rect key="frame" x="40" y="5" width="260" height="125"/>
                         <string key="text">A collection view is a way to present an ordered set of data items using a flexible and changeable layout. The most common use for collection views is to present items in a grid-like arrangement, but collection views in iOS are capable of more than just rows and columns.</string>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                         <color key="textColor" red="0.84313725490000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -26,8 +26,8 @@
             <constraints>
                 <constraint firstItem="7sY-dS-Fgb" firstAttribute="leading" secondItem="s4f-wL-ZWQ" secondAttribute="leading" constant="40" id="Uo0-T0-abz"/>
                 <constraint firstAttribute="trailing" secondItem="7sY-dS-Fgb" secondAttribute="trailing" constant="20" id="jdW-HI-CxP"/>
-                <constraint firstAttribute="bottom" secondItem="7sY-dS-Fgb" secondAttribute="bottom" constant="2" id="k6U-hG-aa6"/>
-                <constraint firstItem="7sY-dS-Fgb" firstAttribute="top" secondItem="s4f-wL-ZWQ" secondAttribute="top" constant="2" id="tca-8D-fTr"/>
+                <constraint firstAttribute="bottom" secondItem="7sY-dS-Fgb" secondAttribute="bottom" constant="5" id="k6U-hG-aa6"/>
+                <constraint firstItem="7sY-dS-Fgb" firstAttribute="top" secondItem="s4f-wL-ZWQ" secondAttribute="top" constant="5" id="tca-8D-fTr"/>
             </constraints>
             <size key="customSize" width="319" height="135"/>
             <connections>

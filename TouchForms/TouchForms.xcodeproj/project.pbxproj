@@ -21,6 +21,10 @@
 		C232FA721B7184D0000635E2 /* TextViewFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C232FA6F1B7184D0000635E2 /* TextViewFormCell.xib */; };
 		C232FA731B7184D0000635E2 /* TextViewFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C232FA701B7184D0000635E2 /* TextViewFormElement.swift */; };
 		C239CA591B7BAB58000095D7 /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = C239CA581B7BAB58000095D7 /* String+Size.swift */; };
+		C23A5FCD1B8F89490046C8E5 /* CellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A5FCC1B8F89490046C8E5 /* CellManager.swift */; };
+		C23A5FCF1B8F8EBD0046C8E5 /* Stirng+StripModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A5FCE1B8F8EBD0046C8E5 /* Stirng+StripModule.swift */; };
+		C23A5FD21B8FA6130046C8E5 /* FormController+CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A5FD11B8FA6130046C8E5 /* FormController+CollectionViewDelegate.swift */; };
+		C23A5FD41B8FA6DC0046C8E5 /* FormController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A5FD31B8FA6DC0046C8E5 /* FormController+FlowLayoutDelegate.swift */; };
 		C26BD6AE1B62DECA00C014A6 /* ChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */; };
 		C26BD6B21B62DFA900C014A6 /* ViewChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B11B62DFA900C014A6 /* ViewChildFormElement.swift */; };
 		C26BD6B71B63F78D00C014A6 /* MessageChildFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BD6B61B63F78D00C014A6 /* MessageChildFormCell.swift */; };
@@ -80,6 +84,10 @@
 		C232FA6F1B7184D0000635E2 /* TextViewFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewFormCell.xib; sourceTree = "<group>"; };
 		C232FA701B7184D0000635E2 /* TextViewFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewFormElement.swift; sourceTree = "<group>"; };
 		C239CA581B7BAB58000095D7 /* String+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
+		C23A5FCC1B8F89490046C8E5 /* CellManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellManager.swift; sourceTree = "<group>"; };
+		C23A5FCE1B8F8EBD0046C8E5 /* Stirng+StripModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stirng+StripModule.swift"; sourceTree = "<group>"; };
+		C23A5FD11B8FA6130046C8E5 /* FormController+CollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FormController+CollectionViewDelegate.swift"; sourceTree = "<group>"; };
+		C23A5FD31B8FA6DC0046C8E5 /* FormController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FormController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
 		C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildFormElement.swift; sourceTree = "<group>"; };
 		C26BD6B11B62DFA900C014A6 /* ViewChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewChildFormElement.swift; sourceTree = "<group>"; };
 		C26BD6B61B63F78D00C014A6 /* MessageChildFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageChildFormCell.swift; sourceTree = "<group>"; };
@@ -170,8 +178,18 @@
 			isa = PBXGroup;
 			children = (
 				C239CA581B7BAB58000095D7 /* String+Size.swift */,
+				C23A5FCE1B8F8EBD0046C8E5 /* Stirng+StripModule.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		C23A5FD01B8FA5E70046C8E5 /* Form Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C23A5FD11B8FA6130046C8E5 /* FormController+CollectionViewDelegate.swift */,
+				C23A5FD31B8FA6DC0046C8E5 /* FormController+FlowLayoutDelegate.swift */,
+			);
+			name = "Form Controller";
 			sourceTree = "<group>";
 		};
 		C26BD6AC1B62DE9F00C014A6 /* Child Elements */ = {
@@ -187,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				C2D2A2381B602DEA003901A7 /* FormController.swift */,
+				C23A5FD01B8FA5E70046C8E5 /* Form Controller */,
 				C2D2A23A1B602FCB003901A7 /* FormElement.swift */,
 				C2D2A2401B619AD4003901A7 /* FormCell.swift */,
 				C2D2A2441B619E9A003901A7 /* FormValueTransformer.swift */,
@@ -202,6 +221,7 @@
 		C26BD6B01B62DEFF00C014A6 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				C23A5FCC1B8F89490046C8E5 /* CellManager.swift */,
 				C26BD6AD1B62DECA00C014A6 /* ChildFormElement.swift */,
 				C26BD6AC1B62DE9F00C014A6 /* Child Elements */,
 				C26BD6B31B63F76F00C014A6 /* Child Cells */,
@@ -480,6 +500,7 @@
 				C232FA461B698CDA000635E2 /* StringFromTimeZoneValueTransformer.swift in Sources */,
 				C28DB7ED1B7562E30085F92F /* ImagePickerFormCell.swift in Sources */,
 				C28DB7DE1B72ED0F0085F92F /* ButtonFormCell.swift in Sources */,
+				C23A5FCD1B8F89490046C8E5 /* CellManager.swift in Sources */,
 				C2D2A2431B619C1B003901A7 /* FormButton.swift in Sources */,
 				C2D2A23D1B606B21003901A7 /* FormValidatorType.swift in Sources */,
 				C232FA441B698CBC000635E2 /* StringFromURLValueTransformer.swift in Sources */,
@@ -492,6 +513,7 @@
 				C232FA731B7184D0000635E2 /* TextViewFormElement.swift in Sources */,
 				C232FA641B715D85000635E2 /* LabelFormCell.swift in Sources */,
 				C2D2A23B1B602FCB003901A7 /* FormElement.swift in Sources */,
+				C23A5FD21B8FA6130046C8E5 /* FormController+CollectionViewDelegate.swift in Sources */,
 				C2D2A2391B602DEA003901A7 /* FormController.swift in Sources */,
 				C2D2A2471B61C9E4003901A7 /* MessageChildFormElement.swift in Sources */,
 				C26BD6BE1B640C5300C014A6 /* RegexFormValidator.swift in Sources */,
@@ -508,6 +530,8 @@
 				C232FA481B698CF9000635E2 /* StringFromNumberValueTransformer.swift in Sources */,
 				C26BD6B91B63F79F00C014A6 /* ViewChildFormCell.swift in Sources */,
 				C232FA4A1B698D19000635E2 /* ImageFromDataValueTransformer.swift in Sources */,
+				C23A5FD41B8FA6DC0046C8E5 /* FormController+FlowLayoutDelegate.swift in Sources */,
+				C23A5FCF1B8F8EBD0046C8E5 /* Stirng+StripModule.swift in Sources */,
 				C26BD6C81B6419A000C014A6 /* TextFieldFormCell.swift in Sources */,
 				C2F4A60D1B763DEA00AD5AF0 /* PickerFormCell.swift in Sources */,
 			);

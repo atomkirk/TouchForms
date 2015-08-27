@@ -25,19 +25,19 @@ class LoadingExampleForm: FormController {
 
         // HEADLINE
         let headlineElement = LabelFormElement(text: "Edit User")
-        headlineElement.configureCellBlock { (cell) -> Void in
-            if let cell = cell as? LabelFormCell {
-                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-            }
-        }
+//        headlineElement.configureCellBlock { (cell) -> Void in
+//            if let cell = cell as? LabelFormCell {
+//                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+//            }
+//        }
 
         // FOOTNOTE
         let footnoteElement = LabelFormElement(text: "Example of a form that utilizes validations.")
-        footnoteElement.configureCellBlock { (cell) -> Void in
-            if let cell = cell as? LabelFormCell {
-                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
-            }
-        }
+//        footnoteElement.configureCellBlock { (cell) -> Void in
+//            if let cell = cell as? LabelFormCell {
+//                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+//            }
+//        }
 
         // FIRST NAME FIELD
         firstNameElement = TextFieldFormElement(label: "First Name")

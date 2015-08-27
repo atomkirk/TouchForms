@@ -17,7 +17,7 @@
                         <rect key="frame" x="20" y="8.5" width="20" height="20"/>
                     </activityIndicatorView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait while we log you in" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="252" translatesAutoresizingMaskIntoConstraints="NO" id="9ha-tS-64h">
-                        <rect key="frame" x="48" y="2" width="252" height="34"/>
+                        <rect key="frame" x="48" y="5" width="252" height="28"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -26,10 +26,10 @@
             </view>
             <constraints>
                 <constraint firstItem="kqY-TC-P9P" firstAttribute="centerY" secondItem="9ha-tS-64h" secondAttribute="centerY" id="Haz-qM-tkn"/>
-                <constraint firstAttribute="bottom" secondItem="9ha-tS-64h" secondAttribute="bottom" constant="2" id="Pzb-PP-OYW"/>
+                <constraint firstAttribute="bottom" secondItem="9ha-tS-64h" secondAttribute="bottom" constant="5" id="Pzb-PP-OYW"/>
                 <constraint firstItem="kqY-TC-P9P" firstAttribute="leading" secondItem="mvg-wr-ziI" secondAttribute="leading" constant="20" id="SFZ-2K-tou"/>
                 <constraint firstItem="9ha-tS-64h" firstAttribute="leading" secondItem="kqY-TC-P9P" secondAttribute="trailing" constant="8" symbolic="YES" id="ZZ6-T7-oMf"/>
-                <constraint firstItem="9ha-tS-64h" firstAttribute="top" secondItem="mvg-wr-ziI" secondAttribute="top" constant="2" id="fn2-iN-acJ"/>
+                <constraint firstItem="9ha-tS-64h" firstAttribute="top" secondItem="mvg-wr-ziI" secondAttribute="top" constant="5" id="fn2-iN-acJ"/>
                 <constraint firstAttribute="trailing" secondItem="9ha-tS-64h" secondAttribute="trailing" constant="20" id="nC1-yI-9j9"/>
             </constraints>
             <size key="customSize" width="319" height="38"/>

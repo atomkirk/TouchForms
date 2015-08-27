@@ -22,19 +22,19 @@ class ErrorExampleForm: FormController {
 
         // HEADLINE
         let headlineElement = LabelFormElement(text: "Edit User")
-        headlineElement.configureCellBlock { (cell) -> Void in
-            if let cell = cell as? LabelFormCell {
-                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-            }
-        }
+//        headlineElement.configureCellBlock { (cell) -> Void in
+//            if let cell = cell as? LabelFormCell {
+//                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+//            }
+//        }
 
         // FOOTNOTE
         let footnoteElement = LabelFormElement(text: "Example of a form ")
-        footnoteElement.configureCellBlock { (cell) -> Void in
-            if let cell = cell as? LabelFormCell {
-                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
-            }
-        }
+//        footnoteElement.configureCellBlock { (cell) -> Void in
+//            if let cell = cell as? LabelFormCell {
+//                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+//            }
+//        }
 
         // First Name Field
         firstNameElement = TextFieldFormElement(label: "First Name")

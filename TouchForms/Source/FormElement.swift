@@ -100,6 +100,7 @@ public class FormElement: FormCellDelegate, Equatable {
         didSet {
             if let cell = self.cell {
                 cell.delegate = self
+                populateCell()
                 cellConfigurationBlock?(cell)
             }
         }
@@ -111,6 +112,13 @@ public class FormElement: FormCellDelegate, Equatable {
     */
     public func configureCellBlock(block: FormCellConfigurationBlock) {
         self.cellConfigurationBlock = block
+    }
+
+    /**
+    The evaluated reuse identifier for the element's cell.
+    */
+    public var cellReuseIdentifier: String {
+        return prototypeCellIdentifier ?? NSStringFromClass(cellClass).stripModule()
     }
     
     /**

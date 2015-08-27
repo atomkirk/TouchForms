@@ -31,7 +31,7 @@ public class FormController: UICollectionViewController {
         super.init(coder: aDecoder)
     }
 
-    private var elements = [FormElement]()
+    var elements = [FormElement]()
 
     private var isAlreadyAppeared = false
 
@@ -47,12 +47,12 @@ public class FormController: UICollectionViewController {
             }
             if let collectionView = collectionView,
                 let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                    flowLayout.estimatedItemSize = CGSize(width: collectionView.bounds.size.width, height: 10)
+//                    flowLayout.estimatedItemSize = CGSize(width: collectionView.bounds.size.width, height: 10)
+//                    flowLayout.itemSize = CGSize(width: collectionView.bounds.size.width, height: 44)
                     flowLayout.minimumLineSpacing = 0
                     flowLayout.minimumInteritemSpacing = 0
             }
             configureForm()
-            registerElementCellsForReuse()
             setupKeyboardNotifications()
             if let title = navigationItem.title where count(title) == 0 {
                 navigationItem.title = self.title
@@ -144,6 +144,8 @@ public class FormController: UICollectionViewController {
         else {
             elements.append(element)
         }
+        
+        cellManager.registerCellForElement(element)
         
         if let modelKeyPath = element.modelKeyPath
             where elementHasValidKeyPath(element) {
@@ -463,71 +465,12 @@ public class FormController: UICollectionViewController {
         return nil
     }
     
-    private func registerCellClassForReuse(cellClass: AnyClass, xib: String? = nil) {
-        let nib = nibForCellClass(cellClass, xib: xib)
-        let classString = stringFromClassWithoutModule(cellClass)
-        collectionView?.registerNib(nib, forCellWithReuseIdentifier: classString)
-        cellFactory?.registerNib(nib, forCellWithReuseIdentifier: classString)
-    }
-    
-    private func nibForCellClass(cellClass: AnyClass, xib: String? = nil) -> UINib {
-        let nib: UINib
-        let classString = stringFromClassWithoutModule(cellClass)
-        if let xib = xib {
-            let bundle = NSBundle(forClass: self.dynamicType)
-            nib = UINib(nibName: xib, bundle: bundle)
-        }
-        else {
-            let bundle = NSBundle(forClass: cellClass)
-            nib = UINib(nibName: classString, bundle: bundle)
-        }
-        return nib
-    }
 
-    private func registerElementCellsForReuse() {
-        for element in elements {
-            if element.prototypeCellIdentifier != nil {
-                continue
-            }
-            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
-        }
-
-        // register metadata cells
-        registerCellClassForReuse(MessageChildFormCell.self)
-        registerCellClassForReuse(LoadingChildFormCell.self)
-
-        // register view child cell
-        let childViewClassName = stringFromClassWithoutModule(ViewChildFormCell.self)
-        collectionView?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: childViewClassName)
-        cellFactory?.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: childViewClassName)
-    }
     
     // MARK: - Cell Factory
     
-    class CellFactoryDelegate: NSObject, UICollectionViewDataSource {
-        
-        func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-            return 10000
-        }
-    
-        func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 10000
-        }
-        
-        func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            return collectionView.dequeueReusableCellWithReuseIdentifier("", forIndexPath: indexPath) as! UICollectionViewCell
-        }
-        
-    }
-    
-    private cellFactoryDataSource
-    private lazy var cellFactory: UICollectionView? = {
-        if let collectionView = self.collectionView,
-            let cellFactory = NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(collectionView)) as? UICollectionView {
-                cellFactory.dataSource =
-                return cellFactory
-        }
-        return nil
+    lazy var cellManager: CellManager = {
+        return CellManager(collectionView: self.collectionView!)
     }()
 
 }
@@ -549,9 +492,7 @@ extension FormController: UICollectionViewDataSource {
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let elementGroup = elements[indexPath.section].elementGroup
         let element = elementGroup[indexPath.row]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(element.prototypeCellIdentifier ?? stringFromClassWithoutModule(element.cellClass), forIndexPath: indexPath) as! FormCell
-        cell.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        cell.contentView.addConstraint(NSLayoutConstraint(item: cell.contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: view.bounds.size.width))
+        let cell = cellManager.cellForElement(element, indexPath: indexPath)
         element.cell = cell
         element.updateCell()
         return cell
@@ -559,52 +500,6 @@ extension FormController: UICollectionViewDataSource {
 
 }
 
-
-// MARK: - UICollectionViewDelegate
-
-extension FormController: UICollectionViewDelegate {
-    
-    public override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        let elementGroup = elements[indexPath.section].elementGroup
-        let element = elementGroup[indexPath.row]
-        element.height = cell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
-    }
-
-    public override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section < elements.count,
-            let cell = cell as? FormCell {
-                let element = elements[indexPath.section]
-                formElementsDelegate?.formController(self, willRemoveElement: element, cell: cell)
-        }
-    }
-
-}
-
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension FormController: UICollectionViewDelegateFlowLayout {
-
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let elementGroup = elements[indexPath.section].elementGroup
-        let element = elementGroup[indexPath.row]
-        if let height = element.height {
-            return CGSize(width: collectionView.bounds.size.width, height: height)
-        }
-        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-//            println("\(cell?.systemLayoutSizeFittingSize(CGSizeZero))")
-            return CGSize(width: collectionView.bounds.size.width, height: 40)
-//            return layout.estimatedItemSize
-        }
-        return CGSizeZero
-    }
-
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let element = elements[section]
-        return element.margins
-    }
-    
-}
 
 
 // MARK: - FormElementDataSource
@@ -760,14 +655,6 @@ extension FormController {
                 return NSIndexPath(forItem: item, inSection: section)
         }
         return nil
-    }
-
-    private func stringFromClassWithoutModule(aClass: AnyClass) -> String {
-        let classString = NSStringFromClass(aClass)
-        if let index = find(classString, ".") {
-            return classString.substringFromIndex(index.successor())
-        }
-        return classString
     }
 
 }

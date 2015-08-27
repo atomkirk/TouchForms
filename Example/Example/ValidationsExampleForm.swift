@@ -21,19 +21,19 @@ class ValidationsExampleForm: FormController {
 
         // HEADLINE
         let headlineElement = LabelFormElement(text: "Edit User")
-        headlineElement.configureCellBlock { (cell) -> Void in
-            if let cell = cell as? LabelFormCell {
-                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-            }
-        }
+//        headlineElement.configureCellBlock { (cell) -> Void in
+//            if let cell = cell as? LabelFormCell {
+//                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+//            }
+//        }
 
         // FOOTNOTE
         let footnoteElement = LabelFormElement(text: "Example of a form that utilizes validations.")
-        footnoteElement.configureCellBlock { (cell) -> Void in
-            if let cell = cell as? LabelFormCell {
-                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
-            }
-        }
+//        footnoteElement.configureCellBlock { (cell) -> Void in
+//            if let cell = cell as? LabelFormCell {
+//                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+//            }
+//        }
 
         // FIRST NAME FIELD
         let firstNameElement = TextFieldFormElement(label: "First Name")
@@ -52,11 +52,11 @@ class ValidationsExampleForm: FormController {
         emailElement.modelKeyPath = "email"
         emailElement.addFormValidator(PresenceFormValidator())
         emailElement.addFormValidator(RegexFormValidator(patternName: RegexFormValidatorPatternEmail))
-        emailElement.configureCellBlock { (cell) -> Void in
-            if let cell = cell as? TextFieldFormCell {
-                cell.formTextField?.keyboardType = .EmailAddress
-            }
-        }
+//        emailElement.configureCellBlock { (cell) -> Void in
+//            if let cell = cell as? TextFieldFormCell {
+//                cell.formTextField?.keyboardType = .EmailAddress
+//            }
+//        }
         addFormElement(emailElement)
 
         let submitButtonElement = ButtonFormElement(label: "Validate") {
