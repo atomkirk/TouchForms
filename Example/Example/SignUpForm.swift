@@ -24,11 +24,11 @@ class SignUpForm: FormController {
         
         // FOOTNOTE
         let footnoteElement = LabelFormElement(text: "Example of a subclassed form view controller where a blank model is created in its viewDidLoad.")
-//        footnoteElement.configureCellBlock { (cell) -> Void in
-//            if let cell = cell as? LabelFormCell {
-//                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
-//            }
-//        }
+        footnoteElement.configureCellBlock { (cell) -> Void in
+            if let cell = cell as? LabelFormCell {
+                cell.formLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+            }
+        }
         addFormElement(footnoteElement)
         
         // FIRST NAME
@@ -44,21 +44,21 @@ class SignUpForm: FormController {
         // EMAIL
         let emailElement = TextFieldFormElement(label: "Email")
         emailElement.modelKeyPath = "email"
-//        emailElement.configureCellBlock { cell in
-//            if let cell = cell as? TextFieldFormCell {
-//                cell.formTextField?.keyboardType = .EmailAddress
-//            }
-//        }
+        emailElement.configureCellBlock { cell in
+            if let cell = cell as? TextFieldFormCell {
+                cell.formTextField?.keyboardType = .EmailAddress
+            }
+        }
         addFormElement(emailElement)
         
         // PASSWoRD
         let passwordElement = TextFieldFormElement(label: "Password")
         passwordElement.modelKeyPath = "password"
-//        passwordElement.configureCellBlock { cell in
-//            if let cell = cell as? TextFieldFormCell {
-//                cell.formTextField?.secureTextEntry = true
-//            }
-//        }
+        passwordElement.configureCellBlock { cell in
+            if let cell = cell as? TextFieldFormCell {
+                cell.formTextField?.secureTextEntry = true
+            }
+        }
         addFormElement(passwordElement)
         
         // PRINT MODEL

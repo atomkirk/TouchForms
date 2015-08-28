@@ -41,18 +41,16 @@ public class FormController: UICollectionViewController {
         super.viewWillAppear(animated)
         if !isAlreadyAppeared {
             isAlreadyAppeared = true
-            collectionView?.alwaysBounceVertical = true
+            collectionView!.alwaysBounceVertical = true
+            collectionView!.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
             if view.backgroundColor == nil {
                 view.backgroundColor = UIColor.groupTableViewBackgroundColor()
             }
-            if let collectionView = collectionView,
-                let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//                    flowLayout.estimatedItemSize = CGSize(width: collectionView.bounds.size.width, height: 10)
-//                    flowLayout.itemSize = CGSize(width: collectionView.bounds.size.width, height: 44)
-                    flowLayout.minimumLineSpacing = 0
-                    flowLayout.minimumInteritemSpacing = 0
-            }
+            let layout = CollectionViewFormLayout()
+            layout.formLayoutDelegate = self
+            collectionView!.collectionViewLayout = layout
             configureForm()
+            setElementWidths()
             setupKeyboardNotifications()
             if let title = navigationItem.title where count(title) == 0 {
                 navigationItem.title = self.title
@@ -69,10 +67,10 @@ public class FormController: UICollectionViewController {
     // MARK: - Public
 
     /**
-    Sets the width of the form so no matter how big the container, the form will stay a certain width. Setting it to 0 will use the
-    width of the container. If the value is bigger than the width of the container, the value of the container will be used.
+    Sets the width of the form so no matter how big the container, the form will stay a certain width. If the value 
+    is bigger than the width of the container, the value of the container will be used.
     */
-    public var fixedWidth: CGFloat?
+    public var maximumWidth: CGFloat?
 
     /**
     Set the model for this form. As you add form elements, you will associated those elements with key paths on the model and they will
@@ -326,6 +324,7 @@ public class FormController: UICollectionViewController {
             childElement.position = position
             childElement.dataSource = self
             childElement.delegate = self
+            childElement.actualWidth = collectionView!.bounds.size.width
 
             childElement.parentElement.addChildElement(childElement)
             if let newIndex = find(childElement.parentElement.elementGroup, childElement) {
@@ -655,6 +654,26 @@ extension FormController {
                 return NSIndexPath(forItem: item, inSection: section)
         }
         return nil
+    }
+    
+    private func setElementWidths() {
+        let containerWidth = collectionView!.bounds.size.width
+        var currentRow = [FormElement]()
+        for element in elements {
+            element.actualWidth = collectionView!.bounds.size.width
+            var rowWidth = currentRow.reduce(0) { $0 + ($1.minimumWidth ?? $1.actualWidth) }
+            let elementWidth = element.minimumWidth ?? element.actualWidth
+            if currentRow.count == 0 || rowWidth + elementWidth <= containerWidth {
+                currentRow.append(element)
+            }
+            else {
+                let spreadWidth = floor(containerWidth / CGFloat(currentRow.count))
+                for rowElement in currentRow {
+                    rowElement.actualWidth = spreadWidth
+                }
+                currentRow = [element]
+            }
+        }
     }
 
 }

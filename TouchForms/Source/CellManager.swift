@@ -24,6 +24,7 @@ class CellManager: NSObject, UICollectionViewDataSource {
         // set data source to dummy data source
         factoryCollectionView.dataSource = self
         factoryCollectionView.delegate = nil
+        factoryCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
         // register metadata cells
         registerCellClassForReuse(MessageChildFormCell.self)
@@ -43,16 +44,14 @@ class CellManager: NSObject, UICollectionViewDataSource {
     
     func cellForElement(element: FormElement, indexPath: NSIndexPath) -> FormCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(element.cellReuseIdentifier, forIndexPath: indexPath) as! FormCell
-        cell.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        cell.contentView.addConstraint(NSLayoutConstraint(item: cell.contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: collectionView.bounds.size.width))
+        cell.addWidthConstraint(element.actualWidth - element.margins.left - element.margins.right)
         element.cell = cell
         return cell
     }
     
     func cellSizeForElement(element: FormElement) -> CGSize {
         let cell = factoryCollectionView.dequeueReusableCellWithReuseIdentifier(element.cellReuseIdentifier, forIndexPath: NSIndexPath(forItem: 0, inSection: 0)) as! FormCell
-        cell.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        cell.contentView.addConstraint(NSLayoutConstraint(item: cell.contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: collectionView.bounds.size.width))
+        cell.addWidthConstraint(element.actualWidth - element.margins.left - element.margins.right)
         element.cell = cell
         return cell.contentView.systemLayoutSizeFittingSize(CGSize(width: collectionView.bounds.size.width, height: 100000))
     }
@@ -82,16 +81,16 @@ extension CellManager {
     
     private func registerCellClassForReuse(cellClass: AnyClass, xib: String? = nil) {
         let nib = nibForCellClass(cellClass, xib: xib)
-        let classString = NSStringFromClass(cellClass).stripModule()
-        collectionView.registerNib(nib, forCellWithReuseIdentifier: classString)
-        factoryCollectionView.registerNib(nib, forCellWithReuseIdentifier: classString)
+        let reuseIdentifier = xib ?? NSStringFromClass(cellClass).stripModule()
+        collectionView.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
+        factoryCollectionView.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     private func nibForCellClass(cellClass: AnyClass, xib: String? = nil) -> UINib {
         let nib: UINib
         let classString = NSStringFromClass(cellClass).stripModule()
         if let xib = xib {
-            let bundle = NSBundle(forClass: self.dynamicType)
+            let bundle = NSBundle.mainBundle()
             nib = UINib(nibName: xib, bundle: bundle)
         }
         else {

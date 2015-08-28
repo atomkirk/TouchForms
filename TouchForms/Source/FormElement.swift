@@ -80,15 +80,16 @@ public class FormElement: FormCellDelegate, Equatable {
     // MARK: - Customizing Appearance
 
     /**
-    Most element's have an intrinsic height it can figure out on it's own using auto layout
-    constraints, but you can set it explictly.
+    Using this value, the form controller will try to fit as many elements on the same line as possible. If you never
+    want more than one element per line, set this to the width of the container.
     */
-    public var height: CGFloat?
+    public var minimumWidth: CGFloat?
+    var actualWidth: CGFloat = 0
 
     /**
     Set how much space there is around the outside of the cell.
     */
-    public var margins = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+    public var margins = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
 
 
     // MARK: - Configuring the Cell
@@ -118,7 +119,7 @@ public class FormElement: FormCellDelegate, Equatable {
     The evaluated reuse identifier for the element's cell.
     */
     public var cellReuseIdentifier: String {
-        return prototypeCellIdentifier ?? NSStringFromClass(cellClass).stripModule()
+        return prototypeCellIdentifier ?? cellXib ?? NSStringFromClass(cellClass).stripModule()
     }
     
     /**

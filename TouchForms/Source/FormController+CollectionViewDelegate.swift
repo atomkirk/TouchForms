@@ -10,12 +10,6 @@ import Foundation
 
 extension FormController: UICollectionViewDelegate {
     
-    public override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        let elementGroup = elements[indexPath.section].elementGroup
-        let element = elementGroup[indexPath.row]
-        element.height = cell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
-    }
-    
     public override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section < elements.count,
             let cell = cell as? FormCell {

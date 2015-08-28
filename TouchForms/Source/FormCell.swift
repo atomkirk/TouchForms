@@ -70,5 +70,20 @@ public class FormCell: UICollectionViewCell {
     // MARK: - Delegate
 
     public var delegate: FormCellDelegate?
+    
+    
+    // MARK: - Internal
+    
+    private var widthConstraint: NSLayoutConstraint?
+    func addWidthConstraint(width: CGFloat) {
+        if let existingConstraint = widthConstraint {
+            existingConstraint.constant = width
+        }
+        else {
+            contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            widthConstraint = NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: width)
+            contentView.addConstraint(widthConstraint!)
+        }
+    }
 
 }
