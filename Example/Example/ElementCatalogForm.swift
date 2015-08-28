@@ -48,13 +48,13 @@ class ElementCatalogForm: FormController {
         let button1Element = ButtonFormElement(label: "Button 1") {
             println("button1 tapped")
         }
-        button1Element.minimumWidth = view.bounds.size.width / 3
+        button1Element.minimumWidth = view.bounds.size.width / 2
         addFormElement(button1Element)
         
         let button2Element = ButtonFormElement(label: "Button 2") { () -> Void in
             println("button2 tapped")
         }
-        button2Element.minimumWidth = view.bounds.size.width / 3
+        button2Element.minimumWidth = view.bounds.size.width / 2
         addFormElement(button2Element)
 
         // Label and Button
