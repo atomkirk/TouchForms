@@ -36,13 +36,17 @@ public class FormController: UICollectionViewController {
     private var isAlreadyAppeared = false
 
     private var outstandingValidationErrorCount = 0
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView!.alwaysBounceVertical = true
+        collectionView!.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+    }
 
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if !isAlreadyAppeared {
             isAlreadyAppeared = true
-            collectionView!.alwaysBounceVertical = true
-            collectionView!.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
             if view.backgroundColor == nil {
                 view.backgroundColor = UIColor.groupTableViewBackgroundColor()
             }
