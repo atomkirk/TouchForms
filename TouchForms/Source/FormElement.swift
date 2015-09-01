@@ -101,7 +101,7 @@ public class FormElement: FormCellDelegate, Equatable {
         didSet {
             if let cell = self.cell {
                 cell.delegate = self
-                populateCell()
+                updateCell()
                 cellConfigurationBlock?(cell)
             }
         }

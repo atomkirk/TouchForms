@@ -13,7 +13,7 @@ extension FormController: CollectionViewDelegateFormLayout {
     func collectionViewItemSize(collectionView: UICollectionView, layout: CollectionViewFormLayout, indexPath: NSIndexPath) -> CGSize {
         let elementGroup = elements[indexPath.section].elementGroup
         let element = elementGroup[indexPath.item]
-        let cellSize = cellManager.cellSizeForElement(element)
+        let cellSize = element.cell!.contentView.systemLayoutSizeFittingSize(CGSize(width: collectionView.bounds.size.width, height: 100000))
         return cellSize
     }
     

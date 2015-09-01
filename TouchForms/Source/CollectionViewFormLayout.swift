@@ -32,7 +32,7 @@ class CollectionViewFormLayout: UICollectionViewLayout {
             for i in 0..<numberOfItems {
                 
                 let ip = NSIndexPath(forItem: i, inSection: s)
-                let size = formLayoutDelegate?.collectionViewItemSize(collectionView!, layout: self, indexPath: ip) ?? CGSize(width: 50, height: 50)
+                let size = CGSize(width: collectionView!.bounds.size.width, height: 100)
                 let insets = formLayoutDelegate?.collectionViewItemInsets(collectionView!, layout: self, indexPath: ip) ?? UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
                 
                 if x == 0 {
@@ -60,7 +60,17 @@ class CollectionViewFormLayout: UICollectionViewLayout {
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        return layoutAttributes.filter { CGRectIntersectsRect($0.frame, rect) }
+        for attribute in layoutAttributes {
+            if let
+                delegate = formLayoutDelegate,
+                cell = collectionView!.cellForItemAtIndexPath(attribute.indexPath) {
+                    var frame = attribute.frame
+                    frame.size.height = cell.contentView.systemLayoutSizeFittingSize(CGSize(width: collectionView!.bounds.size.width, height: 100000)).height
+                    attribute.frame = frame
+            }
+        }
+        let attributes = layoutAttributes.filter { CGRectIntersectsRect($0.frame, rect) }
+        return attributes
     }
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {

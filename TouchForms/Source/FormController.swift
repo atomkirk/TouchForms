@@ -51,6 +51,7 @@ public class FormController: UICollectionViewController {
             collectionView!.collectionViewLayout = layout
             configureForm()
             setElementWidths()
+            registerInternalCells()
             setupKeyboardNotifications()
             if let title = navigationItem.title where count(title) == 0 {
                 navigationItem.title = self.title
@@ -143,7 +144,7 @@ public class FormController: UICollectionViewController {
             elements.append(element)
         }
         
-        cellManager.registerCellForElement(element)
+        registerCellForElement(element)
         
         if let modelKeyPath = element.modelKeyPath
             where elementHasValidKeyPath(element) {
@@ -302,6 +303,50 @@ public class FormController: UICollectionViewController {
     }
 
     // MARK: - Private
+    
+    
+    // MARK: (register cells for reuse)
+    
+//    private func cellSizeForElement(element: FormElement) -> CGSize {
+//        let cell = collectionView!.dequeueReusableCellWithReuseIdentifier(element.cellReuseIdentifier, forIndexPath: NSIndexPath(forItem: 0, inSection: 0)) as! FormCell
+//        cell.addWidthConstraint(element.actualWidth - element.margins.left - element.margins.right)
+//        element.cell = cell
+//        return cell.contentView.systemLayoutSizeFittingSize(CGSize(width: collectionView.bounds.size.width, height: 100000))
+//    }
+    
+    private func registerCellForElement(element: FormElement) {
+        if element.prototypeCellIdentifier == nil {
+            registerCellClassForReuse(element.cellClass, xib: element.cellXib)
+        }
+    }
+    
+    private func registerInternalCells() {
+        registerCellClassForReuse(MessageChildFormCell.self)
+        registerCellClassForReuse(LoadingChildFormCell.self)
+        collectionView!.registerClass(ViewChildFormCell.self, forCellWithReuseIdentifier: NSStringFromClass(ViewChildFormCell.self).stripModule())
+    }
+    
+    private func registerCellClassForReuse(cellClass: AnyClass, xib: String? = nil) {
+        let nib = nibForCellClass(cellClass, xib: xib)
+        let reuseIdentifier = xib ?? NSStringFromClass(cellClass).stripModule()
+        collectionView!.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    private func nibForCellClass(cellClass: AnyClass, xib: String? = nil) -> UINib {
+        let nib: UINib
+        let classString = NSStringFromClass(cellClass).stripModule()
+        if let xib = xib {
+            let bundle = NSBundle.mainBundle()
+            nib = UINib(nibName: xib, bundle: bundle)
+        }
+        else {
+            let bundle = NSBundle(forClass: cellClass)
+            nib = UINib(nibName: classString, bundle: bundle)
+        }
+        return nib
+    }
+    
+
 
     // MARK: (showing/hiding child elements)
 
@@ -463,14 +508,6 @@ public class FormController: UICollectionViewController {
         }
         return nil
     }
-    
-
-    
-    // MARK: - Cell Factory
-    
-    lazy var cellManager: CellManager = {
-        return CellManager(collectionView: self.collectionView!)
-    }()
 
 }
 
@@ -491,9 +528,10 @@ extension FormController: UICollectionViewDataSource {
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let elementGroup = elements[indexPath.section].elementGroup
         let element = elementGroup[indexPath.row]
-        let cell = cellManager.cellForElement(element, indexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(element.cellReuseIdentifier, forIndexPath: indexPath) as! FormCell
+        cell.addWidthConstraint(element.actualWidth - element.margins.left - element.margins.right)
         element.cell = cell
-        element.updateCell()
+        collectionView.collectionViewLayout.invalidateLayout()
         return cell
     }
 
