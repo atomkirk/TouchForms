@@ -62,11 +62,11 @@ class CellManager: NSObject, UICollectionViewDataSource {
 extension CellManager {
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 10000
+        return 200
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10000
+        return 20
     }
     
     // Not used, just satisfied protocol
