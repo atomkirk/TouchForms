@@ -20,7 +20,7 @@ class StoryboardPrototypeCellsForm: FormController {
         
         // Label and Button
         let buttonInLabelElement = LabelAndButtonFormElement(label: "", buttonTitle: "") {
-            println("button was tapped")
+            print("button was tapped")
         }
         buttonInLabelElement.prototypeCellIdentifier = "buttonInLabel"
         addFormElement(buttonInLabelElement)

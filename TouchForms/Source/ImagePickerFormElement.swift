@@ -29,7 +29,7 @@ class ImagePickerDelegate: NSObject, UIImagePickerControllerDelegate, UINavigati
         picker.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage ?? info[UIImagePickerControllerOriginalImage] as? UIImage {
             element.updateCell()
             element.delegate?.formElement(element, valueDidChange: image)
@@ -41,7 +41,7 @@ class ImagePickerDelegate: NSObject, UIImagePickerControllerDelegate, UINavigati
     // MARK: - Action Sheet Delegate
 
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        let buttonTitle = actionSheet.buttonTitleAtIndex(buttonIndex)
+        let buttonTitle = actionSheet.buttonTitleAtIndex(buttonIndex)!
         if let selection = SelectionOptions(rawValue: buttonTitle) {
             switch selection {
             case .TakePhoto:
@@ -125,7 +125,7 @@ public class ImagePickerFormElement: FormElement {
         if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
             actionSheet.addButtonWithTitle(SelectionOptions.ChooseFromLibrary.rawValue)
         }
-        if let cell = cell as? ImagePickerFormCell, let image = cell.formImageView?.image {
+        if let cell = cell as? ImagePickerFormCell where cell.formImageView?.image != nil {
             actionSheet.destructiveButtonIndex = actionSheet.addButtonWithTitle(SelectionOptions.RemovePhoto.rawValue)
         }
         actionSheet.cancelButtonIndex = actionSheet.addButtonWithTitle(SelectionOptions.Cancel.rawValue)

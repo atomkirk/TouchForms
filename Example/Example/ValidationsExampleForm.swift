@@ -61,10 +61,10 @@ class ValidationsExampleForm: FormController {
 
         let submitButtonElement = ButtonFormElement(label: "Validate") {
             if self.validate() {
-                println("Valid")
+                print("Valid")
             }
             else {
-                println("Not Valid")
+                print("Not Valid")
             }
         }
         addFormElement(submitButtonElement)

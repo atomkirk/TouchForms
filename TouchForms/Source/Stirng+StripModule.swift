@@ -11,7 +11,7 @@ import Foundation
 extension String {
     
     func stripModule() -> String {
-        if let index = find(self, ".") {
+        if let index = self.characters.indexOf(".") {
             return self.substringFromIndex(index.successor())
         }
         return self

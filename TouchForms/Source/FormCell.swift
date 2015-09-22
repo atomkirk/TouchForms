@@ -30,7 +30,7 @@ public class FormCell: UICollectionViewCell {
 
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -80,7 +80,7 @@ public class FormCell: UICollectionViewCell {
             existingConstraint.constant = width
         }
         else {
-            contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            contentView.translatesAutoresizingMaskIntoConstraints = false
             widthConstraint = NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: width)
             contentView.addConstraint(widthConstraint!)
         }

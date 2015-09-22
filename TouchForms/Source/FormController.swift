@@ -27,7 +27,7 @@ instantiated, your implementation of `configureForm` will be called where you ca
 */
 public class FormController: UICollectionViewController {
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
@@ -56,7 +56,7 @@ public class FormController: UICollectionViewController {
             configureForm()
             setElementWidths()
             setupKeyboardNotifications()
-            if let title = navigationItem.title where count(title) == 0 {
+            if let title = navigationItem.title where title.characters.count == 0 {
                 navigationItem.title = self.title
             }
         }
@@ -87,7 +87,7 @@ public class FormController: UICollectionViewController {
             for element in elements {
                 if let modelKeyPath = element.modelKeyPath
                 where elementHasValidKeyPath(element) {
-                    model?.addObserver(self, forKeyPath: modelKeyPath, options: nil, context: &formKVOContext)
+                    model?.addObserver(self, forKeyPath: modelKeyPath, options: [], context: &formKVOContext)
                 }
                 element.updateCell()
             }
@@ -151,7 +151,7 @@ public class FormController: UICollectionViewController {
         
         if let modelKeyPath = element.modelKeyPath
             where elementHasValidKeyPath(element) {
-                model?.addObserver(self, forKeyPath: modelKeyPath, options: nil, context: &formKVOContext)
+                model?.addObserver(self, forKeyPath: modelKeyPath, options: [], context: &formKVOContext)
         }
     }
 
@@ -290,7 +290,7 @@ public class FormController: UICollectionViewController {
 
     // MARK: - KVO (the model changed)
 
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         for element in elements {
             if element.modelKeyPath == keyPath {
                 if let textInput = element.cell?.textInput where textInput.isFirstResponder() {
@@ -316,14 +316,13 @@ public class FormController: UICollectionViewController {
 
         var indexPathsToInsert = [NSIndexPath]()
 
-        var visibleChildElements = [ChildFormElement]()
         for childElement in childElements {
             let visibleChildElements = childElementsOfParentElement(childElement.parentElement, type: childElement.type)
-            if contains(visibleChildElements, childElement) {
+            if visibleChildElements.contains(childElement) {
                 continue
             }
 
-            let section = find(elements, childElement.parentElement)!
+            let section = elements.indexOf(childElement.parentElement)!
 
             childElement.position = position
             childElement.dataSource = self
@@ -331,7 +330,7 @@ public class FormController: UICollectionViewController {
             childElement.actualWidth = collectionView!.bounds.size.width
 
             childElement.parentElement.addChildElement(childElement)
-            if let newIndex = find(childElement.parentElement.elementGroup, childElement) {
+            if let newIndex = childElement.parentElement.elementGroup.indexOf(childElement) {
                 let ip = NSIndexPath(forItem: newIndex, inSection: section)
                 indexPathsToInsert.append(ip)
             }
@@ -481,7 +480,7 @@ public class FormController: UICollectionViewController {
 
 // MARK: - UICollectionViewDataSource
 
-extension FormController: UICollectionViewDataSource {
+extension FormController {
 
     public override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return elements.count
@@ -531,7 +530,7 @@ extension FormController: FormElementDelegate {
 
         // tranform the value if needed
         if let valueTransformer = element.valueTransformer {
-            transformedValue = element.valueTransformer?.reverseTransformedValue(value)
+            transformedValue = valueTransformer.reverseTransformedValue(value)
         }
 
         if let transformedValue: AnyObject = transformedValue {
@@ -586,12 +585,12 @@ extension FormController {
         if let endFrame = note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue,
             let animationDuration = note.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
             let curve = note.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber,
-            var insets = collectionView?.contentInset,
-            var offset = collectionView?.contentOffset,
+            var insets = self.collectionView?.contentInset,
+            var offset = self.collectionView?.contentOffset,
             let collectionView = collectionView {
                 insets.bottom = endFrame.CGRectValue().size.height
                 offset.y += insets.bottom
-                UIView.animateWithDuration(animationDuration.doubleValue, delay: 0, options: UIViewAnimationOptions(curve.unsignedLongValue >> 16), animations: { () -> Void in
+                UIView.animateWithDuration(animationDuration.doubleValue, delay: 0, options: UIViewAnimationOptions(rawValue: curve.unsignedLongValue >> 16), animations: { () -> Void in
                     collectionView.contentInset = insets
                     }, completion: nil)
         }
@@ -600,10 +599,10 @@ extension FormController {
     func keyboardWillHideNotification(note: NSNotification) {
         if let animationDuration = note.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
             let curve = note.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber,
-            var insets = collectionView?.contentInset,
+            var insets = self.collectionView?.contentInset,
             let collectionView = collectionView {
                 insets.bottom = 0
-                UIView.animateWithDuration(animationDuration.doubleValue, delay: 0, options: UIViewAnimationOptions(curve.unsignedLongValue >> 16), animations: { () -> Void in
+                UIView.animateWithDuration(animationDuration.doubleValue, delay: 0, options: UIViewAnimationOptions(rawValue: curve.unsignedLongValue >> 16), animations: { () -> Void in
                     collectionView.contentInset = insets
                     }, completion: nil)
         }
@@ -612,7 +611,7 @@ extension FormController {
     func textFieldDidBeginEditingNotification(note: NSNotification) {
         if let textField = note.object as? UITextField,
             let element = elementContainingView(textField) {
-                if let nextElement = elementAfter(element) {
+                if elementAfter(element) != nil {
                     textField.returnKeyType = .Next
                 }
                 else {
@@ -623,7 +622,7 @@ extension FormController {
 
     func textFieldDidEndEditingNotification(note: NSNotification) {
         if let textField = note.object as? UITextField {
-            if contains(visibleTextInputs(), textField) {
+            if visibleTextInputs().contains(textField) {
                 if outstandingValidationErrorCount > 0 {
                     validate()
                 }
@@ -653,8 +652,8 @@ extension FormController {
 extension FormController {
 
     private func indexPathOfElement(element: FormElement) -> NSIndexPath? {
-        if let section = find(elements, element),
-            let item = find(element.elementGroup, element) {
+        if let section = elements.indexOf(element),
+            let item = element.elementGroup.indexOf(element) {
                 return NSIndexPath(forItem: item, inSection: section)
         }
         return nil
@@ -665,7 +664,7 @@ extension FormController {
         var currentRow = [FormElement]()
         for element in elements {
             element.actualWidth = collectionView!.bounds.size.width
-            var rowWidth = currentRow.reduce(0) { $0 + ($1.minimumWidth ?? $1.actualWidth) }
+            let rowWidth = currentRow.reduce(0) { $0 + ($1.minimumWidth ?? $1.actualWidth) }
             let elementWidth = element.minimumWidth ?? element.actualWidth
             if currentRow.count == 0 || rowWidth + elementWidth <= containerWidth {
                 currentRow.append(element)

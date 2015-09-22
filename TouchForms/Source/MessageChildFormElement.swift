@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MessageChildFormElement: ChildFormElement, Equatable, Hashable {
+class MessageChildFormElement: ChildFormElement, Hashable {
 
     let message: String
 

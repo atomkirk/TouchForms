@@ -26,7 +26,7 @@ class CollectionViewFormLayout: UICollectionViewLayout {
         let containerSize = collectionView!.bounds.size
         let numberOfSections = collectionView!.numberOfSections()
         var lastSize = CGSizeZero
-        var lastInsets = UIEdgeInsetsZero
+        let lastInsets = UIEdgeInsetsZero
         for s in 0..<numberOfSections {
             let numberOfItems = collectionView!.numberOfItemsInSection(s)
             for i in 0..<numberOfItems {
@@ -59,11 +59,11 @@ class CollectionViewFormLayout: UICollectionViewLayout {
         return layoutAttributes.reduce(CGRectZero) { CGRectUnion($0, $1.frame) }.size
     }
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return layoutAttributes.filter { CGRectIntersectsRect($0.frame, rect) }
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         return layoutAttributes.filter { $0.indexPath == indexPath }.first
     }
     

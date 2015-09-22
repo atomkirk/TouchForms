@@ -23,7 +23,7 @@ class ViewChildFormElement: ChildFormElement {
             for view in contentView.subviews {
                 view.removeFromSuperview()
             }
-            view.setTranslatesAutoresizingMaskIntoConstraints(false)
+            view.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(view)
             contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Top,      relatedBy: .Equal, toItem: view, attribute: .Top,      multiplier: 1, constant: 0))
             contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Bottom,   relatedBy: .Equal, toItem: view, attribute: .Bottom,   multiplier: 1, constant: 0))

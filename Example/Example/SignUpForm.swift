@@ -63,7 +63,7 @@ class SignUpForm: FormController {
         
         // PRINT MODEL
         let printButtonElement = ButtonFormElement(label: "Log Current Model") {
-            println("\(self.model)")
+            print("\(self.model)")
         }
         addFormElement(printButtonElement)
         
@@ -87,7 +87,7 @@ private let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234
 
 private func randomStringWithLength(length: Int) -> String {
     var randomString = ""
-    for i in 0..<length {
+    for _ in 0..<length {
         let range = NSMakeRange(Int(arc4random()) % letters.length, 1)
         let character = letters.substringWithRange(range)
         randomString.append(Character(character))

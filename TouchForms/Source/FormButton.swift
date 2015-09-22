@@ -29,7 +29,7 @@ public class FormButton: UIButton {
         setTitle(label, forState: .Normal)
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         self.style = .Default
         self.action = {}
         super.init(coder: aDecoder)

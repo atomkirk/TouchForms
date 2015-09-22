@@ -34,7 +34,7 @@ class ElementCatalogForm: FormController {
 
         // Button
         let buttonElement = ButtonFormElement(label: "Button") {
-            println("button tapped")
+            print("button tapped")
         }
         addFormElement(buttonElement)
 
@@ -46,20 +46,20 @@ class ElementCatalogForm: FormController {
 
         // Buttons
         let button1Element = ButtonFormElement(label: "Button 1") {
-            println("button1 tapped")
+            print("button1 tapped")
         }
         button1Element.minimumWidth = view.bounds.size.width / 2
         addFormElement(button1Element)
         
         let button2Element = ButtonFormElement(label: "Button 2") { () -> Void in
-            println("button2 tapped")
+            print("button2 tapped")
         }
         button2Element.minimumWidth = view.bounds.size.width / 2
         addFormElement(button2Element)
 
         // Label and Button
         let labelAndButtonElement = LabelAndButtonFormElement(label: "A label", buttonTitle: "Button") {
-            println("label and button tapped")
+            print("label and button tapped")
         }
         addFormElement(labelAndButtonElement)
 

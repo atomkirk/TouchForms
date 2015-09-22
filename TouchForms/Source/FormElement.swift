@@ -214,11 +214,9 @@ public class FormElement: FormCellDelegate, Equatable {
     public func validationErrors() -> [NSError] {
         var validationErrors = [NSError]()
         let value: AnyObject? = currentModelValue()
-        if let keyPath = modelKeyPath {
-            for validator in validators {
-                if let error = validator.errorFromValidatingValue(value) {
-                    validationErrors.append(error)
-                }
+        for validator in validators {
+            if let error = validator.errorFromValidatingValue(value) {
+                validationErrors.append(error)
             }
         }
         return validationErrors
@@ -272,10 +270,10 @@ public class FormElement: FormCellDelegate, Equatable {
     }
 
     func removeChildElement(childElement: ChildFormElement) {
-        if let index = find(childElementsAbove, childElement) {
+        if let index = childElementsAbove.indexOf(childElement) {
             childElementsAbove.removeAtIndex(index)
         }
-        if let index = find(childElementsBelow, childElement) {
+        if let index = childElementsBelow.indexOf(childElement) {
             childElementsBelow.removeAtIndex(index)
         }
     }
@@ -306,7 +304,7 @@ public class FormElement: FormCellDelegate, Equatable {
     private var defaultCellClass: AnyClass {
         let className = NSStringFromClass(self.dynamicType)
         let cellClassName = className.stringByReplacingOccurrencesOfString("Element", withString: "Cell")
-        return NSClassFromString(cellClassName)
+        return NSClassFromString(cellClassName)!
     }
 
 }

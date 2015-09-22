@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension FormController: UICollectionViewDelegate {
+extension FormController {
     
     public override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section < elements.count,

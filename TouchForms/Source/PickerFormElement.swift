@@ -28,7 +28,7 @@ class PickerFormElementDelegate: NSObject, UIPickerViewDataSource, UIPickerViewD
 
     // MARK: - Picker View Delegate
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var value = element.values[row]
         if let valueTransformer = element.valueTransformer,
             let transformedValue = valueTransformer.transformedValue(value) as? String {
@@ -121,7 +121,7 @@ public class PickerFormElement: FormElement {
 
     public override func formCell(cell: FormCell, userDidPerformInteraction interaction: FormCellUserInteraction, view: UIView) {
         if let value = currentModelValue() as? String,
-            let index = find(values, value) {
+            let index = values.indexOf(value) {
                 pickerView.selectRow(index, inComponent: 0, animated: true)
         }
         if !visible {

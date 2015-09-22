@@ -37,14 +37,14 @@ public struct RegexFormValidator: FormValidatorType {
     */
     public var matchPattern: String {
         didSet {
-            var error: NSError?
-            let options = NSRegularExpressionOptions( NSRegularExpressionOptions.CaseInsensitive.rawValue | NSRegularExpressionOptions.DotMatchesLineSeparators.rawValue)
-            if let regex = NSRegularExpression(pattern: matchPattern, options: options, error: &error) {
+            let options = NSRegularExpressionOptions( rawValue: NSRegularExpressionOptions.CaseInsensitive.rawValue | NSRegularExpressionOptions.DotMatchesLineSeparators.rawValue)
+            do {
+                let regex = try NSRegularExpression(pattern: matchPattern, options: options)
                 matchExpression = regex
                 if let string = userFriendlyFailureStringFromPattern(matchPattern) {
                     failedString = string
                 }
-            }
+            } catch {}
         }
     }
 
@@ -76,7 +76,7 @@ public struct RegexFormValidator: FormValidatorType {
         }
 
         if let string = value as? String {
-            if count(string) == 0 {
+            if string.characters.count == 0 {
                 if blankAllowed {
                     return nil
                 }
@@ -86,7 +86,7 @@ public struct RegexFormValidator: FormValidatorType {
             }
 
             if let regex = matchExpression
-                where regex.numberOfMatchesInString(string, options: nil, range: NSMakeRange(0, count(string))) > 0 {
+                where regex.numberOfMatchesInString(string, options: [], range: NSMakeRange(0, string.characters.count)) > 0 {
                     return nil
             }
             else {
