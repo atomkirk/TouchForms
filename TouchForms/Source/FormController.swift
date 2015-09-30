@@ -47,8 +47,8 @@ public class FormController: UICollectionViewController {
         super.viewWillAppear(animated)
         if !isAlreadyAppeared {
             isAlreadyAppeared = true
-            if view.backgroundColor == nil {
-                view.backgroundColor = UIColor.groupTableViewBackgroundColor()
+            if collectionView!.backgroundColor == nil {
+                collectionView!.backgroundColor = UIColor.groupTableViewBackgroundColor()
             }
             let layout = CollectionViewFormLayout()
             layout.formLayoutDelegate = self

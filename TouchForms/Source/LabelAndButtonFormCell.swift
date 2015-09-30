@@ -16,7 +16,7 @@ public class LabelAndButtonFormCell: FormCell {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        formButton?.setTitleColor(tintColor, forState: .Normal)
+//        formButton?.setTitleColor(tintColor, forState: .Normal)
     }
 
     // MARK: - Actions

@@ -55,6 +55,7 @@
 		C2D2A2431B619C1B003901A7 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2421B619C1B003901A7 /* FormButton.swift */; };
 		C2D2A2451B619E9A003901A7 /* FormValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2441B619E9A003901A7 /* FormValueTransformer.swift */; };
 		C2D2A2471B61C9E4003901A7 /* MessageChildFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2A2461B61C9E4003901A7 /* MessageChildFormElement.swift */; };
+		C2ED32331BBB2AA800570683 /* StyledFormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ED32321BBB2AA800570683 /* StyledFormButton.swift */; settings = {ASSET_TAGS = (); }; };
 		C2F4A60D1B763DEA00AD5AF0 /* PickerFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4A60A1B763DEA00AD5AF0 /* PickerFormCell.swift */; };
 		C2F4A60E1B763DEA00AD5AF0 /* PickerFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F4A60B1B763DEA00AD5AF0 /* PickerFormCell.xib */; };
 		C2F4A60F1B763DEA00AD5AF0 /* PickerFormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4A60C1B763DEA00AD5AF0 /* PickerFormElement.swift */; };
@@ -122,6 +123,7 @@
 		C2D2A2421B619C1B003901A7 /* FormButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
 		C2D2A2441B619E9A003901A7 /* FormValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueTransformer.swift; sourceTree = "<group>"; };
 		C2D2A2461B61C9E4003901A7 /* MessageChildFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageChildFormElement.swift; sourceTree = "<group>"; };
+		C2ED32321BBB2AA800570683 /* StyledFormButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledFormButton.swift; sourceTree = "<group>"; };
 		C2F4A60A1B763DEA00AD5AF0 /* PickerFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerFormCell.swift; sourceTree = "<group>"; };
 		C2F4A60B1B763DEA00AD5AF0 /* PickerFormCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerFormCell.xib; sourceTree = "<group>"; };
 		C2F4A60C1B763DEA00AD5AF0 /* PickerFormElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerFormElement.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				C2D2A2421B619C1B003901A7 /* FormButton.swift */,
 				C22057B51B648AF300560324 /* FormTextField.swift */,
+				C2ED32321BBB2AA800570683 /* StyledFormButton.swift */,
 			);
 			name = "Form Controls";
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				C2D2A2471B61C9E4003901A7 /* MessageChildFormElement.swift in Sources */,
 				C26BD6BE1B640C5300C014A6 /* RegexFormValidator.swift in Sources */,
 				C239CA591B7BAB58000095D7 /* String+Size.swift in Sources */,
+				C2ED32331BBB2AA800570683 /* StyledFormButton.swift in Sources */,
 				C28DB7E81B7557B40085F92F /* LabelAndButtonFormElement.swift in Sources */,
 				C232FA711B7184D0000635E2 /* TextViewFormCell.swift in Sources */,
 				C26BD6B21B62DFA900C014A6 /* ViewChildFormElement.swift in Sources */,
