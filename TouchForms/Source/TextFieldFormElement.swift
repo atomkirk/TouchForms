@@ -11,9 +11,9 @@ import UIKit
 
 public class TextFieldFormElement: FormElement {
 
-    public var label: String
+    public var label: String?
 
-    public init(label: String) {
+    public init(label: String? = nil) {
         self.label = label
     }
 
@@ -21,7 +21,7 @@ public class TextFieldFormElement: FormElement {
     // MARK: - Overrides
 
     public override func populateCell() {
-        if let cell = cell as? TextFieldFormCell {
+        if let cell = cell as? TextFieldFormCell, let label = label {
             cell.formTextField?.placeholder = label
         }
         super.populateCell()
