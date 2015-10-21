@@ -374,7 +374,7 @@ public class FormController: UICollectionViewController {
 
         if indexPathsToRemove.count > 0 {
             collectionView?.performBatchUpdates({
-                collectionView?.deleteItemsAtIndexPaths(indexPathsToRemove)
+                self.collectionView?.deleteItemsAtIndexPaths(indexPathsToRemove)
             }, completion: { (finished) in
                 completion?()
             })
